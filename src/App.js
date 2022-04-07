@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Header from './components/common/Header';
-import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home} from './components/pages/index';
+import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies} from './components/pages/index';
 // import Footer from './components/common/Footer';
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
         <Route path="/how-claim-works" element={<HowClaimWorks />} />
         <Route path="/insurance-library" element={<InsuranceLibrary />} />
         <Route path="/news-media" element={<NewsMedia />} />
-        <Route path="/what-is-life-insurance" element={<WhatIsLifeInsurance />} />
         <Route path="/who-needs-life-insurance" element={<WhoNeedsLifeInsurance />} />
+        <Route path="/insurance-companies" element={<InsuranceCompanies />} />
       </Routes>
       {/* <Footer/> */}
     </>
