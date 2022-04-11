@@ -1,3 +1,4 @@
+
 .navbar-container{
     border-bottom: 1px solid gray;
     position: sticky;
@@ -38,7 +39,7 @@
     padding: 50px !important;
 }
 .slider-image{
-    height: 400px;
+    height: 450px;
     width: 100px;
 }
 .container-fluid{
@@ -85,6 +86,11 @@
     width: 100% !important;
     max-width: 500px !important;
     margin: auto;
+    transition: all .3s ease;
+    border-bottom: 9px solid #f7b90700 !important;
+}
+.insurance-sub-box > .col > .card {
+    height: 100%;
 }
 .card-body {
     padding: 26px 20px !important;
@@ -94,14 +100,31 @@
     font-size: 28px;
 }
 .card:hover {
-    border-bottom: 9px solid #f7b907;
+    border-bottom: 9px solid #f7b907 !important;
+}
+.slider-main .slick-current {
+    transform: scale(1.4);
+}
+.slider-main .slick-list {
+    overflow: visible;
+}
+.slider-main .slick-list * {
+    transition: all 0.3s ease;
+}
+.slider-main .slick-list {
+    overflow: visible;
+}
+.slider-main .slick-track {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 .slider-image {
-    width: 40%!important;
+    width: 100% !important;
+    max-width: 600px !important;
     margin: auto;
 }
 .simple-text{
-    line-height: 28px;
+    line-height: 32px;
     font-size: 16px;
     color: #424242;
     clear: both;
@@ -110,13 +133,14 @@
 }
 .text-heading{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 30px;
     font-family: inherit;
+    display: inline-block;
 }
 .sub-headings{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
-    margin: 10px 0 0 0;
+     display: inline-block;
 }
 .main-text-heading{
     margin-left: 0;
@@ -148,10 +172,39 @@
 }
 .faq-ful-box{
     /* border: 1px solid red; */
-    padding: 15px;
+    padding: 0 0 15px;
 }
-.faq-sub-box{
+/* .faq-sub-box{
     border-bottom: 2px solid grey;
+} */
+.library-main-box.shadow, .insurance-sub-box > .col > .card, .insurance-solution-div > .card {
+    box-shadow: 0 0 12px 5px rgba(0,0,0,.15) !important;
+    border-radius: 5px;
+}
+.news-box, .librarybox .sublibrary-box  {
+    padding: 20px;
+    box-shadow: 0 0 12px 5px rgba(0,0,0,.15) !important;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+body .librarybox {
+    padding: 0px 15px !important;
+    margin-bottom: 30px;
+}
+.librarybox .sublibrary-box {
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.read-more-btn {
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+.library-main-box .btn-danger {
+    color: #fff;
+    background-color: #0054a6;
+    border-color: #0054a6;
 }
 .faq-question-box{
     /* border:1px solid green; */
@@ -162,7 +215,36 @@
 }
 .faq-answer-box{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- 
+}
+.faq-ful-box .faq-sub-box .faq-question-box {
+    padding: 12px;
+    background: #f5f5f5;
+}
+.faq-answer-box {
+    opacity: 0;
+    height: 0;
+    display: block !important;
+}
+.faq-answer-box, .faq-answer-box * {
+    transition: all .6s ease;
+}
+.faq-answer-box {
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+.faq-answer-box.show {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #f5f5f5;
+    opacity: 1;
+    height: 100%;
+    transition: padding .35s ease-in-out;
+}
+
+.faq-ful-box .faq-sub-box .faq-question-box[aria-expanded="true"], .faq-ful-box .faq-sub-box .faq-question-box:hover {
+    background: #d7ebf5;
+    color: #0054a6;
 }
 .library-main-box{
     margin-bottom: 30px;
@@ -221,4 +303,43 @@
     font-weight: bold;
     font-size: 24px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.Footer-main {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+div#root {
+    padding-bottom: 50px;
+}
+body {
+    position: relative;
+    min-height: 100vh;
+}
+.sidenav-box {
+    position: sticky;
+    top: 20px;
+    z-index: 1050;
+    height: 100%;
+}
+.sidenav-box {
+    padding-right: 30px;
+    border: 0;
+}
+.sidenav-box  .side-tab-box {
+    border-bottom: 1px solid #fff;
+}
+.side-tab-box.active, .side-tab-box:hover {
+    background: #0054a6;
+}
+.side-tab-box >  div:first-child {
+    color: #0054a6 !important;
+}
+.side-tab-box.active  > div, .side-tab-box:hover > div {
+    color: #fff !important;
+}
+@media (min-width: 992px) {
+    .sidenav-box {
+        padding-right: 40px !important;
+    }
 }

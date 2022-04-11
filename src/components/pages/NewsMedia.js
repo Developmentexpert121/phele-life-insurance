@@ -64,7 +64,7 @@ const NewsMedia = () => {
         )}
          </Col>
         <Col xs={12} md={9} lg={9}>
-          <div>
+          <div className='mb-4'>
             <span className='main-text-heading'>News & Media</span>
           </div>
           {News.map((d) =>

@@ -48,20 +48,20 @@ const WhoNeedsLifeInsurance = () => {
           <p className='simple-text'>
           There are plans for every need and life stage, so you can be sure to find a Life Insurance plan that works just right for you.
           </p>
-          <span className='text-heading'>I am starting out</span>
-          <div className='what-insurance-photo'>
+          <span className='text-heading pt-3'>I am starting out</span>
+          <div className='what-insurance-photo pt-3'>
           <img src={Banner1} style={bannerStyle} />
           </div>
         
-          <span className='sub-headings'>Working Professional</span>
+          <span className='sub-headings pt-4 pb-2'>Working Professional</span>
           <p className='simple-text'>If you are in your 20s, you are probably already working. It is important for you to start thinking of safeguarding your income; especially when you are beginning a successful career. Even if you may not be earning as much as you would later in life, consider investing a portion of your income towards creating wealth; this would help you eventually build a corpus while staying protected. It will also help secure your liabilities, and at much lower premiums.</p>
-          <span className='sub-headings'>Married</span>
+          <span className='sub-headings pt-4 pb-2'>Married</span>
           <p className='simple-text'>When in your 30s, married or planning for one, you can be sure to have a whole set of responsibilities, especially financial in nature. Since you are earning more than you were in your twenties, it’s time to start planning how to financially secure your family and the future of your children. With long-term expenses such as buying a house, car, child’s education, etc. being on the rise, it’s advisable to have an equivalent life cover. Your primary concern should be on how your new family would manage all these expenses and debts should something unfortunate happen to you.</p>
-          <span className='sub-headings'>I have growing responsibilities</span>
-          <p className='simple-headings'>During your 40s, bigger responsibilities such as long-term debts and medical expenses become a part and parcel of life. These could be in the form of a home loan, elderly parent care, children’s higher education, etc., and it’s a given that these expenses are not easy to meet. At this stage, it is wise to diversify your investments and also start thinking of a retirement plan so you can ensure a financially secured future for you and your family, and continue to lead a good worry-free life.</p>
-          <span className='sub-headings'>I am nearing retirement</span>
-          <p className='simple-headings'>When in your 50s, it is of utmost importance to opt for a retirement plan, if one hasn’t already. If you are the only earning member of the house or have large debts or loans to be paid, a retirement plan becomes an absolute must. It’s always best to keep you and your family financially protected, so you can focus on making the most out of your second innings. Now, everyone up to the age of 65 years are eligible to buy a life insurance policy.</p>
-          <p className='simple-headings'>With Life expectancy on the rise, you would eventually need more financial support to sustain the many years of your retirement. Always remember, no matter what age and life stage you may be, karo sabse pehle Life Insurance!</p>
+          <span className='sub-headings pt-4 pb-2'>I have growing responsibilities</span>
+          <p className='simple-text'>During your 40s, bigger responsibilities such as long-term debts and medical expenses become a part and parcel of life. These could be in the form of a home loan, elderly parent care, children’s higher education, etc., and it’s a given that these expenses are not easy to meet. At this stage, it is wise to diversify your investments and also start thinking of a retirement plan so you can ensure a financially secured future for you and your family, and continue to lead a good worry-free life.</p>
+          <span className='sub-headings pt-3 pb-2'>I am nearing retirement</span>
+          <p className='simple-text'>When in your 50s, it is of utmost importance to opt for a retirement plan, if one hasn’t already. If you are the only earning member of the house or have large debts or loans to be paid, a retirement plan becomes an absolute must. It’s always best to keep you and your family financially protected, so you can focus on making the most out of your second innings. Now, everyone up to the age of 65 years are eligible to buy a life insurance policy.</p>
+          <p className='simple-text'>With Life expectancy on the rise, you would eventually need more financial support to sustain the many years of your retirement. Always remember, no matter what age and life stage you may be, karo sabse pehle Life Insurance!</p>
         </Col>
       </Row>
       < SocialComponent />

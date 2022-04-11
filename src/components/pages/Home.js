@@ -21,11 +21,11 @@ const Home = () => {
   return (
     <div>
       <YoutubeEmbed />
-      <Container className="py-lg-4" fluid="md">
+      <Container className="pt-5 pb-1" fluid="md">
         <Row>
           <Col xs={12} md={12} lg={12} className="yooo">
 
-            <span>Apni Life Ko Sabse Pehle Do Life Insurance Ka Bharosa</span>
+            <h2>Apni Life Ko Sabse Pehle Do Life Insurance Ka Bharosa</h2>
 
           </Col>
         </Row>
@@ -69,8 +69,8 @@ const Home = () => {
           </Col>
         </Row>
         <Row className='py-lg-4'>
-          <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Trending Topics About Life Insurance</span>
+          <Col xs={12} md={12} lg={12} className="homeTrending mb-0 pt-5">
+            <h2>Trending Topics About Life Insurance</h2>
           </Col>
         </Row>
       </Container>
@@ -141,12 +141,12 @@ const Home = () => {
         </Row>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Trending Topics About Life Insurance</span>
+            <h2 className="mb-0 pt-5">Trending Topics About Life Insurance</h2>
           </Col>
         </Row>
         <Row>
           <Col>
-            <div>
+            <div className='slider-main'>
               <h2>Center Mode</h2>
               <Slider {...settings}>
                 <div>
@@ -194,9 +194,9 @@ const Home = () => {
             <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
           </Col>
         </Row>
-        <Row className='py-lg-4'>
-          <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Trending Topics About Life Insurance</span>
+        <Row className='pt-5'>
+          <Col xs={12} md={12} lg={12} className="homeTrending ">
+            <h2 className='mb-0 pt-4'>Trending Topics About Life Insurance</h2>
           </Col>
         </Row>
         <Row>

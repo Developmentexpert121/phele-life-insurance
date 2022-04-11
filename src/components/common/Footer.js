@@ -3,7 +3,7 @@ import FooterLogo from './../../assets/footer-logo.jpg';
 import {Row, Col} from  "react-bootstrap";
 const Footer = () => {
   return (
-    <div>
+    <div className="Footer-main">
       <Row className="Footer-row">
         <Col xs={12} md={2} lg={2}>
         <img src={FooterLogo} />

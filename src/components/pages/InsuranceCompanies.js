@@ -65,7 +65,7 @@ const InsuranceCompany = () => {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>List of Life Insurance Companies</span>
+              <span className='main-text-heading mb-4'>List of Life Insurance Companies</span>
             </div>
             <Row>
               {InsuranceCompanies.map((d) =>

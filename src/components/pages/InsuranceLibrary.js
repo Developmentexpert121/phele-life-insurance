@@ -46,13 +46,13 @@ const InsuranceLibrary = () => {
               <span className='main-text-heading'>Insurance Library</span>
             </div>
             {count.map(() =>
-              <Row className='library-main-box'>
-                <Col xs={4} md={3} lg={3} className="library-image">
+              <Row className='library-main-box shadow px-2 py-3 align-items-center'>
+                <Col xs={4} md={4} lg={3} className="library-image">
                   <img src={Banner1} />
                 </Col>
-                <Col col={8} md={8} lg={8}>
+                <Col col={8} md={8} lg={9}>
 
-                  <p>New to Life Insurance? Karo sabse pehle!
+                  <div className='d-flex flex-wrap justify-content-between'><div><h5 className='mb-0'>New to Life Insurance? Karo sabse pehle!</h5> <small className='d-block'>04/12/19</small></div>
                     {/* <Button variant="danger" ref={target} onClick={() => setShow(!show)} className='library-share'><FaShareAlt />
                      
                     </Button> */}
@@ -77,10 +77,10 @@ const InsuranceLibrary = () => {
         )}
       </Overlay>
 
-                  </p>
-                  <p>04/12/19</p>
-                  <p>
-                    Decided on buying Life Insurance? Life Insurance is the only financial instrument that keeps your life goals protected, even in your absence. With the right selection of life cover, you will surely be… Read More
+                  </div>
+                  
+                  <p className='mb-0 mt-3'>
+                    Decided on buying Life Insurance? Life Insurance is the only financial instrument that keeps your life goals protected, even in your absence. With the right selection of life cover, you will surely be… <a href="" className='text-underline text-dark read-more-btn' ><strong>Read More</strong></a> 
                   </p>
                 </Col>
               </Row>

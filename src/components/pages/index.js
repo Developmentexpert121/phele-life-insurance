@@ -11,6 +11,7 @@ import WhatIsLifeInsurance from './WhatIsLifeInsurance';
 import WhoNeedsLifeInsurance from './WhoNeedsLifeInsurance';
 import InsuranceCompanies from './InsuranceCompanies';
 import Home from './Home';
+import Form from './Form';
 
 
 export {
@@ -26,5 +27,6 @@ export {
     NewsMedia,
     WhatIsLifeInsurance,
     WhoNeedsLifeInsurance,
-    InsuranceCompanies
+    InsuranceCompanies,
+    Form
 }

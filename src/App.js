@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import Header from './components/common/Header';
-import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies} from './components/pages/index';
+import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Form,Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies} from './components/pages/index';
 // import Footer from './components/common/Footer';
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/news-media" element={<NewsMedia />} />
         <Route path="/who-needs-life-insurance" element={<WhoNeedsLifeInsurance />} />
         <Route path="/insurance-companies" element={<InsuranceCompanies />} />
+        <Route path="/form" element={<Form />} />
       </Routes>
       {/* <Footer/> */}
     </>
