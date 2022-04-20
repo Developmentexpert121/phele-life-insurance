@@ -5,6 +5,7 @@ import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
+import Header from './../common/Header';
 import {
   FacebookIcon,
   FacebookShareButton
@@ -33,6 +34,7 @@ const InsuranceLibrary = () => {
   }
   return (
     <>
+    <Header />
       <Container>
 
         <Row>

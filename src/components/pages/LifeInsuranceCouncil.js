@@ -5,6 +5,7 @@ import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
+import Header from './../common/Header';
 const LifeInsuranceCouncil = () => {
   const NavLists = [
     {
@@ -34,6 +35,7 @@ const LifeInsuranceCouncil = () => {
   }
   return (
     <>
+    <Header />
     <Container>
       <Row>
       <Col xs={12} md={3} lg={3} className="sidenav-box">

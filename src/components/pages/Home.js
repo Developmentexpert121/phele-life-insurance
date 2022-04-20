@@ -7,6 +7,7 @@ import Banner2 from './../../assets/banner2.jpg';
 import Share from './../../assets/share.jpg';
 import Slider from "react-slick";
 import Footer from './../common/Footer';
+import Header from './../common/Header';
 import SocialComponent from "../common/Socials";
 const Home = () => {
   const settings = {
@@ -20,6 +21,7 @@ const Home = () => {
   };
   return (
     <div>
+      <Header/>
       <YoutubeEmbed />
       <Container className="pt-5 pb-1" fluid="md">
         <Row>

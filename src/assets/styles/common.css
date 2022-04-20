@@ -226,7 +226,7 @@ body .librarybox {
     display: block !important;
 }
 .faq-answer-box, .faq-answer-box * {
-    transition: all .6s ease;
+    transition: all 2s ease;
 }
 .faq-answer-box {
     padding-left: 20px;
@@ -292,11 +292,6 @@ body .librarybox {
 .news-box{
     padding-left: 20px;
     /* margin-top: px !important; */
-}
-.news-sub-box{
-    /* border:1px solid blue; */
-    
-   
 }
 .news-heading{
     color: #0b408a;

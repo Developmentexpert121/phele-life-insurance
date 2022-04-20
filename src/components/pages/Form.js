@@ -1,52 +1,57 @@
 import React, {useState} from 'react'
+import Header from './../common/Header';
+    const Form = () => {
+        const [question, setQuestion] = useState("")
 
-const Form = () => {
-    const [inputField , setInputField] = useState({
-        first_name: '',
-        last_name: '',
-        gmail: ''
-    })
-    
-    const inputsHandler = (e) =>{
-        setInputField( {[e.target.name]: e.target.value} )
-    }
+            const aa = (e) =>{
+                const {name, value} = e.target;
+                setQuestion((prevquestion) =>({
+                    ...prevquestion,
+                    [name] : value,
+                }))
+            }
 
-    const submitButton = () =>{
-        alert(inputField.first_name)
-    }
-    
-    
+
+
+        const [answer, setAnswer] = useState("")
+        const submit = (e) => {
+            e.preventDefault()
+            fetch(`http://localhost:4000/faqs/question`, {
+              method: "POST",
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ question, answer}),
+            })
+          }
+
+          
+
     return(
         <>
-             <input 
+        <Header />
+        <form onSubmit={submit}>
+             <input   
             type="text" 
-            name="first_name" 
-            onChange={inputsHandler} 
-            placeholder="First Name" 
-            value={inputField.first_name}/>
-            <br/>
-            <br/>
-
-<input 
-            type="text" 
-            name="last_name" 
-            onChange={inputsHandler} 
-            placeholder="Last Name" 
-            value={inputField.last_name}/>
-
+            name="question" 
+            placeholder="Question"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            />
             <br/>
             <br/>
 
             <input 
-            type="gmail" 
-            name="gmail" 
-            onChange={inputsHandler} 
-            placeholder="Gmail" 
-            value={inputField.gmail}/>
+            type="text" 
+            name="answer" 
+            placeholder="Answer" 
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            />
+            <br/>
+            <br/>
+            <br/>
 
-            <br/>
-            <br/>
-            <button onClick={submitButton}>Submit Now</button>
+            <button >Submit Now</button>
+            </form>
         </>
     );
 }
