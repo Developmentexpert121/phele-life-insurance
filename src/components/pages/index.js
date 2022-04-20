@@ -9,7 +9,11 @@ import ListOfLifeInsurance from './ListOfLifeInsurance';
 import NewsMedia from './NewsMedia';
 import WhatIsLifeInsurance from './WhatIsLifeInsurance';
 import WhoNeedsLifeInsurance from './WhoNeedsLifeInsurance';
+import InsuranceCompanies from './InsuranceCompanies';
 import Home from './Home';
+import Form from './Form';
+import Test from './test';
+import Testa from './TestAgain';
 
 
 export {
@@ -24,5 +28,9 @@ export {
     ListOfLifeInsurance,
     NewsMedia,
     WhatIsLifeInsurance,
-    WhoNeedsLifeInsurance
+    WhoNeedsLifeInsurance,
+    InsuranceCompanies,
+    Form,
+    Test,
+    Testa
 }
