@@ -3,10 +3,10 @@ import AdminHeader from '../layout/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 
-const AdminFaq = () => {
+const Glossary = () => {
     const [formData, setFormData] = useState({
-        question: '',
-        answer: ''
+        keyword: '',
+        definition: ''
     })
     const [thearray, setTheArray] = useState([]);
 
@@ -14,22 +14,22 @@ const AdminFaq = () => {
         const { name, value } = e.target
         setFormData((prevData) => ({
             ...prevData,
-            [e.target.name]: e.target.value
+            [name]: value
         }))
         console.log(e.target.value)
     }
     const submit = (e) => {
         e.preventDefault()
-        var data = { question: formData.question, answer: formData.answer }
-        fetch(`http://localhost:4000/faqs/question`, {
+        var data = { keyword: formData.keyword, definition: formData.definition }
+        fetch(`http://localhost:4000/glossary/keyword`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
-        
+
     }
-    const GetQuetion = () => {
-        fetch('http://localhost:4000/faqs/question'
+    const GetKeyword = () => {
+        fetch('http://localhost:4000/glossary/keyword'
         )
             .then((res) => res.json())
             .then((res) => {
@@ -37,7 +37,7 @@ const AdminFaq = () => {
             })
     }
     useEffect(() => {
-        GetQuetion()
+        GetKeyword()
     })
     return (
         <>
@@ -46,30 +46,30 @@ const AdminFaq = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <h3>Add Faqs</h3>
+                            <h3>Add Glossary</h3>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
                             <form onSubmit={submit}>
                                 <div xs={12} md={6} lg={6}>
-                                    <label>Question</label>
+                                    <label>Keyword</label>
                                     <input
                                         type="text"
-                                        name="question"
+                                        name="keyword"
                                         className="form-control"
                                         onChange={InputHandler}
-                                        value={setFormData.question}
+                                        value={setFormData.keyword}
                                     />
                                 </div>
                                 <div xs={12} md={6} lg={6}>
-                                    <label>Answer</label>
+                                    <label>Define Keyword</label>
                                     <textarea
-                                        name='answer'
+                                        name='definition'
                                         row="4" col="50" placeholder='Enter Answer'
                                         className='form-control'
                                         onChange={InputHandler}
-                                        value={setFormData.answer}
+                                        value={setFormData.definition}
                                     >
                                     </textarea>
                                 </div>
@@ -81,17 +81,17 @@ const AdminFaq = () => {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Question</th>
-                                    <th>Answer</th>
+                                    <th>Keyword</th>
+                                    <th>Definition</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {thearray.map((item, index) => (
-                                    <tr>
-                                        <td>{item.question}</td>
-                                        <td>{item.answer}</td>
+                                    <tr key={index} >
+                                        <td>{item.keyword}</td>
+                                        <td>{item.definition}</td>
                                         <td>< FaEdit /></td>
                                         <td><FaTrashAlt /></td>
                                     </tr>
@@ -105,4 +105,4 @@ const AdminFaq = () => {
     )
 }
 
-export default AdminFaq
+export default Glossary;

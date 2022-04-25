@@ -1,12 +1,16 @@
-import React, {useState} from 'react'
-import AdminHeader from '../layout/Header'
-import { Container, Row, Col } from 'react-bootstrap'
+import React, {useState, useEffect} from 'react';
+import AdminHeader from '../layout/Header';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+
 const AdminLibrary = () => {
     const [formData, setFormData] = useState({
         slug: '',
         title: '',
         description :''
     })
+    const [thearray, setTheArray] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const InputHandler = (e) =>{
         const {name, value} = e.target;
@@ -18,7 +22,7 @@ const AdminLibrary = () => {
 
     const submit = (e) =>{
         e.preventDefault()
-        const data = {slug: formData.slug, title: formData.title, description: formData.description}
+        const data = {slug: formData.slug, title: formData.title, description: formData.description, picture:selectedImage.name}
      
         fetch(`http://localhost:4000/library/library`, {
             method: "POST",
@@ -26,6 +30,17 @@ const AdminLibrary = () => {
             body: JSON.stringify(data),
         })
     }
+    const GetQuetion = () => {
+        fetch('http://localhost:4000/library/library'
+        )
+            .then((res) => res.json())
+            .then((res) => {
+                setTheArray(res)
+            })
+    }
+    useEffect(() => {
+        GetQuetion()
+    })
 
     return (
         <>
@@ -81,13 +96,56 @@ const AdminLibrary = () => {
                                         </div>
                                     </Col>
                                     <Col xs={12} md={6} lg={6}>
+                                    <label>Company Logo</label>
+                                    <input
+                                        type="file"
+                                        name="companyLogo"
+                                        className="form-control"
+                                        onChange={(event) => {
+                                            console.log("Selected ", event.target.files[0]);
+                                            setSelectedImage(event.target.files[0]);
+                                            console.log("selected Image", selectedImage);
+                                        }} />
+                                    {selectedImage && (
+                                        <div>
+                                            <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+                                            <br />
+                                            <button onClick={() => setSelectedImage(null)}>Remove</button>
+                                        </div>
+                                    )}
                                     </Col>
                                 </Row>
                                 <Col>
-                                    <button className='btn btn-primary ' >Submit</button>
+                                    <button className='btn btn-primary m-2' >Submit</button>
                                 </Col>
                             </form>
                         </Col>
+                    </Row>
+                    <Row>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Slug</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Picture</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {thearray.map((item, index) => (
+                                    <tr key={index} >
+                                        <td>{item.slug}</td>
+                                        <td>{item.title}</td>
+                                        <td>{item.description}</td>
+                                        <td>{item.picture}</td>
+                                        <td>< FaEdit /></td>
+                                        <td><FaTrashAlt /></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </Row>
                 </Container>
             </div>

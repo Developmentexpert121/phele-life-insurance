@@ -4,6 +4,9 @@ import YoutubeEmbed from "../YoutubeEmbed";
 import "./../../assets/styles/common.css";
 import Banner1 from './../../assets/banner1.jpg';
 import Banner2 from './../../assets/banner2.jpg';
+import Banner3 from './../../assets/banner3.jpg';
+import Banner4 from './../../assets/banner4.jpg';
+import Banner5 from './../../assets/banner5.jpg';
 import Share from './../../assets/share.jpg';
 import Slider from "react-slick";
 import Footer from './../common/Footer';
@@ -21,7 +24,7 @@ const Home = () => {
   };
   return (
     <div>
-      <Header/>
+      <Header />
       <YoutubeEmbed />
       <Container className="pt-5 pb-1" fluid="md">
         <Row>
@@ -36,12 +39,11 @@ const Home = () => {
             <Card style={{ width: "24rem" }}>
               <Card.Img variant="top" src={Banner1} />
               <Card.Body>
-
                 <Card.Title>
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>Why Life Insurance is Sabse Pehle? </Col>
                     <Col>
-                      <img src={Share} />
+                      <img alt="" src={Share} />
                     </Col>
                   </Row>
                 </Card.Title>
@@ -59,7 +61,7 @@ const Home = () => {
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>How do I get started?</Col>
                     <Col>
-                      <img src={Share} />
+                      <img alt="" src={Share} />
                     </Col>
                   </Row>
                 </Card.Title>
@@ -80,8 +82,9 @@ const Home = () => {
         <Row className="topic-main-box">
           <Carousel className="carousel-div">
             <Carousel.Item>
+
               <img
-                className="d-block  slider-image"
+                className="d-block  slider-image "
                 src={Banner1}
                 alt="First slide"
               />
@@ -93,7 +96,7 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block  slider-image"
-                src={Banner1}
+                src={Banner2}
                 alt="Second slide"
               />
 
@@ -105,7 +108,7 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block  slider-image"
-                src={Banner1}
+                src={Banner3}
                 alt="Third slide"
               />
 
@@ -120,25 +123,26 @@ const Home = () => {
       <Container>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Trending Topics About Life Insurance</span>
+            <span>Get Familiar With Life Insurance Terms</span>
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={4} lg={4}>
             <div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
+              <div>Underwritting</div>
+              <div>Premium</div>
+              <div>Grace period</div>
+              <div>Coverage</div>
+              <div>Beneficiary</div>
             </div>
           </Col>
           <Col xs={12} md={8} col={8}>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
+            <div>Underwriting is the process through which an insurer decides whether to cover and how much to charge. </div>
+            <div>Premium is the amount you pay to continue being insured and keep your life insurance plan active. If you are unable to pay your premium before the payment due date and even during the grace period, yo… </div>
+            <div>If you are unable to pay the premium for your policy on time and cross your premium payment due date, the life insurance company gives you an extension of a number of days. This is the ‘Grace Period’.… </div>
+            <div>The life assured passing away could lead to a large financial loss; this amount is generally chosen as the amount of coverage required when buying a life insurance plan.
+              For a life insurance company,… </div>
+            <div>The beneficiary is the person or entity entitled to receive the claim amount and other benefits upon the death of the life assured or on maturity of the policy. </div>
           </Col>
         </Row>
         <Row className='py-lg-4'>
@@ -152,22 +156,22 @@ const Home = () => {
               <h2>Center Mode</h2>
               <Slider {...settings}>
                 <div>
-                  <img src={Banner1} className="bottom-slider-image" />
+                  <img src={Banner1} alt="First" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} className="bottom-slider-image" />
+                  <img src={Banner1} alt="second" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} className="bottom-slider-image" />
+                  <img src={Banner1} alt="third" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} className="bottom-slider-image" />
+                  <img src={Banner1} alt="" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} className="bottom-slider-image" />
+                  <img src={Banner1} alt="" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} className="bottom-slider-image" />
+                  <img src={Banner1} alt="" className="bottom-slider-image" />
                 </div>
               </Slider>
             </div>
@@ -175,69 +179,68 @@ const Home = () => {
         </Row>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Trending Topics About Life Insurance</span>
+            <span>Commonly Asked Questions</span>
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={4} lg={4}>
             <div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
-              <div>Under Writting</div>
+              <div>Changing a policy</div>
+              <div>Buying Online</div>
+              <div>Before You Pay</div>
+              <div>Paying your premium</div>
             </div>
           </Col>
           <Col xs={12} md={8} col={8}>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
-            <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
+            <div>Yes. All insurance companies are prepared for a situation wherein you may wish to make changes to your policy. It could be a change in beneficiaries, the amount of coverage, investment allocations, etc.
+              To begin with, you could start by reviewing your coverage. If you find it lacking, you can either ask your insurer to increase or decrease your protection as the case maybe, or cancel your policy altogether and look for another. </div>
+            <div>The process of buying a Life Insurance policy has been digitized to a very large extent. You can now look through websites, select a policy, sign and upload documents, pay your premiums, settle a claim, etc. online. However, there might be a part of the process that could involve some physical interaction, such as a medical examination. All of this could vary based on the company’s processes and the policy you choose. </div>
+            <div>To ensure your family remains protected, you regularly pay a small premium for it. Staying invested for the policy term not only maintains the shield of protection, but it also ensures you get your maturity benefit by the end of it. So, as long as your policy is the most suited one for you, it is always best to stay invested to get the most out of your policy. </div>
+            <div>If you are unable to pay your premium on the date it is due, you enter the grace period. The grace period is generally a period of 15 days from the due date; you have to pay your premium within the grace period.
+              In case you do not pay your premium even during the grace period, your policy lapses. </div>
+
           </Col>
         </Row>
         <Row className='pt-5'>
           <Col xs={12} md={12} lg={12} className="homeTrending ">
-            <h2 className='mb-0 pt-4'>Trending Topics About Life Insurance</h2>
+            <h2 className='mb-0 pt-4'>I am looking for specific Life Insurance solutions</h2>
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
-              <Card.Img variant="top" src={Banner1} />
+              <Card.Img variant="top" src={Banner3} />
               <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>I am starting out</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk of
-                  the card's content.
+                  Be a smart investor by taking advantage of your age and earning potential.
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary">Get Started</Button>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
-              <Card.Img variant="top" src={Banner1} />
+              <Card.Img variant="top" src={Banner4} />
               <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>I have growing responsibilities</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk of
-                  the card's content.
+                  Invest towards your future goals.
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary">Get Started</Button>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
-              <Card.Img variant="top" src={Banner1} />
+              <Card.Img variant="top" src={Banner5} />
               <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>
+                  I am nearing retirement</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk of
-                  the card's content.
+                  Prepare for a carefree retired life.
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary">Get Started</Button>
               </Card.Body>
             </Card>
           </Col>
