@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import AdminHeader from '../layout/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import axios from "axios";
 
 const AdminLibrary = () => {
     const [formData, setFormData] = useState({
@@ -22,13 +23,25 @@ const AdminLibrary = () => {
 
     const submit = (e) =>{
         e.preventDefault()
-        const data = {slug: formData.slug, title: formData.title, description: formData.description, picture:selectedImage.name}
-     
+        const data = {slug: formData.slug, title: formData.title, description: formData.description, picture:selectedImage.name}  
         fetch(`http://localhost:4000/library/library`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
+
+        const imageData = new FormData();
+        console.log("imagedata is",imageData);
+        imageData.append( 'file', selectedImage );
+        axios.post('//localhost:4000/upload', imageData)
+            .then((e)=>{
+                console.log("Sucess");
+            })
+            .catch((e)=>{
+                console.log('Error is',e);
+            })
+
+
     }
     const GetQuetion = () => {
         fetch('http://localhost:4000/library/library'
@@ -102,13 +115,12 @@ const AdminLibrary = () => {
                                         name="companyLogo"
                                         className="form-control"
                                         onChange={(event) => {
-                                            console.log("Selected ", event.target.files[0]);
+                                            console.log("Selected 1 ", event.target.files[0]);
                                             setSelectedImage(event.target.files[0]);
-                                            console.log("selected Image", selectedImage);
                                         }} />
                                     {selectedImage && (
                                         <div>
-                                            <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+                                            <img alt="not fount" width={"100px"} src={URL.createObjectURL(selectedImage)} />
                                             <br />
                                             <button onClick={() => setSelectedImage(null)}>Remove</button>
                                         </div>
@@ -117,6 +129,7 @@ const AdminLibrary = () => {
                                 </Row>
                                 <Col>
                                     <button className='btn btn-primary m-2' >Submit</button>
+
                                 </Col>
                             </form>
                         </Col>

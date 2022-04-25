@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaShieldAlt } from 'react-icons/fa';
 import Banner1 from './../../assets/banner1.jpg';
@@ -51,18 +51,33 @@ const InsuranceCompany = () => {
       'image': 'images/logo3_0.png'
     }
   ]
+  const [companies, setCompanies] = useState([]);
+
+  const getCompanies = () => {
+    fetch('http://localhost:4000/companies/companies-list'
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        setCompanies(res)
+      })
+  }
+  useEffect(() => {
+    getCompanies()
+    console.log('effect 1', companies);
+  }, [])
+
   const bannerStyle = {
     width: '100%',
     border: 1
   }
   return (
     <>
-    <Header />
+      <Header />
       <Container>
         <Row>
           <Col xs={12} md={3} lg={3} className="sidenav-box">
-            {NavLists.map((d) =>
-              <Navs heading={d.heading} icon={d.icon} url={d.url} />
+            {NavLists.map((d,i) =>
+              <Navs key={i} heading={d.heading} icon={d.icon} url={d.url} />
             )}
           </Col>
           <Col xs={12} md={9} lg={9}>
@@ -70,8 +85,8 @@ const InsuranceCompany = () => {
               <span className='main-text-heading mb-4'>List of Life Insurance Companies</span>
             </div>
             <Row>
-              {InsuranceCompanies.map((d) =>
-                <CompaniesLibrary name={d.name} number={d.number} url={d.url} image={d.image} />
+              {companies.map((d,i) =>
+                <CompaniesLibrary key={i} name={d.name} number={d.number} url={d.url} image={d.image} />
               )}
 
             </Row>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Container, Row, Col, Overlay, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FaShareAlt } from 'react-icons/fa';
 import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
@@ -42,8 +42,7 @@ const InsuranceLibrary = () => {
       'url': '/glossary'
     }
   ]
-  // const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
+  
   const bannerStyle = {
     width: '100%',
     border: 1
@@ -71,32 +70,11 @@ const InsuranceLibrary = () => {
                 <Col col={8} md={8} lg={9}>
 
                   <div className='d-flex flex-wrap justify-content-between'><div><h5 className='mb-0'>{element.title} </h5> <small className='d-block'>04/12/19</small></div>
-                    {/* <Button variant="danger" ref={target} onClick={() => setShow(!show)} className='library-share'><FaShareAlt />
-                     
-                    </Button> */}
-                    <Button variant="danger" ref={target} onClick={() => setShow(!show)}>
+
+                    <Button ref={target} >
                       Click me to see
                     </Button>
-                    <Overlay target={target.current} show={show} placement="right">
-                      {({ placement, arrowProps, show: _show, popper, ...props }) => (
-                        <div
-                          {...props}
-                          style={{
-                            position: 'absolute',
-                            backgroundColor: 'rgba(255, 100, 100, 0.85)',
-                            padding: '2px 10px',
-                            color: 'white',
-                            borderRadius: 3,
-                            ...props.style,
-                          }}
-                        >
-                          Simple tooltip
-                        </div>
-                      )}
-                    </Overlay>
-
                   </div>
-
                   <p className='mb-0 mt-3'>
                     {element.description }  <a href="" className='text-underline text-dark read-more-btn' ><strong>Read More</strong></a>
                   </p>

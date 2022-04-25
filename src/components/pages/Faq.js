@@ -10,7 +10,7 @@ import Header from './../common/Header';
 const Faq = () => {
 
   const [question, fetchQuestion] = useState([])
-  
+
   const getQuestions = () => {
     fetch('http://localhost:4000/faqs/question'
     )
@@ -18,7 +18,7 @@ const Faq = () => {
       .then((res) => {
         fetchQuestion(res)
       })
-    console.log('Lib is ', question);
+
   }
   // const [as, fetchas] = useState([])
   // const asd = () =>{
