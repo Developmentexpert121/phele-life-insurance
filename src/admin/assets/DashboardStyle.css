@@ -79,3 +79,6 @@ nav.nav-menu.active + .content-here {
     width: calc(100% - 250px);
     margin-left: auto;
 }
+.form-style{
+    padding: 50px;
+}
