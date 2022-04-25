@@ -4,7 +4,7 @@ import Header from './components/common/Header';
 import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Test,Testa,Form,
   Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies} from './components/pages/index';
 
-import {Dashboard,AdminFaq, AdminLibrary} from './admin/AdminComponents';
+import {Dashboard,AdminFaq, AdminLibrary, AdminNewsMedia} from './admin/AdminComponents';
 function App() {
   return (
     <>
@@ -29,6 +29,7 @@ function App() {
         <Route path = "/dashboard" element={<Dashboard />} />
         <Route path='/admin/faq' element={ <AdminFaq />} />
         <Route path='/admin/library' element={ <AdminLibrary />} />
+        <Route path="/admin/news-media" element={ < AdminNewsMedia />} />
 
       </Routes>
       
