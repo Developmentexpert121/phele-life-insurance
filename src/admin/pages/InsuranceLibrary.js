@@ -1,48 +1,62 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminHeader from '../layout/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
 
 const AdminLibrary = () => {
-    const [formData, setFormData] = useState({
+
+    const [libraryData, setLibraryData] = useState({
         slug: '',
         title: '',
-        description :''
+        description: '',
+        photo: ''
     })
     const [thearray, setTheArray] = useState([]);
-    const [selectedImage, setSelectedImage] = useState(null);
+    // const [selectedImage, setSelectedImage] = useState(null);
 
-    const InputHandler = (e) =>{
-        const {name, value} = e.target;
-        setFormData((prevdata) => ({
+    const InputHandler = (e) => {
+        const { name, value } = e.target;
+        setLibraryData((prevdata) => ({
             ...prevdata,
-            [e.target.name] : e.target.value
+            [name]: value
         }))
     }
+    const handlePhoto = (e) =>{
+        setLibraryData({...libraryData, photo: e.target.files[0] })
+        console.log("Library photo 1 ", libraryData.photo );
+    }
 
-    const submit = (e) =>{
+    const submit = (e) => {
         e.preventDefault()
-        const data = {slug: formData.slug, title: formData.title, description: formData.description, picture:selectedImage.name}  
-        fetch(`http://localhost:4000/library/library`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        })
 
-        const imageData = new FormData();
-        console.log("imagedata is",imageData);
-        imageData.append( 'file', selectedImage );
-        axios.post('//localhost:4000/upload', imageData)
-            .then((e)=>{
-                console.log("Sucess");
+        const formData = new FormData();
+
+        formData.append('photo', libraryData.photo );
+        formData.append('slug', libraryData.slug );
+        formData.append('title', libraryData.title );
+        formData.append('description', libraryData.description );
+
+        console.log("Library photo 2", libraryData.photo );
+        console.log("Library photo 3", formData );
+
+        axios.post('//localhost:4000/library/library', formData)
+            .then((e) => {
+                console.log("Sucess",e);
             })
-            .catch((e)=>{
-                console.log('Error is',e);
+            .catch((e) => {
+                console.log('Error is', e);
             })
 
+        // const data = { slug: libraryData.slug, title: libraryData.title, description: libraryData.description, picture: selectedImage }
+        // fetch(`http://localhost:4000/library/library`, {
+        //     method: "POST",
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(data),
+        // })
 
     }
+
     const GetQuetion = () => {
         fetch('http://localhost:4000/library/library'
         )
@@ -78,7 +92,7 @@ const AdminLibrary = () => {
                                                 className='form-control'
                                                 placeholder='Enter Slug. Ex: This-is-title'
                                                 onChange={InputHandler}
-                                                value={setFormData.slug}
+                                                value={setLibraryData.slug}
                                             />
                                         </div>
                                     </Col>
@@ -91,40 +105,38 @@ const AdminLibrary = () => {
                                                 className='form-control'
                                                 placeholder='Enter Title'
                                                 onChange={InputHandler}
-                                                value={setFormData.title}
+                                                value={setLibraryData.title}
                                             />
                                         </div>
                                     </Col>
                                     <Col xs={12} md={12} lg={12}>
                                         <div>
                                             <label>Title</label>
-                                            <textarea 
+                                            <textarea
                                                 name='description'
                                                 rows={3}
                                                 className="form-control"
                                                 placeholder='Enter Description'
                                                 onChange={InputHandler}
-                                                value={setFormData.description}
+                                                value={setLibraryData.description}
                                             />
                                         </div>
                                     </Col>
                                     <Col xs={12} md={6} lg={6}>
-                                    <label>Company Logo</label>
-                                    <input
-                                        type="file"
-                                        name="companyLogo"
-                                        className="form-control"
-                                        onChange={(event) => {
-                                            console.log("Selected 1 ", event.target.files[0]);
-                                            setSelectedImage(event.target.files[0]);
-                                        }} />
-                                    {selectedImage && (
-                                        <div>
-                                            <img alt="not fount" width={"100px"} src={URL.createObjectURL(selectedImage)} />
-                                            <br />
-                                            <button onClick={() => setSelectedImage(null)}>Remove</button>
-                                        </div>
-                                    )}
+                                        <label>Company Logo</label>
+                                        <input
+                                            type="file"
+                                            name="companyLogo"
+                                            className="form-control"
+                                            onChange={handlePhoto} />
+
+                                        {/* {selectedImage && (
+                                            <div>
+                                                <img alt="not fount" width={"100px"} src={URL.createObjectURL(selectedImage)} />
+                                                <br />
+                                                <button onClick={() => setSelectedImage(null)}>Remove</button>
+                                            </div>
+                                        )} */}
                                     </Col>
                                 </Row>
                                 <Col>
@@ -135,31 +147,24 @@ const AdminLibrary = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Slug</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Picture</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {thearray.map((item, index) => (
-                                    <tr key={index} >
-                                        <td>{item.slug}</td>
-                                        <td>{item.title}</td>
-                                        <td>{item.description}</td>
-                                        <td>{item.picture}</td>
-                                        <td>< FaEdit /></td>
-                                        <td><FaTrashAlt /></td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <Col >Slug</Col>
+                        <Col xs={2} md={2} lg={2}>Title</Col>
+                        <Col xs={4} md={4} lg={4}>Description</Col>
+                        <Col >Picture</Col>
+                        <Col>Edit</Col>
+                        <Col>Delete</Col>
                     </Row>
+
+                    {thearray.map((item, index) =>
+                        <Row key={index} className='library-main-box p-1 align-items-center'>
+                            <Col>{item.slug}</Col>
+                            <Col xs={2} md={2} lg={2}>{item.title}</Col>
+                            <Col xs={4} md={4} lg={4}>{item.description})</Col>
+                            <Col>{item.picture}</Col>
+                            <Col>< FaEdit /></Col>
+                            <Col>< FaTrashAlt /></Col>
+                        </Row>
+                    )}
                 </Container>
             </div>
         </>

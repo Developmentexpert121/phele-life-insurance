@@ -78,27 +78,19 @@ const Glossary = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Keyword</th>
-                                    <th>Definition</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {thearray.map((item, index) => (
-                                    <tr key={index} >
-                                        <td>{item.keyword}</td>
-                                        <td>{item.definition}</td>
-                                        <td>< FaEdit /></td>
-                                        <td><FaTrashAlt /></td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <Col >Keyword</Col>
+                        <Col xs={6} md={6} lg={7}>Definition</Col>
+                        <Col>Edit</Col>
+                        <Col>Delete</Col>
                     </Row>
+                    {thearray.sort((a, b) => (a.keyword > b.keyword) ? 1 : -1).map((item, index) =>
+                        <Row key={index} className='library-main-box p-1 align-items-center'>
+                            <Col>{item.keyword}</Col>
+                            <Col xs={6} md={6} lg={7}>{item.definition})</Col>
+                            <Col>< FaEdit /></Col>
+                            <Col>< FaTrashAlt /></Col>
+                        </Row>
+                    )}
                 </Container>
             </div>
         </>

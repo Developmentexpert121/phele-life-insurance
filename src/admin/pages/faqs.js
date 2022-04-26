@@ -14,7 +14,7 @@ const AdminFaq = () => {
         const { name, value } = e.target
         setFormData((prevData) => ({
             ...prevData,
-            [e.target.name]: e.target.value
+            [name]: value
         }))
         console.log(e.target.value)
     }
@@ -78,26 +78,20 @@ const AdminFaq = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Question</th>
-                                    <th>Answer</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {thearray.map((item, index) => (
-                                    <tr>
-                                        <td>{item.question}</td>
-                                        <td>{item.answer}</td>
-                                        <td>< FaEdit /></td>
-                                        <td><FaTrashAlt /></td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                        <Col >Question</Col>
+                        <Col xs={6} md={6} lg={7}>Answer</Col>
+                        <Col>Edit</Col>
+                        <Col>Delete</Col>
+                    </Row>
+                    {thearray.map((item, index) =>
+                        <Row key={index} className='library-main-box p-1 align-items-center'>
+                            <Col>{item.question}</Col>
+                            <Col xs={6} md={6} lg={7}>{item.answer})</Col>
+                            <Col>< FaEdit /></Col>
+                            <Col>< FaTrashAlt /></Col>
+                        </Row>
+                    )}
+                    <Row>
                     </Row>
                 </Container>
             </div>
