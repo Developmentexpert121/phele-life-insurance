@@ -13,7 +13,6 @@ const AdminLibrary = () => {
         picture: ''
     })
     const [thearray, setTheArray] = useState([]);
-    // const [selectedImage, setSelectedImage] = useState(null);
 
     const InputHandler = (e) => {
         const { name, value } = e.target;
@@ -147,22 +146,22 @@ const AdminLibrary = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <Col >Slug</Col>
+                        <Col xs={2} md={2} lg={2}>Slug</Col>
                         <Col xs={2} md={2} lg={2}>Title</Col>
                         <Col xs={4} md={4} lg={4}>Description</Col>
-                        <Col >Picture</Col>
-                        <Col>Edit</Col>
-                        <Col>Delete</Col>
+                        <Col xs={2} md={2} lg={2}>Picture</Col>
+                        <Col xs={1} md={1} lg={1}>Edit</Col>
+                        <Col xs={1} md={1} lg={1}>Delete</Col>
                     </Row>
 
                     {thearray.map((item, index) =>
                         <Row key={index} className='library-main-box p-1 align-items-center'>
-                            <Col>{item.slug}</Col>
+                            <Col xs={2} md={2} lg={2}>{item.slug}</Col>
                             <Col xs={2} md={2} lg={2}>{item.title}</Col>
                             <Col xs={4} md={4} lg={4}>{item.description})</Col>
-                            <Col>{item.picture}</Col>
-                            <Col>< FaEdit /></Col>
-                            <Col>< FaTrashAlt /></Col>
+                            <Col xs={2} md={2} lg={2}>{item.picture}</Col>
+                            <Col xs={1} md={1} lg={1}>< FaEdit /></Col>
+                            <Col xs={1} md={1} lg={1}>< FaTrashAlt /></Col>
                         </Row>
                     )}
                 </Container>

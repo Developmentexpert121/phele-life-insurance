@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaShieldAlt } from 'react-icons/fa';
-import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import CompaniesLibrary from './../CompaniesLibraryComponent';
+// import { FaShieldAlt } from 'react-icons/fa';
+// import Banner1 from './../../assets/banner1.jpg';
+
 const InsuranceCompany = () => {
   const NavLists = [
     {
@@ -31,26 +32,26 @@ const InsuranceCompany = () => {
     }
   ]
 
-  const InsuranceCompanies = [
-    {
-      'name': 'Aditya Birla Sun Life Insurance Company Limited',
-      'number': '1800 270 7000',
-      'url': 'www.adityabirlasunlifeinsurance.com',
-      'image': 'images/logo1.png'
-    },
-    {
-      'name': 'Aegon Life Insurance Company Limited',
-      'number': '1800 120 4433',
-      'url': 'www.aegonlife.com',
-      'image': 'images/logo2.png'
-    },
-    {
-      'name': 'Aviva Life Insurance Company India Limited',
-      'number': '800 103 7766',
-      'url': 'www.avivaindia.com',
-      'image': 'images/logo3_0.png'
-    }
-  ]
+  // const InsuranceCompanies = [
+  //   {
+  //     'name': 'Aditya Birla Sun Life Insurance Company Limited',
+  //     'number': '1800 270 7000',
+  //     'url': 'www.adityabirlasunlifeinsurance.com',
+  //     'image': 'images/logo1.png'
+  //   },
+  //   {
+  //     'name': 'Aegon Life Insurance Company Limited',
+  //     'number': '1800 120 4433',
+  //     'url': 'www.aegonlife.com',
+  //     'image': 'images/logo2.png'
+  //   },
+  //   {
+  //     'name': 'Aviva Life Insurance Company India Limited',
+  //     'number': '800 103 7766',
+  //     'url': 'www.avivaindia.com',
+  //     'image': 'images/logo3_0.png'
+  //   }
+  // ]
   const [companies, setCompanies] = useState([]);
 
   const getCompanies = () => {
@@ -86,7 +87,7 @@ const InsuranceCompany = () => {
             </div>
             <Row>
               {companies.map((d,i) =>
-                <CompaniesLibrary key={i} name={d.name} number={d.number} url={d.url} image={d.image} />
+                <CompaniesLibrary key={i} name={d.companyName} number={d.mobile} url={d.url} image={d.picture} />
               )}
 
             </Row>
