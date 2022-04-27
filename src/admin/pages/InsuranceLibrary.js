@@ -10,7 +10,7 @@ const AdminLibrary = () => {
         slug: '',
         title: '',
         description: '',
-        photo: ''
+        picture: ''
     })
     const [thearray, setTheArray] = useState([]);
     // const [selectedImage, setSelectedImage] = useState(null);
@@ -22,9 +22,9 @@ const AdminLibrary = () => {
             [name]: value
         }))
     }
-    const handlePhoto = (e) =>{
-        setLibraryData({...libraryData, photo: e.target.files[0] })
-        console.log("Library photo 1 ", libraryData.photo );
+    const handlepicture = (e) =>{
+        setLibraryData({...libraryData, picture: e.target.files[0] })
+        console.log("Library picture 1 ", libraryData.picture );
     }
 
     const submit = (e) => {
@@ -32,13 +32,13 @@ const AdminLibrary = () => {
 
         const formData = new FormData();
 
-        formData.append('photo', libraryData.photo );
+        formData.append('picture', libraryData.picture );
         formData.append('slug', libraryData.slug );
         formData.append('title', libraryData.title );
         formData.append('description', libraryData.description );
 
-        console.log("Library photo 2", libraryData.photo );
-        console.log("Library photo 3", formData );
+        console.log("Library picture 2", libraryData.picture );
+        console.log("Library picture 3", formData );
 
         axios.post('//localhost:4000/library/library', formData)
             .then((e) => {
@@ -81,7 +81,7 @@ const AdminLibrary = () => {
                     </Row>
                     <Row>
                         <Col>
-                            <form onSubmit={submit}>
+                            <form onSubmit={submit} encType='multipart/form-data' >
                                 <Row>
                                     <Col xs={12} md={6} lg={6}>
                                         <div>
@@ -111,7 +111,7 @@ const AdminLibrary = () => {
                                     </Col>
                                     <Col xs={12} md={12} lg={12}>
                                         <div>
-                                            <label>Title</label>
+                                            <label>Description</label>
                                             <textarea
                                                 name='description'
                                                 rows={3}
@@ -126,9 +126,9 @@ const AdminLibrary = () => {
                                         <label>Company Logo</label>
                                         <input
                                             type="file"
-                                            name="companyLogo"
+                                            name="picture"
                                             className="form-control"
-                                            onChange={handlePhoto} />
+                                            onChange={handlepicture} />
 
                                         {/* {selectedImage && (
                                             <div>
