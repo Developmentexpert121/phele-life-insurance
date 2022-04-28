@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AdminHeader from '../layout/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
+import axios from 'axios'
 
 const Glossary = () => {
     const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const Glossary = () => {
             ...prevData,
             [name]: value
         }))
-        console.log(e.target.value)
+
     }
     const submit = (e) => {
         e.preventDefault()
@@ -28,17 +29,49 @@ const Glossary = () => {
         })
 
     }
-    const GetKeyword = () => {
+    // const GetKeyword = () => {
+    //     fetch('http://localhost:4000/glossary/keyword'
+    //     )
+    //         .then((res) => res.json())
+    //         .then((res) => {
+    //             setTheArray(res)
+    //         })
+    // }
+    // useEffect(() => {
+    //     GetKeyword()
+    // }, [thearray])
+
+    useEffect(() => {
+        let isMounted = true;               // note mutable flag
+
         fetch('http://localhost:4000/glossary/keyword'
         )
             .then((res) => res.json())
             .then((res) => {
-                setTheArray(res)
+                if (isMounted) setTheArray(res)
+            })
+
+        // GetKeyword().then(data => {
+        //   if (isMounted) setState(data);    // add conditional check
+        // })
+        return () => { isMounted = false }; // cleanup toggles value, if unmounted
+    }, [thearray]);
+
+    const deleteKeyword = (id) => {
+        console.log('inside delete', id);
+        axios.get('http://localhost:4000/glossary/deleteglossary/' + id)
+            .then(() => {
+                console.log('Deleted')
+            })
+            .catch((error) => {
+                console.log(error)
             })
     }
-    useEffect(() => {
-        GetKeyword()
-    })
+
+    const editKeyword = (id) => {
+        console.log('inside delete', id);
+    }
+
     return (
         <>
             < AdminHeader />
@@ -87,8 +120,8 @@ const Glossary = () => {
                         <Row key={index} className='library-main-box p-1 align-items-center'>
                             <Col>{item.keyword}</Col>
                             <Col xs={6} md={6} lg={7}>{item.definition})</Col>
-                            <Col>< FaEdit /></Col>
-                            <Col>< FaTrashAlt /></Col>
+                            <Col onClick={() => { editKeyword(item._id); }}>< FaEdit /></Col>
+                            <Col onClick={() => { deleteKeyword(item._id); }} >< FaTrashAlt /></Col>
                         </Row>
                     )}
                 </Container>

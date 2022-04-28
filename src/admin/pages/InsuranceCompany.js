@@ -12,7 +12,7 @@ export default function InsuranceCompany() {
         mobile: '',
         url: ''
     })
-    // const [selectedImage, setSelectedImage] = useState();
+
     const [thearray, setTheArray] = useState([]);
 
     const InputHandler = (e) => {
@@ -21,40 +21,29 @@ export default function InsuranceCompany() {
             ...prevData,
             [name]: value
         }))
-        // console.log(e.target.value)
+
     }
     const handlepicture = (e) => {
         setCompanyData({ ...companyData, picture: e.target.files[0] })
-        console.log("Library picture 1 ", companyData.picture);
+
     }
     const submit = (e) => {
         e.preventDefault();
         const formData = new FormData();
 
-        formData.append('picture', companyData.picture );
+        formData.append('picture', companyData.picture);
         formData.append('companyName', companyData.companyName);
-        formData.append('mobile', companyData.mobile );
-        formData.append('url', companyData.url );
-
-        console.log("Company picture 2", companyData.picture );
-        console.log("Company Form data", formData );
+        formData.append('mobile', companyData.mobile);
+        formData.append('url', companyData.url);
 
         axios.post('//localhost:4000/companies/companies-list', formData)
             .then((e) => {
-                console.log("Sucess",e);
+                console.log("Sucess", e);
             })
             .catch((e) => {
                 console.log('Error is', e);
             })
 
-        // var data = { picture: selectedImage.name, name: formData.companyName, mobile: formData.tollFreeNo, url: formData.website }
-        // fetch(`http://localhost:4000/companies/companies-list`, {
-        //     method: "POST",
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data),
-
-        // })
-        // console.log("data", data);
     }
     const GetQuetion = () => {
         fetch('http://localhost:4000/companies/companies-list'
@@ -67,7 +56,21 @@ export default function InsuranceCompany() {
 
     useEffect(() => {
         GetQuetion()
-    })
+    }, [thearray])
+
+    const deleteCompany = (id) => {
+        console.log('inside delete', id);
+        axios.get('http://localhost:4000/companies/deletecompany/' + id)
+            .then(() => {
+                console.log('Deleted')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+    const editCompany = (id) => {
+        console.log('inside delete', id);
+    }
 
     return (
         <>
@@ -155,8 +158,8 @@ export default function InsuranceCompany() {
                                         <td>{item.companyName}</td>
                                         <td>{item.mobile}</td>
                                         <td>{item.url}</td>
-                                        <td>< FaEdit /></td>
-                                        <td><FaTrashAlt /></td>
+                                        <td onClick={() => { editCompany(item._id); }}>< FaEdit /></td>
+                                        <td onClick={() => { deleteCompany(item._id); }} ><FaTrashAlt /></td>
                                     </tr>
                                 ))}
                             </tbody>

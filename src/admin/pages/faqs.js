@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import AdminHeader from '../layout/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
+import axios from "axios"
 
 const AdminFaq = () => {
     const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const AdminFaq = () => {
             ...prevData,
             [name]: value
         }))
-        console.log(e.target.value)
+
     }
     const submit = (e) => {
         e.preventDefault()
@@ -26,7 +27,7 @@ const AdminFaq = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
-        
+
     }
     const GetQuetion = () => {
         fetch('http://localhost:4000/faqs/question'
@@ -38,7 +39,22 @@ const AdminFaq = () => {
     }
     useEffect(() => {
         GetQuetion()
-    })
+    }, [thearray])
+
+    const editFaq = (id) => {
+        console.log('inside delete', id);
+    }
+
+    const deleteFaq = (id) => {
+        axios.get('http://localhost:4000/faqs/deletefaqs/' + id)
+            .then(() => {
+                console.log('Deleted')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
         <>
             < AdminHeader />
@@ -86,9 +102,9 @@ const AdminFaq = () => {
                     {thearray.map((item, index) =>
                         <Row key={index} className='library-main-box p-1 align-items-center'>
                             <Col>{item.question}</Col>
-                            <Col xs={6} md={6} lg={7}>{item.answer})</Col>
-                            <Col>< FaEdit /></Col>
-                            <Col>< FaTrashAlt /></Col>
+                            <Col xs={6} md={6} lg={7}>{item.answer}</Col>
+                            <Col onClick={() => { editFaq(item._id); }}>< FaEdit /></Col>
+                            <Col onClick={() => { deleteFaq(item._id); }} >< FaTrashAlt /></Col>
                         </Row>
                     )}
                     <Row>
