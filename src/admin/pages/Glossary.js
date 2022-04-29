@@ -7,7 +7,8 @@ import axios from 'axios'
 const Glossary = () => {
     const [formData, setFormData] = useState({
         keyword: '',
-        definition: ''
+        definition: '',
+        id: ''
     })
     const [thearray, setTheArray] = useState([]);
 
@@ -50,10 +51,6 @@ const Glossary = () => {
             .then((res) => {
                 if (isMounted) setTheArray(res)
             })
-
-        // GetKeyword().then(data => {
-        //   if (isMounted) setState(data);    // add conditional check
-        // })
         return () => { isMounted = false }; // cleanup toggles value, if unmounted
     }, [thearray]);
 
@@ -68,8 +65,21 @@ const Glossary = () => {
             })
     }
 
-    const editKeyword = (id) => {
-        console.log('inside delete', id);
+    const editKeyword = async (id) => {
+        console.log('inside edit', id);
+        let editingData = await axios.get('http://localhost:4000/glossary/editglossary/' + id)
+        console.log("editingData is ", editingData.data);
+        setFormData({
+            keyword: editingData.data.keyword,
+            definition: editingData.data.definition
+        })
+        // .then((res) => {
+        //     console.log('Edit Glossary', res.data)
+        //     setFormData(res.data)
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // })
     }
 
     return (
@@ -92,7 +102,7 @@ const Glossary = () => {
                                         name="keyword"
                                         className="form-control"
                                         onChange={InputHandler}
-                                        value={setFormData.keyword}
+                                        value={formData.keyword}
                                     />
                                 </div>
                                 <div xs={12} md={6} lg={6}>
@@ -102,7 +112,7 @@ const Glossary = () => {
                                         row="4" col="50" placeholder='Enter Answer'
                                         className='form-control'
                                         onChange={InputHandler}
-                                        value={setFormData.definition}
+                                        value={formData.definition}
                                     >
                                     </textarea>
                                 </div>
@@ -119,7 +129,7 @@ const Glossary = () => {
                     {thearray.sort((a, b) => (a.keyword > b.keyword) ? 1 : -1).map((item, index) =>
                         <Row key={index} className='library-main-box p-1 align-items-center'>
                             <Col>{item.keyword}</Col>
-                            <Col xs={6} md={6} lg={7}>{item.definition})</Col>
+                            <Col xs={6} md={6} lg={7}>{item.definition}</Col>
                             <Col onClick={() => { editKeyword(item._id); }}>< FaEdit /></Col>
                             <Col onClick={() => { deleteKeyword(item._id); }} >< FaTrashAlt /></Col>
                         </Row>

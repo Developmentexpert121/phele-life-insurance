@@ -56,6 +56,7 @@ export default function InsuranceCompany() {
 
     useEffect(() => {
         GetQuetion()
+        console.log("useEffect");
     }, [thearray])
 
     const deleteCompany = (id) => {
@@ -69,7 +70,20 @@ export default function InsuranceCompany() {
             })
     }
     const editCompany = (id) => {
-        console.log('inside delete', id);
+        axios.get('http://localhost:4000/companies/editcompany/' + id)
+        .then((res) => {
+            console.log('edit faq', res.data.question)
+            setCompanyData({
+                picture: res.data.picture,
+                companyName: res.data.companyName,
+                mobile: res.data.mobile,
+                url: res.data.url
+            })
+            console.log("formData  is 2", companyData);
+        })
+        .catch((error) => {
+            console.log(error)
+        });
     }
 
     return (
@@ -108,7 +122,7 @@ export default function InsuranceCompany() {
                                         name="companyName"
                                         className="form-control"
                                         onChange={InputHandler}
-                                        value={setCompanyData.companyName}
+                                        value={companyData.companyName}
                                     />
                                 </div>
                                 <div xs={12} md={6} lg={6}>
@@ -118,7 +132,7 @@ export default function InsuranceCompany() {
                                         name='mobile'
                                         className='form-control'
                                         onChange={InputHandler}
-                                        value={setCompanyData.mobile}
+                                        value={companyData.mobile}
                                     >
                                     </input>
                                 </div>
@@ -129,7 +143,7 @@ export default function InsuranceCompany() {
                                         name='url'
                                         className='form-control'
                                         onChange={InputHandler}
-                                        value={setCompanyData.url}
+                                        value={companyData.url}
                                     >
                                     </input>
                                 </div>

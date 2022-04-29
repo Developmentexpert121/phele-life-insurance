@@ -54,7 +54,8 @@ const AdminLibrary = () => {
     }
     useEffect(() => {
         GetQuetion()
-    }, [thearray])
+        console.log("useEffect");
+    }, [])
 
     const deleteLibrary = (id) => {
         console.log('inside delete', id);
@@ -67,7 +68,20 @@ const AdminLibrary = () => {
             })
     }
     const editLibrary = (id) => {
-        console.log('inside edit', id);
+        axios.get('http://localhost:4000/library/editlibrary/' + id)
+            .then((res) => {
+                console.log('edit faq', res.data.question)
+                setLibraryData({
+                    slug: res.data.slug,
+                    title: res.data.title,
+                    description: res.data.description,
+                    picture: res.data.picture
+                })
+                console.log("formData  is 2", libraryData);
+            })
+            .catch((error) => {
+                console.log(error)
+            });
     }
 
     return (
@@ -93,7 +107,7 @@ const AdminLibrary = () => {
                                                 className='form-control'
                                                 placeholder='Enter Slug. Ex: This-is-title'
                                                 onChange={InputHandler}
-                                                value={setLibraryData.slug}
+                                                value={libraryData.slug}
                                             />
                                         </div>
                                     </Col>
@@ -106,7 +120,7 @@ const AdminLibrary = () => {
                                                 className='form-control'
                                                 placeholder='Enter Title'
                                                 onChange={InputHandler}
-                                                value={setLibraryData.title}
+                                                value={libraryData.title}
                                             />
                                         </div>
                                     </Col>
@@ -119,7 +133,7 @@ const AdminLibrary = () => {
                                                 className="form-control"
                                                 placeholder='Enter Description'
                                                 onChange={InputHandler}
-                                                value={setLibraryData.description}
+                                                value={libraryData.description}
                                             />
                                         </div>
                                     </Col>
