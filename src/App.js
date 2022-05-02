@@ -30,8 +30,10 @@ function App() {
         <Route path = "/dashboard" element={<Dashboard />} />
         <Route path='/admin/faq' element={ <AdminFaq />} />
         <Route path='/admin/library' element={ <AdminLibrary />} />
+
         <Route path='/admin/insurance-company' element={ <InsuranceCompany />} />
         <Route path='/admin/glossary' element={ <AdminGlossary />} />
+        <Route path="/admin/news-media" element={ < AdminNewsMedia />} />
 
       </Routes>
       
