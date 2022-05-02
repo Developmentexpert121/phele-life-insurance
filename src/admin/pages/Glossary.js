@@ -11,6 +11,9 @@ const Glossary = () => {
         id: ''
     })
     const [thearray, setTheArray] = useState([]);
+    const [editing, setEditing] = useState(false);
+    const [editingId, setEditingId] = useState("");
+
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -22,12 +25,29 @@ const Glossary = () => {
     }
     const submit = (e) => {
         e.preventDefault()
-        var data = { keyword: formData.keyword, definition: formData.definition }
+        let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
         fetch(`http://localhost:4000/glossary/keyword`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
+
+    }
+
+    const updatefn = () => {
+        console.log("update fn");
+        // const { keyword, definition } = formData
+        let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
+        axios.post('http://localhost:4000/glossary/updateglossary/' + editingId, data)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        setEditing(false);
+        console.log("Edit el");
 
     }
     // const GetKeyword = () => {
@@ -66,20 +86,16 @@ const Glossary = () => {
     }
 
     const editKeyword = async (id) => {
-        console.log('inside edit', id);
+        setEditing(true)
+        // console.log('inside edit', id);
         let editingData = await axios.get('http://localhost:4000/glossary/editglossary/' + id)
-        console.log("editingData is ", editingData.data);
+        // console.log("editingData is ", editingData.data);
         setFormData({
             keyword: editingData.data.keyword,
             definition: editingData.data.definition
         })
-        // .then((res) => {
-        //     console.log('Edit Glossary', res.data)
-        //     setFormData(res.data)
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // })
+        setEditingId(id);
+
     }
 
     return (
@@ -116,7 +132,13 @@ const Glossary = () => {
                                     >
                                     </textarea>
                                 </div>
-                                <button className='btn btn-primary'>Submit</button>
+                                {/* <button className='btn btn-primary'>Submit</button> */}
+                                {
+                                    editing ?
+                                        <button type='button' onClick={updatefn} className='btn btn-primary m-1'>Update</button>
+                                        :
+                                        <button type='button' onClick={submit} className='btn btn-primary m-1'>Submit</button>
+                                }
                             </form>
                         </Col>
                     </Row>

@@ -81,7 +81,7 @@ const InsuranceCompany = () => {
               <Navs key={i} heading={d.heading} icon={d.icon} url={d.url} />
             )}
           </Col>
-          <Col xs={12} md={9} lg={9}>
+          <Col xs={12} md={9} lg={4}>
             <div>
               <span className='main-text-heading mb-4'>List of Life Insurance Companies</span>
             </div>

@@ -12,6 +12,6 @@ export {
     AdminFaq,
     AdminLibrary,
     InsuranceCompany,
-    AdminGlossary
+    AdminGlossary,
     AdminNewsMedia
 }

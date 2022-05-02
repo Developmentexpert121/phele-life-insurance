@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Test,Testa,Form,
   Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies} from './components/pages/index';
 
-import {Dashboard,AdminFaq, AdminLibrary,InsuranceCompany, AdminGlossary} from './admin/AdminComponents';
+import {Dashboard,AdminFaq, AdminLibrary,InsuranceCompany, AdminGlossary, AdminNewsMedia} from './admin/AdminComponents';
 
 function App() {
   return (
