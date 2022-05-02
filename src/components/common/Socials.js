@@ -1,6 +1,6 @@
 import React from 'react'
 import {FaFacebookF , FaInstagram, FaTwitter,FaYoutube,FaQuora, FaLinkedin} from 'react-icons/fa';
-import { Container, Row, Col, Carousel, CarouselItem, Button, Card } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 const SocialComponent = () => {
     return (
         <Row className='py-lg-4'>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import AdminHeader from '../layout/Header'
 import { Container, Row, Col } from 'react-bootstrap'
-import {FaEdit, FaTrashAlt} from 'react-icons/fa'
+import { FaEdit, FaTrashAlt } from 'react-icons/fa'
+import axios from "axios"
 
 const AdminFaq = () => {
     const [formData, setFormData] = useState({
@@ -9,14 +10,15 @@ const AdminFaq = () => {
         answer: ''
     })
     const [thearray, setTheArray] = useState([]);
+    const [editing, setEditing] = useState(false);
 
     const InputHandler = (e) => {
         const { name, value } = e.target
         setFormData((prevData) => ({
             ...prevData,
-            [e.target.name]: e.target.value
+            [name]: value
         }))
-        console.log(e.target.value)
+
     }
     const submit = (e) => {
         e.preventDefault()
@@ -26,7 +28,9 @@ const AdminFaq = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
+        
     }
+
     const GetQuetion = () => {
         fetch('http://localhost:4000/faqs/question'
         )
@@ -35,9 +39,36 @@ const AdminFaq = () => {
                 setTheArray(res)
             })
     }
+
     useEffect(() => {
         GetQuetion()
-      })
+    }, [thearray])
+
+    const editFaq = (id) => {
+         axios.get('http://localhost:4000/faqs/editfaqs/' + id)
+            .then((res) => {
+                console.log('edit faq', res.data.question)
+                setFormData({
+                    question: res.data.question,
+                    answer: res.data.answer
+                })
+                console.log("formData  is 2", formData);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    const deleteFaq = (id) => {
+        axios.get('http://localhost:4000/faqs/deletefaqs/' + id)
+            .then(() => {
+                console.log('Deleted')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
         <>
             < AdminHeader />
@@ -58,7 +89,7 @@ const AdminFaq = () => {
                                         name="question"
                                         className="form-control"
                                         onChange={InputHandler}
-                                        value={setFormData.question}
+                                        value={formData.question}
                                     />
                                 </div>
                                 <div xs={12} md={6} lg={6}>
@@ -68,35 +99,30 @@ const AdminFaq = () => {
                                         row="4" col="50" placeholder='Enter Answer'
                                         className='form-control'
                                         onChange={InputHandler}
-                                        value={setFormData.answer}
+                                        value={formData.answer}
                                     >
                                     </textarea>
                                 </div>
-                                <button className='btn btn-primary'>Submit</button>
+                                <button type='submit' className='btn btn-primary m-1'>Submit</button>
+                                <button type='button' onClick={() => { console.log("view ", formData) }} className='btn btn-primary m-1'>Update</button>
                             </form>
                         </Col>
                     </Row>
                     <Row>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Question</th>
-                                <th>Answer</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {thearray.map((item, index) => (
-                                <tr>
-                                    <td>{item.question}</td>
-                                    <td>{item.answer}</td>
-                                    <td>< FaEdit /></td>
-                                    <td><FaTrashAlt /></td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
+                        <Col >Question</Col>
+                        <Col xs={6} md={6} lg={7}>Answer</Col>
+                        <Col>Edit</Col>
+                        <Col>Delete</Col>
+                    </Row>
+                    {thearray.map((item, index) =>
+                        <Row key={index} className='library-main-box p-1 align-items-center'>
+                            <Col>{item.question}</Col>
+                            <Col xs={6} md={6} lg={7}>{item.answer}</Col>
+                            <Col onClick={() => { editFaq(item._id); }}>< FaEdit /></Col>
+                            <Col onClick={() => { deleteFaq(item._id); }} >< FaTrashAlt /></Col>
+                        </Row>
+                    )}
+                    <Row>
                     </Row>
                 </Container>
             </div>

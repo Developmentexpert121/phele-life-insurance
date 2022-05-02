@@ -4,6 +4,12 @@
     position: sticky;
   top: 0;
 }
+.slider-box{
+    width: 600px;
+    width: 300px;
+    background-color: white;
+    display: inline-block;
+}
 .yooo{
     color: #0b408a;
     display: block;

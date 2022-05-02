@@ -2,7 +2,7 @@ import React from 'react'
 import SocialComponent from '../common/Socials';
 import {Container, Row, Col} from 'react-bootstrap';
 import {FaShieldAlt}  from 'react-icons/fa';
-import Banner1 from './../../assets/banner1.jpg';
+import Banner1 from './../../assets/banner3.jpg';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
 import Header from './../common/Header';
