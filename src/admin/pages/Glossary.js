@@ -21,6 +21,7 @@ const Glossary = () => {
             ...prevData,
             [name]: value
         }))
+  
 
     }
     const submit = (e) => {
@@ -30,6 +31,11 @@ const Glossary = () => {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
+        })
+
+        setFormData({
+            keyword: "",
+            definition: ""
         })
 
     }

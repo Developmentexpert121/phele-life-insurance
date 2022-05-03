@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Card, Button } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 const CompaniesLibrary = (props) => {
     return (
         // <>
@@ -16,7 +16,9 @@ const CompaniesLibrary = (props) => {
         //     </div>
         // </Col>
         // </>
-        <Card style={{ width: '18rem' }}>
+        <Card
+            style={{ width: '18rem' }}
+        >
             <Card.Img variant="top" src={props.image} />
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
@@ -25,6 +27,7 @@ const CompaniesLibrary = (props) => {
                 </Card.Text>
                 <Button variant="primary">{props.url}</Button>
             </Card.Body>
+
         </Card>
     )
 }
