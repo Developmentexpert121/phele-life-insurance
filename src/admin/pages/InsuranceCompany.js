@@ -14,6 +14,8 @@ export default function InsuranceCompany() {
     })
 
     const [thearray, setTheArray] = useState([]);
+    const [editing, setEditing] = useState(false);
+    const [editingId, setEditingId] = useState("");
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -45,6 +47,28 @@ export default function InsuranceCompany() {
             })
 
     }
+
+    const updatefn = () => {
+        console.log("update fn");
+        const {picture,companyName,mobile,url} = companyData
+        console.log("company data", companyData,editingId);
+        axios.post('http://localhost:4000/companies/updatecompany/' + editingId,{
+            picture,
+            companyName,
+            mobile,
+            url
+        })
+        .then((response) => {
+            console.log("res is",response.config.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
+        setEditing(false);
+        console.log("Edit el");
+
+    }
     const GetQuetion = () => {
         fetch('http://localhost:4000/companies/companies-list'
         )
@@ -56,7 +80,7 @@ export default function InsuranceCompany() {
 
     useEffect(() => {
         GetQuetion()
-        console.log("useEffect");
+        // console.log("useEffect");
     }, [thearray])
 
     const deleteCompany = (id) => {
@@ -70,20 +94,23 @@ export default function InsuranceCompany() {
             })
     }
     const editCompany = (id) => {
+        setEditing(true)
         axios.get('http://localhost:4000/companies/editcompany/' + id)
-        .then((res) => {
-            console.log('edit faq', res.data.question)
-            setCompanyData({
-                picture: res.data.picture,
-                companyName: res.data.companyName,
-                mobile: res.data.mobile,
-                url: res.data.url
+            .then((res) => {
+                console.log('edit Company', res.data)
+                setCompanyData({
+                    picture: res.data.picture,
+                    companyName: res.data.companyName,
+                    mobile: res.data.mobile,
+                    url: res.data.url
+                })
+                // console.log("formData  is 2", companyData);
             })
-            console.log("formData  is 2", companyData);
-        })
-        .catch((error) => {
-            console.log(error)
-        });
+            .catch((error) => {
+                console.log(error)
+            });
+            setEditingId(id);    
+            
     }
 
     return (
@@ -148,8 +175,14 @@ export default function InsuranceCompany() {
                                     </input>
                                 </div>
 
-                                <button className='btn btn-primary m-2'>Submit</button>
-                                <button className='btn btn-primary m-2' onClick={() => { console.log(thearray) }} >Console</button>
+                                {/* <button className='btn btn-primary m-2'>Submit</button> */}
+                                {
+                                    editing ?
+                                        <button type='button' onClick={updatefn} className='btn btn-primary m-1'>Update</button>
+                                        :
+                                        <button type='button' onClick={submit} className='btn btn-primary m-1'>Submit</button>
+                                }
+
                             </form>
                         </Col>
                     </Row>

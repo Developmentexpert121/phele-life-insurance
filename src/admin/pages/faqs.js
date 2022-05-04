@@ -11,6 +11,7 @@ const AdminFaq = () => {
     })
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
+    const [editingId, setEditingId] = useState("");
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -28,7 +29,25 @@ const AdminFaq = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         })
-        
+
+    }
+
+    const updatefn = () => {
+        console.log("update fn");
+        axios.post('http://localhost:4000/faqs/updatefaqs/' + editingId,{
+            question: formData.question,
+            answer: formData.answer
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
+        setEditing(false);
+        console.log("Edit el");
+
     }
 
     const GetQuetion = () => {
@@ -45,18 +64,20 @@ const AdminFaq = () => {
     }, [thearray])
 
     const editFaq = (id) => {
-         axios.get('http://localhost:4000/faqs/editfaqs/' + id)
+        setEditing(true)
+        axios.get('http://localhost:4000/faqs/editfaqs/' + id)
             .then((res) => {
-                console.log('edit faq', res.data.question)
+                // console.log('edit faq', res.data.question)
                 setFormData({
                     question: res.data.question,
                     answer: res.data.answer
                 })
-                console.log("formData  is 2", formData);
+                // console.log("formData  is 2", formData);
             })
             .catch((error) => {
                 console.log(error)
             })
+        setEditingId(id);
     }
 
     const deleteFaq = (id) => {
@@ -103,8 +124,16 @@ const AdminFaq = () => {
                                     >
                                     </textarea>
                                 </div>
-                                <button type='submit' className='btn btn-primary m-1'>Submit</button>
-                                <button type='button' onClick={() => { console.log("view ", formData) }} className='btn btn-primary m-1'>Update</button>
+                                {/* <button type='submit' className='btn btn-primary m-1'>Submit</button> */}
+                                {/* <button type='button' onClick={() => { console.log("view ", formData) }} className='btn btn-primary m-1'>Update</button> */}
+
+                                {
+                                    editing ?
+                                        <button type='button' onClick={updatefn} className='btn btn-primary m-1'>Update</button>
+                                        :
+                                        <button type='button' onClick={submit} className='btn btn-primary m-1'>Submit</button>
+                                }
+
                             </form>
                         </Col>
                     </Row>

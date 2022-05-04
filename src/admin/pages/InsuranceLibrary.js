@@ -13,6 +13,8 @@ const AdminLibrary = () => {
         picture: ''
     })
     const [thearray, setTheArray] = useState([]);
+    const [editing, setEditing] = useState(false);
+    const [editingId, setEditingId] = useState("");
 
     const InputHandler = (e) => {
         const { name, value } = e.target;
@@ -44,6 +46,27 @@ const AdminLibrary = () => {
             })
     }
 
+    const updatefn = () => {
+        console.log("update fn");
+        const { slug, title, description, picture } = libraryData
+        axios.post('http://localhost:4000/library/updatelibrary/' + editingId, {
+            slug,
+            title,
+            description,
+            picture
+        })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        setEditing(false);
+        console.log("Edit el");
+
+    }
+
     const GetQuetion = () => {
         fetch('http://localhost:4000/library/library'
         )
@@ -55,7 +78,7 @@ const AdminLibrary = () => {
     useEffect(() => {
         GetQuetion()
         console.log("useEffect");
-    }, [])
+    }, [thearray])
 
     const deleteLibrary = (id) => {
         console.log('inside delete', id);
@@ -68,6 +91,7 @@ const AdminLibrary = () => {
             })
     }
     const editLibrary = (id) => {
+        setEditing(true)
         axios.get('http://localhost:4000/library/editlibrary/' + id)
             .then((res) => {
                 console.log('edit faq', res.data.question)
@@ -82,6 +106,7 @@ const AdminLibrary = () => {
             .catch((error) => {
                 console.log(error)
             });
+        setEditingId(id);
     }
 
     return (
@@ -155,7 +180,13 @@ const AdminLibrary = () => {
                                     </Col>
                                 </Row>
                                 <Col>
-                                    <button className='btn btn-primary m-2' >Submit</button>
+                                    {/* <button className='btn btn-primary m-2' >Submit</button> */}
+                                    {
+                                        editing ?
+                                            <button type='button' onClick={updatefn} className='btn btn-primary m-1'>Update</button>
+                                            :
+                                            <button type='button' onClick={submit} className='btn btn-primary m-1'>Submit</button>
+                                    }
 
                                 </Col>
                             </form>
@@ -174,7 +205,7 @@ const AdminLibrary = () => {
                         <Row key={index} className='library-main-box p-1 align-items-center'>
                             <Col xs={2} md={2} lg={2}>{item.slug}</Col>
                             <Col xs={2} md={2} lg={2}>{item.title}</Col>
-                            <Col xs={4} md={4} lg={4}>{item.description})</Col>
+                            <Col xs={4} md={4} lg={4}>{item.description}</Col>
                             <Col xs={2} md={2} lg={2}>{item.picture}</Col>
                             <Col xs={1} md={1} lg={1} onClick={() => { editLibrary(item._id); }} >< FaEdit /></Col>
                             <Col xs={1} md={1} lg={1} onClick={() => { deleteLibrary(item._id); }} >< FaTrashAlt /></Col>

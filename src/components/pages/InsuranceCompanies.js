@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
@@ -65,7 +65,7 @@ const InsuranceCompany = () => {
   useEffect(() => {
     getCompanies()
     console.log('effect 1', companies);
-  }, [])
+  }, [companies])
 
   const bannerStyle = {
     width: '100%',
@@ -77,22 +77,36 @@ const InsuranceCompany = () => {
       <Container>
         <Row>
           <Col xs={12} md={3} lg={3} className="sidenav-box">
-            {NavLists.map((d,i) =>
+            {NavLists.map((d, i) =>
               <Navs key={i} heading={d.heading} icon={d.icon} url={d.url} />
             )}
           </Col>
-          <Col xs={12} md={9} lg={9}>
-            <div>
+          <Col>
+            <Row xs={12} md={9} lg={9} >
               <span className='main-text-heading mb-4'>List of Life Insurance Companies</span>
-            </div>
-            <Row>
-              {companies.map((d,i) =>
-                <CompaniesLibrary key={i} name={d.companyName} number={d.mobile} url={d.url} image={d.picture} />
+            </Row>
+            <Row xs={12} md={9} lg={9}>
+
+              {companies.map((d, i) =>
+                <Col xs={12} md={6} lg={4} >
+                  <CompaniesLibrary key={i} name={d.companyName} number={d.mobile} url={d.url} image={d.picture} />
+                </Col>
               )}
 
             </Row>
+
           </Col>
+
+
+
+          {/* 
+          <Col xs={12} md={9} lg={9} >
+            <Row>
+
+            </Row>
+          </Col> */}
         </Row>
+
         < SocialComponent />
       </Container>
       <Footer />
