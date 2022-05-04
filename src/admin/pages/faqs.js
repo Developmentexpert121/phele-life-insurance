@@ -23,31 +23,44 @@ const AdminFaq = () => {
     }
     const submit = (e) => {
         e.preventDefault()
-        var data = { question: formData.question, answer: formData.answer }
-        fetch(`http://localhost:4000/faqs/question`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        })
-
+        if (formData.question.split(/[ ]+/).join(" ").length < 10 || formData.answer.split(/[ ]+/).join(" ").length < 10) {
+            console.log('cant submit');
+        } else {
+            var data = { question: formData.question, answer: formData.answer }
+            fetch(`http://localhost:4000/faqs/question`, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+            setFormData({
+                question: '',
+                answer: ''
+            })
+        }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        axios.post('http://localhost:4000/faqs/updatefaqs/' + editingId,{
-            question: formData.question,
-            answer: formData.answer
-        })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        if (formData.question.split(/[ ]+/).join(" ").length < 10 || formData.answer.split(/[ ]+/).join(" ").length < 10) {
+            console.log('cant submit');
+        } else {
+            axios.post('http://localhost:4000/faqs/updatefaqs/' + editingId, {
+                question: formData.question,
+                answer: formData.answer
+            })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
-        setEditing(false);
-        console.log("Edit el");
-
+            setEditing(false);
+            setFormData({
+                question: '',
+                answer: ''
+            })
+        }
     }
 
     const GetQuetion = () => {

@@ -37,7 +37,7 @@ const HowClaimWorks = () => {
          </Col>
         <Col xs={12} md={9} lg={9}>
           <div>
-            <span className='main-text-heading'>Getting Started with Life Insurance</span>
+            <span className='main-text-heading'>How Life Insurance Claims Work</span>
           </div>
           <p className='simple-text pt-2'>
           By now you probably know that you need Life Insurance before anything else. This brings us to the next step – buying Life Insurance.

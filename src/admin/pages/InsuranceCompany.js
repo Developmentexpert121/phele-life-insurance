@@ -31,43 +31,60 @@ export default function InsuranceCompany() {
     }
     const submit = (e) => {
         e.preventDefault();
-        const formData = new FormData();
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 10 || companyData.mobile.split(/[ ]+/).join("").length < 10 || companyData.url.split(/[ ]+/).join("").length < 10) {
+            console.log('cant submit');
+        } else {
+            const formData = new FormData();
 
-        formData.append('picture', companyData.picture);
-        formData.append('companyName', companyData.companyName);
-        formData.append('mobile', companyData.mobile);
-        formData.append('url', companyData.url);
+            formData.append('picture', companyData.picture);
+            formData.append('companyName', companyData.companyName);
+            formData.append('mobile', companyData.mobile);
+            formData.append('url', companyData.url);
 
-        axios.post('//localhost:4000/companies/companies-list', formData)
-            .then((e) => {
-                console.log("Sucess", e);
+            axios.post('//localhost:4000/companies/companies-list', formData)
+                .then((e) => {
+                    console.log("Sucess", e);
+                })
+                .catch((e) => {
+                    console.log('Error is', e);
+                })
+            setCompanyData({
+                picture: '',
+                companyName: '',
+                mobile: '',
+                url: ''
             })
-            .catch((e) => {
-                console.log('Error is', e);
-            })
-
+        }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        const {picture,companyName,mobile,url} = companyData
-        console.log("company data", companyData,editingId);
-        axios.post('http://localhost:4000/companies/updatecompany/' + editingId,{
-            picture,
-            companyName,
-            mobile,
-            url
-        })
-        .then((response) => {
-            console.log("res is",response.config.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 10 || companyData.mobile.split(/[ ]+/).join("").length < 10 || companyData.url.split(/[ ]+/).join("").length < 10) {
+            console.log('cant submit');
+        } else {
+            const { picture, companyName, mobile, url } = companyData
+            console.log("company data", companyData, editingId);
+            axios.post('http://localhost:4000/companies/updatecompany/' + editingId, {
+                picture,
+                companyName,
+                mobile,
+                url
+            })
+                .then((response) => {
+                    console.log("res is", response.config.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
-        setEditing(false);
-        console.log("Edit el");
-
+            setEditing(false);
+            setCompanyData({
+                picture: '',
+                companyName: '',
+                mobile: '',
+                url: ''
+            })
+        }
     }
     const GetQuetion = () => {
         fetch('http://localhost:4000/companies/companies-list'
@@ -109,8 +126,8 @@ export default function InsuranceCompany() {
             .catch((error) => {
                 console.log(error)
             });
-            setEditingId(id);    
-            
+        setEditingId(id);
+
     }
 
     return (

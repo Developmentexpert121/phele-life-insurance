@@ -21,40 +21,47 @@ const Glossary = () => {
             ...prevData,
             [name]: value
         }))
-  
+
 
     }
     const submit = (e) => {
         e.preventDefault()
-        let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
-        fetch(`http://localhost:4000/glossary/keyword`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        })
-
-        setFormData({
-            keyword: "",
-            definition: ""
-        })
-
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 10) {
+            console.log("Cant submit in Glossary");
+        } else {
+            let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
+            fetch(`http://localhost:4000/glossary/keyword`, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+            setFormData({
+                keyword: "",
+                definition: ""
+            })
+        }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        // const { keyword, definition } = formData
-        let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
-        axios.post('http://localhost:4000/glossary/updateglossary/' + editingId, data)
-            .then((response) => {
-                console.log(response);
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 10) {
+            console.log("Cant submit in Glossary");
+        } else {
+            let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
+            axios.post('http://localhost:4000/glossary/updateglossary/' + editingId, data)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+            setEditing(false);
+            setFormData({
+                keyword: "",
+                definition: ""
             })
-            .catch((error) => {
-                console.log(error);
-            });
-
-        setEditing(false);
-        console.log("Edit el");
-
+        }
     }
     // const GetKeyword = () => {
     //     fetch('http://localhost:4000/glossary/keyword'

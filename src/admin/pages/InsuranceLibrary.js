@@ -29,42 +29,60 @@ const AdminLibrary = () => {
     }
 
     const submit = (e) => {
-        e.preventDefault()
-        const formData = new FormData();
+        e.preventDefault();
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 10 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join(" ").length < 10) {
+            console.log('cant submit');
+        } else {
+            const formData = new FormData();
 
-        formData.append('picture', libraryData.picture);
-        formData.append('slug', libraryData.slug);
-        formData.append('title', libraryData.title);
-        formData.append('description', libraryData.description);
+            formData.append('picture', libraryData.picture);
+            formData.append('slug', libraryData.slug);
+            formData.append('title', libraryData.title);
+            formData.append('description', libraryData.description);
 
-        axios.post('//localhost:4000/library/library', formData)
-            .then((e) => {
-                console.log("Sucess", e);
+            axios.post('//localhost:4000/library/library', formData)
+                .then((e) => {
+                    console.log("Sucess", e);
+                })
+                .catch((e) => {
+                    console.log('Error is', e);
+                })
+            setLibraryData({
+                slug: '',
+                title: '',
+                description: '',
+                picture: ''
             })
-            .catch((e) => {
-                console.log('Error is', e);
-            })
+        }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        const { slug, title, description, picture } = libraryData
-        axios.post('http://localhost:4000/library/updatelibrary/' + editingId, {
-            slug,
-            title,
-            description,
-            picture
-        })
-            .then((response) => {
-                console.log(response);
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 10 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join(" ").length < 10) {
+            console.log('cant submit');
+        } else {
+            const { slug, title, description, picture } = libraryData
+            axios.post('http://localhost:4000/library/updatelibrary/' + editingId, {
+                slug,
+                title,
+                description,
+                picture
             })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
-        setEditing(false);
-        console.log("Edit el");
-
+            setEditing(false);
+            setLibraryData({
+                slug: '',
+                title: '',
+                description: '',
+                picture: ''
+            })
+        }
     }
 
     const GetQuetion = () => {
@@ -77,7 +95,7 @@ const AdminLibrary = () => {
     }
     useEffect(() => {
         GetQuetion()
-        console.log("useEffect");
+        // console.log("useEffect");
     }, [thearray])
 
     const deleteLibrary = (id) => {
