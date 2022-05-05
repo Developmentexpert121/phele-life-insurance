@@ -31,7 +31,7 @@ export default function InsuranceCompany() {
     }
     const submit = (e) => {
         e.preventDefault();
-        if (companyData.companyName.split(/[ ]+/).join(" ").length < 10 || companyData.mobile.split(/[ ]+/).join("").length < 10 || companyData.url.split(/[ ]+/).join("").length < 10) {
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || !companyData.mobile.match(/^[0-9]+$/) || companyData.url.split(/[ ]+/).join("").length < 4) {
             console.log('cant submit');
         } else {
             const formData = new FormData();
@@ -59,7 +59,7 @@ export default function InsuranceCompany() {
 
     const updatefn = () => {
         console.log("update fn");
-        if (companyData.companyName.split(/[ ]+/).join(" ").length < 10 || companyData.mobile.split(/[ ]+/).join("").length < 10 || companyData.url.split(/[ ]+/).join("").length < 10) {
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || companyData.url.split(/[ ]+/).join("").length < 4) {
             console.log('cant submit');
         } else {
             const { picture, companyName, mobile, url } = companyData

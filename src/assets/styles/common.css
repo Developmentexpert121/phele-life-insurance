@@ -108,6 +108,9 @@
 .card:hover {
     border-bottom: 9px solid #f7b907 !important;
 }
+.accordian:hover {
+    border-left: 4px solid #f7b907 !important;
+}
 .slider-main .slick-current {
     transform: scale(1.4);
 }

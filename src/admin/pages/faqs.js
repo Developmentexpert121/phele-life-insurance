@@ -23,7 +23,7 @@ const AdminFaq = () => {
     }
     const submit = (e) => {
         e.preventDefault()
-        if (formData.question.split(/[ ]+/).join(" ").length < 10 || formData.answer.split(/[ ]+/).join(" ").length < 10) {
+        if (formData.question.split(/[ ]+/).join(" ").length < 4 || formData.answer.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
         } else {
             var data = { question: formData.question, answer: formData.answer }
@@ -41,7 +41,7 @@ const AdminFaq = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (formData.question.split(/[ ]+/).join(" ").length < 10 || formData.answer.split(/[ ]+/).join(" ").length < 10) {
+        if (formData.question.split(/[ ]+/).join(" ").length < 4 || formData.answer.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
         } else {
             axios.post('http://localhost:4000/faqs/updatefaqs/' + editingId, {

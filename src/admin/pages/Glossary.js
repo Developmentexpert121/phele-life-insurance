@@ -26,7 +26,7 @@ const Glossary = () => {
     }
     const submit = (e) => {
         e.preventDefault()
-        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 10) {
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 4) {
             console.log("Cant submit in Glossary");
         } else {
             let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
@@ -44,7 +44,7 @@ const Glossary = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 10) {
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 4) {
             console.log("Cant submit in Glossary");
         } else {
             let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }

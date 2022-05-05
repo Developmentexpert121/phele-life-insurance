@@ -26,7 +26,7 @@ const AdminNewsMedia = () => {
 
     const submit = (e) => {
         e.preventDefault()
-        if (formData.headline.split(/[ ]+/).join(" ").length < 10 || formData.detail.split(/[ ]+/).join(" ").length < 10 || formData.source.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
         } else {
             var data = { headline: formData.headline, detail: formData.detail, source: formData.source }
@@ -46,7 +46,7 @@ const AdminNewsMedia = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (formData.headline.split(/[ ]+/).join(" ").length < 10 || formData.detail.split(/[ ]+/).join(" ").length < 10 || formData.source.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
         } else {
             axios.post('http://localhost:4000/news/updatenews/' + editingId, {

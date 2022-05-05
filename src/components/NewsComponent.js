@@ -13,7 +13,7 @@ const NewsComponent = (props) => {
             <Row className='news-box'>
                 <Col xs={12} md={12} lg={12} className='news-sub-box'>
                     <p className='news-heading' style={{'marginBottom' : "5px"}}>{props.title}</p>
-                    <p className='date-source' style={date_source}>{props.date} - <strong>Source :</strong> {props.source}</p>
+                    <p className='date-source' style={date_source}>{  props.date.slice(0,10)  } - <strong>Source :</strong> {props.source}</p>
                     <p>{props.description}</p>
                 </Col>
             </Row>
