@@ -137,6 +137,15 @@
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.href-text{
+    line-height: 32px;
+    font-size: 16px;
+    color: #084c70;
+    clear: both;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
 .text-heading{
     font-weight: bold;
     font-size: 30px;
