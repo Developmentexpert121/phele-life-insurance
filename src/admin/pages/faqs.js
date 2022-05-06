@@ -3,6 +3,7 @@ import AdminHeader from '../layout/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import axios from "axios"
+import Alert from ".././Alert"
 
 const AdminFaq = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +13,14 @@ const AdminFaq = () => {
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
+    const [alertMsg,setAlertMsg] = useState(null)
+
+    const alertFn=(message)=>{
+        setAlertMsg("Alert msg");
+        setTimeout(() => {
+          setAlertMsg(null)
+        }, 2000);
+      }
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -37,6 +46,7 @@ const AdminFaq = () => {
                 answer: ''
             })
         }
+        alertFn("Your data is Saved")
     }
 
     const updatefn = () => {
@@ -106,6 +116,7 @@ const AdminFaq = () => {
     return (
         <>
             < AdminHeader />
+            <Alert alertMsg = {alertMsg} />
             <div className='content-here'>
                 <Container>
                     <Row>

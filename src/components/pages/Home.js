@@ -12,6 +12,7 @@ import Slider from "react-slick";
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import SocialComponent from "../common/Socials";
+import HomeTable from './HomeTable'
 const Home = () => {
   const settings = {
     className: "center",
@@ -123,10 +124,11 @@ const Home = () => {
       <Container>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Get Familiar With Life Insurance Terms</span>
+            <span>Get Familiar With Life Insurance Termaaaaaaaaaaaaaas</span>
           </Col>
         </Row>
         <Row>
+        <HomeTable/>
           <Col xs={12} md={4} lg={4}>
             <div>
               <div>Underwritting</div>

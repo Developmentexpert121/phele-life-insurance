@@ -24,8 +24,9 @@ const MyNavbar = () => {
               className="me-2"
               aria-label="Search"
             />
+
             <Nav className="align-items-end" activeKey="/home">
-              <NavDropdown title="Why Life Insurance" id="basic-nav-dropdown">
+              <NavDropdown  title="Why Life Insurance" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/what-is-life-lnsurance">Why Life Insurance</NavDropdown.Item>
                 <NavDropdown.Item href="/who-needs-life-insurance">Who is it for?</NavDropdown.Item>
                 <NavDropdown.Item href="/faq">Commanly Asked Question</NavDropdown.Item>
