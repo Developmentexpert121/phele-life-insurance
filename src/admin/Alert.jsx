@@ -3,8 +3,15 @@ import { Alert } from "react-bootstrap"
 
 export default function AlertBar(props) {
     return (
-        <Alert variant="success">
-            <p className="mb-0"> {props.alertMsg} </p>
-        </Alert>
+        <div style={{ height: '60px' }}>
+            {props.alertMsg && <Alert variant={props.alertType}>
+                <p className="mb-0"> {props.alertMsg} </p>
+            </Alert>}
+        </div>
     )
+
+}
+
+AlertBar.defaultProps = {
+    alertType: "info"
 }

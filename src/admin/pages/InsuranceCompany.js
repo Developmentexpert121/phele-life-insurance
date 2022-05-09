@@ -3,6 +3,7 @@ import AdminHeader from '../layout/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
+import Alert from ".././Alert";
 
 export default function InsuranceCompany() {
 
@@ -16,6 +17,16 @@ export default function InsuranceCompany() {
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
+    const [alertMsg, setAlertMsg] = useState(null);
+    const [alertType, setAlertType] = useState('');
+
+    const alertFn = (message, type) => {
+        setAlertMsg(message);
+        setAlertType(type)
+        setTimeout(() => {
+            setAlertMsg(null)
+        }, 2000);
+    }
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -33,6 +44,7 @@ export default function InsuranceCompany() {
         e.preventDefault();
         if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || !companyData.mobile.match(/^[0-9]+$/) || companyData.url.split(/[ ]+/).join("").length < 4) {
             console.log('cant submit');
+            alertFn("Your data is Not Saved", "danger")
         } else {
             const formData = new FormData();
 
@@ -54,6 +66,7 @@ export default function InsuranceCompany() {
                 mobile: '',
                 url: ''
             })
+            alertFn("Your data is Saved", 'info');
         }
     }
 
@@ -61,6 +74,7 @@ export default function InsuranceCompany() {
         console.log("update fn");
         if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || companyData.url.split(/[ ]+/).join("").length < 4) {
             console.log('cant submit');
+            alertFn("Not Updated", 'danger');
         } else {
             const { picture, companyName, mobile, url } = companyData
             console.log("company data", companyData, editingId);
@@ -84,6 +98,7 @@ export default function InsuranceCompany() {
                 mobile: '',
                 url: ''
             })
+            alertFn("Your data is Updated", 'info');
         }
     }
     const GetQuetion = () => {
@@ -109,6 +124,7 @@ export default function InsuranceCompany() {
             .catch((error) => {
                 console.log(error)
             })
+        alertFn("Deleted", 'info');
     }
     const editCompany = (id) => {
         setEditing(true)
@@ -127,12 +143,14 @@ export default function InsuranceCompany() {
                 console.log(error)
             });
         setEditingId(id);
+        alertFn("Edit Now", 'info');
 
     }
 
     return (
         <>
             < AdminHeader />
+            <Alert alertMsg={alertMsg} alertType={alertType} />
             <div className='content-here'>
                 <Container>
                     <Row>

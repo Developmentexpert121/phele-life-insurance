@@ -13,6 +13,8 @@ import Footer from './../common/Footer';
 import Header from './../common/Header';
 import SocialComponent from "../common/Socials";
 import HomeTable from './HomeTable'
+import HomeTableFaq from "./HomeTableFaq";
+
 const Home = () => {
   const settings = {
     className: "center",
@@ -124,28 +126,11 @@ const Home = () => {
       <Container>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Get Familiar With Life Insurance Termaaaaaaaaaaaaaas</span>
+            <span>Get Familiar With Life Insurance Termssssssss</span>
           </Col>
         </Row>
         <Row>
-        <HomeTable/>
-          <Col xs={12} md={4} lg={4}>
-            <div>
-              <div>Underwritting</div>
-              <div>Premium</div>
-              <div>Grace period</div>
-              <div>Coverage</div>
-              <div>Beneficiary</div>
-            </div>
-          </Col>
-          <Col xs={12} md={8} col={8}>
-            <div>Underwriting is the process through which an insurer decides whether to cover and how much to charge. </div>
-            <div>Premium is the amount you pay to continue being insured and keep your life insurance plan active. If you are unable to pay your premium before the payment due date and even during the grace period, yo… </div>
-            <div>If you are unable to pay the premium for your policy on time and cross your premium payment due date, the life insurance company gives you an extension of a number of days. This is the ‘Grace Period’.… </div>
-            <div>The life assured passing away could lead to a large financial loss; this amount is generally chosen as the amount of coverage required when buying a life insurance plan.
-              For a life insurance company,… </div>
-            <div>The beneficiary is the person or entity entitled to receive the claim amount and other benefits upon the death of the life assured or on maturity of the policy. </div>
-          </Col>
+          <HomeTable />
         </Row>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
@@ -185,23 +170,7 @@ const Home = () => {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={4} lg={4}>
-            <div>
-              <div>Changing a policy</div>
-              <div>Buying Online</div>
-              <div>Before You Pay</div>
-              <div>Paying your premium</div>
-            </div>
-          </Col>
-          <Col xs={12} md={8} col={8}>
-            <div>Yes. All insurance companies are prepared for a situation wherein you may wish to make changes to your policy. It could be a change in beneficiaries, the amount of coverage, investment allocations, etc.
-              To begin with, you could start by reviewing your coverage. If you find it lacking, you can either ask your insurer to increase or decrease your protection as the case maybe, or cancel your policy altogether and look for another. </div>
-            <div>The process of buying a Life Insurance policy has been digitized to a very large extent. You can now look through websites, select a policy, sign and upload documents, pay your premiums, settle a claim, etc. online. However, there might be a part of the process that could involve some physical interaction, such as a medical examination. All of this could vary based on the company’s processes and the policy you choose. </div>
-            <div>To ensure your family remains protected, you regularly pay a small premium for it. Staying invested for the policy term not only maintains the shield of protection, but it also ensures you get your maturity benefit by the end of it. So, as long as your policy is the most suited one for you, it is always best to stay invested to get the most out of your policy. </div>
-            <div>If you are unable to pay your premium on the date it is due, you enter the grace period. The grace period is generally a period of 15 days from the due date; you have to pay your premium within the grace period.
-              In case you do not pay your premium even during the grace period, your policy lapses. </div>
-
-          </Col>
+          <HomeTableFaq />
         </Row>
         <Row className='pt-5'>
           <Col xs={12} md={12} lg={12} className="homeTrending ">

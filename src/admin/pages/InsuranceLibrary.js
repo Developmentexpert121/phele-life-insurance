@@ -3,6 +3,7 @@ import AdminHeader from '../layout/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
+import Alert from ".././Alert";
 
 const AdminLibrary = () => {
 
@@ -15,6 +16,16 @@ const AdminLibrary = () => {
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
+    const [alertMsg, setAlertMsg] = useState(null);
+    const [alertType, setAlertType] = useState('');
+
+    const alertFn = (message, type) => {
+        setAlertMsg(message);
+        setAlertType(type)
+        setTimeout(() => {
+            setAlertMsg(null)
+        }, 2000);
+    }
 
     const InputHandler = (e) => {
         const { name, value } = e.target;
@@ -32,6 +43,7 @@ const AdminLibrary = () => {
         e.preventDefault();
         if (libraryData.slug.split(/[ ]+/).join(" ").length < 10 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join(" ").length < 10) {
             console.log('cant submit');
+            alertFn("Your data is Not Saved", "danger")
         } else {
             const formData = new FormData();
 
@@ -53,6 +65,7 @@ const AdminLibrary = () => {
                 description: '',
                 picture: ''
             })
+            alertFn("Your data is Saved", 'info');
         }
     }
 
@@ -60,6 +73,7 @@ const AdminLibrary = () => {
         console.log("update fn");
         if (libraryData.slug.split(/[ ]+/).join(" ").length < 10 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join(" ").length < 10) {
             console.log('cant submit');
+            alertFn("Not Updated", 'danger');
         } else {
             const { slug, title, description, picture } = libraryData
             axios.post('http://localhost:4000/library/updatelibrary/' + editingId, {
@@ -82,6 +96,7 @@ const AdminLibrary = () => {
                 description: '',
                 picture: ''
             })
+            alertFn("Your data is Updated", 'info');
         }
     }
 
@@ -107,6 +122,7 @@ const AdminLibrary = () => {
             .catch((error) => {
                 console.log(error)
             })
+        alertFn("Deleted", 'info');
     }
     const editLibrary = (id) => {
         setEditing(true)
@@ -125,11 +141,13 @@ const AdminLibrary = () => {
                 console.log(error)
             });
         setEditingId(id);
+        alertFn("Edit Now", 'info');
     }
 
     return (
         <>
             <AdminHeader />
+            <Alert alertMsg={alertMsg} alertType={alertType} />
             <div className='content-here'>
                 <Container>
                     <Row>

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import AdminHeader from '../layout/Header'
-import { Container, Row, Col } from 'react-bootstrap'
-import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import '../assets/DashboardStyle.css'
-import axios from "axios"
+import React, { useState, useEffect } from 'react';
+import AdminHeader from '../layout/Header';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import '../assets/DashboardStyle.css';
+import axios from "axios";
+import Alert from ".././Alert";
 
 const AdminNewsMedia = () => {
     const [formData, setFormData] = useState({
@@ -14,6 +15,16 @@ const AdminNewsMedia = () => {
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
+    const [alertMsg, setAlertMsg] = useState(null);
+    const [alertType, setAlertType] = useState('');
+
+    const alertFn = (message, type) => {
+        setAlertMsg(message);
+        setAlertType(type)
+        setTimeout(() => {
+            setAlertMsg(null)
+        }, 2000);
+    }
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -28,6 +39,7 @@ const AdminNewsMedia = () => {
         e.preventDefault()
         if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
+            alertFn("Your data is Not Saved", "danger")
         } else {
             var data = { headline: formData.headline, detail: formData.detail, source: formData.source }
             fetch(`http://localhost:4000/news/news`, {
@@ -41,6 +53,7 @@ const AdminNewsMedia = () => {
                 detail: '',
                 source: ''
             })
+            alertFn("Your data is Saved", 'info');
         }
     }
 
@@ -48,6 +61,7 @@ const AdminNewsMedia = () => {
         console.log("update fn");
         if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
+            alertFn("Not Updated", 'danger');
         } else {
             axios.post('http://localhost:4000/news/updatenews/' + editingId, {
                 headline: formData.headline,
@@ -67,6 +81,7 @@ const AdminNewsMedia = () => {
                 detail: '',
                 source: ''
             })
+            alertFn("Your data is Updated", 'info');
         }
 
     }
@@ -101,6 +116,7 @@ const AdminNewsMedia = () => {
                 console.log(error)
             })
         setEditingId(id);
+        alertFn("Edit Now", 'info');
     }
 
     const deletenews = (id) => {
@@ -111,11 +127,13 @@ const AdminNewsMedia = () => {
             .catch((error) => {
                 console.log(error)
             })
+        alertFn("Deleted", 'info');
     }
 
     return (
         <>
             <AdminHeader />
+            <Alert alertMsg={alertMsg} alertType={alertType} />
             <div className='content-here'>
                 <Container>
                     <Row >

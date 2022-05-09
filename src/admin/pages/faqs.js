@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import AdminHeader from '../layout/Header'
-import { Container, Row, Col } from 'react-bootstrap'
-import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import axios from "axios"
-import Alert from ".././Alert"
+import React, { useState, useEffect } from 'react';
+import AdminHeader from '../layout/Header';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import axios from "axios";
+import Alert from ".././Alert";
 
 const AdminFaq = () => {
     const [formData, setFormData] = useState({
@@ -13,14 +13,16 @@ const AdminFaq = () => {
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
-    const [alertMsg,setAlertMsg] = useState(null)
+    const [alertMsg, setAlertMsg] = useState(null);
+    const [alertType, setAlertType] = useState('');
 
-    const alertFn=(message)=>{
-        setAlertMsg("Alert msg");
+    const alertFn = (message, type) => {
+        setAlertMsg(message);
+        setAlertType(type)
         setTimeout(() => {
-          setAlertMsg(null)
+            setAlertMsg(null)
         }, 2000);
-      }
+    }
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -34,6 +36,8 @@ const AdminFaq = () => {
         e.preventDefault()
         if (formData.question.split(/[ ]+/).join(" ").length < 4 || formData.answer.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
+
+            alertFn("Your data is Not Saved", "danger")
         } else {
             var data = { question: formData.question, answer: formData.answer }
             fetch(`http://localhost:4000/faqs/question`, {
@@ -45,14 +49,15 @@ const AdminFaq = () => {
                 question: '',
                 answer: ''
             })
+            alertFn("Your data is Saved", 'info');
         }
-        alertFn("Your data is Saved")
+
     }
 
     const updatefn = () => {
         console.log("update fn");
         if (formData.question.split(/[ ]+/).join(" ").length < 4 || formData.answer.split(/[ ]+/).join(" ").length < 4) {
-            console.log('cant submit');
+            alertFn("Not Updated", 'danger');
         } else {
             axios.post('http://localhost:4000/faqs/updatefaqs/' + editingId, {
                 question: formData.question,
@@ -70,6 +75,7 @@ const AdminFaq = () => {
                 question: '',
                 answer: ''
             })
+            alertFn("Your data is Updated", 'info');
         }
     }
 
@@ -101,6 +107,7 @@ const AdminFaq = () => {
                 console.log(error)
             })
         setEditingId(id);
+        alertFn("Edit Now",'info');
     }
 
     const deleteFaq = (id) => {
@@ -111,12 +118,13 @@ const AdminFaq = () => {
             .catch((error) => {
                 console.log(error)
             })
+        alertFn("Deleted", 'info');
     }
 
     return (
         <>
             < AdminHeader />
-            <Alert alertMsg = {alertMsg} />
+            <Alert alertMsg={alertMsg} alertType={alertType} />
             <div className='content-here'>
                 <Container>
                     <Row>
@@ -148,8 +156,6 @@ const AdminFaq = () => {
                                     >
                                     </textarea>
                                 </div>
-                                {/* <button type='submit' className='btn btn-primary m-1'>Submit</button> */}
-                                {/* <button type='button' onClick={() => { console.log("view ", formData) }} className='btn btn-primary m-1'>Update</button> */}
 
                                 {
                                     editing ?
