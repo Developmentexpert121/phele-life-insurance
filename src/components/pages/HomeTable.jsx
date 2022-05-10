@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from "react-bootstrap"
+import { RiArrowRightSLine } from "react-icons/ri";
 
 export default function HomeTable() {
 
     const [keywords, setKeywords] = useState([])
-    const [textOnClick, SetTextOnClick] = useState("An effective date is the specific date that an insurance policy becomes active.")
+    const [textOnClick, SetTextOnClick] = useState("An effective date is the specific date that an insurance policy becomes active.");
+    const [link, activeLink] = useState("");
+
+    const handleClick = id => {
+        activeLink(id)
+
+    };
+
 
     useEffect(() => {
         fetch('http://localhost:4000/glossary/keyword'
@@ -22,10 +30,10 @@ export default function HomeTable() {
                 <Row>
                     {/* <Col xs={2} md={2} lg={2} ></Col> */}
 
-                    <Col className='activeDiv' xs={3} md={3} lg={3} >
+                    <Col xs={3} md={3} lg={3} >
                         {keywords.map((keyword, i) =>
-                            <div key={i} value={keyword.keyword} className='text-blue textOnHover' onClick={() => SetTextOnClick(keyword.definition)} style={{ height: '65px', width: "300px", backgroundColor: "white", justifyContent: 'center',  }}>
-                                <h6 className='Nav-heading' >{keyword.keyword}</h6>
+                            <div key={i} value={keyword.keyword} className={`text-blue ${i !== link ? 'textOnHover':"" } ${i === link ? "activeClass" : ""} `} onClick={() => { SetTextOnClick(keyword.definition); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center', }}>
+                                <h6 className='Nav-heading' >{keyword.keyword} <RiArrowRightSLine /></h6>
                             </div>
                         )}
 
