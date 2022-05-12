@@ -31,7 +31,7 @@ export default function HomeTable() {
 
                     <Col xs={3} md={3} lg={3} >
                         {faqs.map((faq, i) =>
-                            <div key={i} value={faq.question} className={`text-blue ${i !== link ? 'textOnHover':"" } ${i === link ? "activeClass" : ""} `} onClick={() => {SetTextOnClick(faq.answer); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center'}}>
+                            <div key={i} value={faq.question} className={`ps-2 ${i !== link ? 'text-blue textOnHover':"" } ${i === link ? "activeClass" : ""} `} onClick={() => {SetTextOnClick(faq.answer); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center'}}>
                                 <h6>{faq.question} <RiArrowRightSLine /></h6>
                             </div>
                         )}

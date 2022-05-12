@@ -27,12 +27,14 @@ export default function HomeTable() {
     return (
         <>
             <Container className="box-shadow">
+
+                
                 <Row>
                     {/* <Col xs={2} md={2} lg={2} ></Col> */}
 
                     <Col xs={3} md={3} lg={3} >
                         {keywords.map((keyword, i) =>
-                            <div key={i} value={keyword.keyword} className={`text-blue ${i !== link ? 'textOnHover':"" } ${i === link ? "activeClass" : ""} `} onClick={() => { SetTextOnClick(keyword.definition); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center', }}>
+                            <div key={i} value={keyword.keyword} className={`ps-2 ${i !== link ? 'text-blue textOnHover':"" } ${i === link ? "activeClass" : ""} `} onClick={() => { SetTextOnClick(keyword.definition); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center', }}>
                                 <h6 className='Nav-heading' >{keyword.keyword} <RiArrowRightSLine /></h6>
                             </div>
                         )}
@@ -43,6 +45,7 @@ export default function HomeTable() {
                     </Col>
                     {/* <Col xs={2} md={2} lg={2}></Col> */}
                 </Row>
+                
             </Container>
         </>
     )

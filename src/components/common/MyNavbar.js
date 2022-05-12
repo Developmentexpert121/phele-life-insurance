@@ -10,23 +10,23 @@ import './../../assets/styles/common.css';
 const MyNavbar = () => {
   return (
     <>
-      <Navbar className="py-lg-4 navbar-container mb-5" bg="light" expand="lg" variant="light">
-        <Container className="d-flex flex-row flex-wrap">
+      <Navbar className="py-lg-4 navbar-container d-flex justify-content-around" style={{height:"8rem"}} bg="light" expand="lg" variant="light">
+        {/* <Container className=""> */}
 
-          <LinkContainer to="/" className="d-flex flex-column ">
+        <Navbar.Brand to="/"> <img src={logo}></img> </Navbar.Brand>
+
+          {/* <LinkContainer to="/" className="d-flex flex-column ">
             <Navbar.Brand to="/"> <img src={logo}></img> </Navbar.Brand>
-          </LinkContainer>
+          </LinkContainer> */}
 
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-
-
+          <Navbar.Collapse id="basic-navbar-nav" className="bg-light justify-content-end ps-3">
 
             <Form className="h-100 ">
-              <FormControl type="search" placeholder="Search" className="me-2" aria-label="Search" />
+              <FormControl type="search" placeholder="Search" className="me-2" style={{backgroundColor :'#dbe3ee', borderRadius:"40px",width:"50%" }} aria-label="Search" />
 
-              <Nav className="align-items-end" activeKey="/home">
+              <Nav className="nav" style={{fontWeight: "bold"}} activeKey="/home">
                 <NavDropdown title="Why Life Insurance" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/what-is-life-lnsurance">Why Life Insurance</NavDropdown.Item>
                   <NavDropdown.Item href="/who-needs-life-insurance">Who is it for?</NavDropdown.Item>
@@ -51,7 +51,7 @@ const MyNavbar = () => {
             </Form>
           </Navbar.Collapse>
 
-        </Container>
+        {/* </Container> */}
       </Navbar>
     </>
   );
