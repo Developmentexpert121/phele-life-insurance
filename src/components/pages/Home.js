@@ -126,7 +126,7 @@ const Home = () => {
       <Container>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
-            <span>Get Familiar With Life Insurance Termssssssss</span>
+            <span>Get Familiar With Life Insurance Terms</span>
           </Col>
         </Row>
         <Row>
