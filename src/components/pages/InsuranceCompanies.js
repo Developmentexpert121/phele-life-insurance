@@ -32,26 +32,6 @@ const InsuranceCompany = () => {
     }
   ]
 
-  // const InsuranceCompanies = [
-  //   {
-  //     'name': 'Aditya Birla Sun Life Insurance Company Limited',
-  //     'number': '1800 270 7000',
-  //     'url': 'www.adityabirlasunlifeinsurance.com',
-  //     'image': 'images/logo1.png'
-  //   },
-  //   {
-  //     'name': 'Aegon Life Insurance Company Limited',
-  //     'number': '1800 120 4433',
-  //     'url': 'www.aegonlife.com',
-  //     'image': 'images/logo2.png'
-  //   },
-  //   {
-  //     'name': 'Aviva Life Insurance Company India Limited',
-  //     'number': '800 103 7766',
-  //     'url': 'www.avivaindia.com',
-  //     'image': 'images/logo3_0.png'
-  //   }
-  // ]
   const [companies, setCompanies] = useState([]);
 
   const getCompanies = () => {
@@ -64,7 +44,7 @@ const InsuranceCompany = () => {
   }
   useEffect(() => {
     getCompanies()
-    console.log('effect 1', companies);
+    // console.log('effect 1', companies);
   }, [companies])
 
   const bannerStyle = {
@@ -88,25 +68,13 @@ const InsuranceCompany = () => {
             <Row xs={12} md={9} lg={9}>
 
               {companies.map((d, i) =>
-                <Col xs={12} md={6} lg={4} >
-                  <CompaniesLibrary key={i} name={d.companyName} number={d.mobile} url={d.url} image={d.picture} />
+                <Col xs={12} md={6} lg={4} key={i} >
+                  <CompaniesLibrary name={d.companyName} number={d.mobile} url={d.url} image={d.picture} />
                 </Col>
               )}
-
             </Row>
-
           </Col>
-
-
-
-          {/* 
-          <Col xs={12} md={9} lg={9} >
-            <Row>
-
-            </Row>
-          </Col> */}
         </Row>
-
         < SocialComponent />
       </Container>
       <Footer />

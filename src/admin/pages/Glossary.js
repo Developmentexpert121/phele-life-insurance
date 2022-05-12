@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import AdminHeader from '../layout/Header'
-import { Container, Row, Col } from 'react-bootstrap'
-import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import AdminHeader from '../layout/Header';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import axios from 'axios';
+import Alert from ".././Alert";
+
 
 const Glossary = () => {
     const [formData, setFormData] = useState({
@@ -13,6 +15,16 @@ const Glossary = () => {
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
+    const [alertMsg, setAlertMsg] = useState(null);
+    const [alertType, setAlertType] = useState('');
+
+    const alertFn = (message, type) => {
+        setAlertMsg(message);
+        setAlertType(type)
+        setTimeout(() => {
+            setAlertMsg(null)
+        }, 2000);
+    }
 
 
     const InputHandler = (e) => {
@@ -21,40 +33,52 @@ const Glossary = () => {
             ...prevData,
             [name]: value
         }))
-  
+
 
     }
     const submit = (e) => {
         e.preventDefault()
-        let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
-        fetch(`http://localhost:4000/glossary/keyword`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        })
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 4) {
+            console.log("Cant submit in Glossary");
+            alertFn("Your data is Not Saved", "danger")
 
-        setFormData({
-            keyword: "",
-            definition: ""
-        })
-
+        } else {
+            let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
+            fetch(`http://localhost:4000/glossary/keyword`, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+            setFormData({
+                keyword: "",
+                definition: ""
+            })
+            alertFn("Your data is Saved", 'info');
+        }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        // const { keyword, definition } = formData
-        let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
-        axios.post('http://localhost:4000/glossary/updateglossary/' + editingId, data)
-            .then((response) => {
-                console.log(response);
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 4) {
+            console.log("Cant submit in Glossary");
+            alertFn("Not Updated", 'danger');
+        } else {
+            let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
+            axios.post('http://localhost:4000/glossary/updateglossary/' + editingId, data)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+            setEditing(false);
+            setFormData({
+                keyword: "",
+                definition: ""
             })
-            .catch((error) => {
-                console.log(error);
-            });
-
-        setEditing(false);
-        console.log("Edit el");
-
+            alertFn("Your data is Updated", 'info');
+        }
     }
     // const GetKeyword = () => {
     //     fetch('http://localhost:4000/glossary/keyword'
@@ -89,6 +113,7 @@ const Glossary = () => {
             .catch((error) => {
                 console.log(error)
             })
+            alertFn("Deleted", 'info');
     }
 
     const editKeyword = async (id) => {
@@ -101,12 +126,14 @@ const Glossary = () => {
             definition: editingData.data.definition
         })
         setEditingId(id);
+        alertFn("Edit Now",'info');
 
     }
 
     return (
         <>
             < AdminHeader />
+            <Alert alertMsg={alertMsg} alertType={alertType} />
             <div className='content-here'>
                 <Container>
                     <Row>

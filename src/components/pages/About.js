@@ -1,6 +1,6 @@
 import React from 'react'
-import {Container, Row, Col} from 'react-bootstrap';
-import {FaShieldAlt}  from 'react-icons/fa';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaShieldAlt } from 'react-icons/fa';
 import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
@@ -10,68 +10,95 @@ import Header from './../common/Header'
 const About = () => {
   const NavLists = [
     {
-      'heading':'About IRDAI', 
-      'icon' : '<FaAtlas />', 
-      'url':'/about'
+      'heading': 'About IRDAI',
+      'icon': '<FaAtlas />',
+      'url': '/about'
     },
     {
-      'heading':'About Life Insurance Council',
-      'icon':'FaBook',
+      'heading': 'About Life Insurance Council',
+      'icon': 'FaBook',
       'url': '/about-life-insurance-council'
     },
     {
-      'heading':'Life Insurance Companies',
-      'icon':'FaBook',
+      'heading': 'Life Insurance Companies',
+      'icon': 'FaBook',
       'url': '/insurance-companies'
     },
     {
-      'heading':'News & Media',
-      'icon':'FaBook',
+      'heading': 'News & Media',
+      'icon': 'FaBook',
       'url': '/news-media'
     }
   ]
   const bannerStyle = {
     width: '100%',
-    border: 1   
+    border: 1
   }
   return (
     <>
-    <Header/>
-    <Container>
-      <Row>
-      <Col xs={12} md={3} lg={3} className="sidenav-box">
-      {NavLists.map((d) =>
-          <Navs heading={d.heading} icon={d.icon} url= {d.url} />
-        )}
-         </Col>
-        <Col xs={12} md={9} lg={9}>
-          <div>
-            <span className='main-text-heading'>Getting Started with Life Insurance</span>
-          </div>
-          <p className='simple-text pt-2'>
-          By now you probably know that you need Life Insurance before anything else. This brings us to the next step – buying Life Insurance.
-          </p>
-          <p className='simple-text'>
-          In the simplest way possible, Life Insurance is a product that provides your family with money when you are not around to financially provide for them. It is important to consider buying Life Insurance so that you are better prepared to face life's uncertainties.
-          </p>
-          <p className='simple-text'>
-          In the simplest way possible, Life Insurance is a product that provides your family with money when you are not around to financially provide for them. It is important to consider buying Life Insurance so that you are better prepared to face life's uncertainties.
-          </p>
-          <span className='text-heading pt-4 pb-2'>Do I really need it?</span>
-          <p className='simple-text'>Let us begin with a simple thumb rule – everyone needs Life Insurance. A life insurance policy ensures financial support for your family, assuring you of a stress-free life.</p>
-          <p>Let us tell you just how important it really is to have a life insurance plan in place.</p>
-          <span className='sub-headings pt-3 pb-2'>TO PROTECT AGAINST UNCERTAINTIES</span>
-          <p className='simple-text'>It’s easy to get into debt, and more difficult to get out of it. Losing an earning member could bring a financial crisis on the family. To avoid getting your family into heavy debt, you can use your life insurance payouts to clear off loans such as vehicle loans, personal loans, etc.</p>
-          <span className='sub-headings pt-4 pb-2'>TO ACHIEVE LIFE GOALS</span>
-          <p className='simple-text'>Everyone has goals set out for their future, big or small. A Life Insurance policy helps you achieve your primary goals such as securing your children’s education, a dream house, etc. So, for people looking for something more than financial security, there are investment products available for you to create a savings pool for your family’s future.</p>
-          <span className='sub-headings pt-4 pb-2'>TO SECURE A WELL RETIRED LIFE</span>
-          <p className='simple-text'>Let your retirement bring you a joyful second innings. A retirement plan assures you of a regular income and zero financial stress, letting you maintain quality of life and spending every joyful moment with your family.</p>
-          <p className='simple-text'>Now that you know that Life Insurance is indeed the first step to financial security, it’s time for you to get started on determining your needs and find the most suitable insurance policy for you – a policy that could eventually change your loved one’s life for better.</p>
-        </Col>
-      </Row>
-      < SocialComponent />
-    </Container>
-    <Footer />
+      <Header />
+      <Container>
+        <Row>
+          <Col xs={12} md={3} lg={3} className="sidenav-box">
+            {NavLists.map((d) =>
+              <Navs heading={d.heading} icon={d.icon} url={d.url} />
+            )}
+          </Col>
+          <Col xs={12} md={9} lg={9}>
+            <div>
+              <span className='main-text-heading'>About IRDAI</span>
+            </div>
+            <p className='simple-text pt-2'>
+              Insurance Regulatory and Development Authority (IRDAI) regulates the Indian insurance industry to protect the interests of the policyholders and work for the orderly growth of the industry.
+            </p>
+            <p className='simple-text'>
+              The IRDA Act, 1999 spells out the Mission of IRDAI as: “... to protect the interests of the policyholders, to regulate, promote and ensure orderly growth of the insurance industry and for matters connected therewith or incidental thereto......”
+            </p>
+
+            <span className='sub-headings pt-4 pb-2'>Birth of IRDAI</span>
+            <ul>
+              <li className='simple-text' > The Insurance Regulatory and Development Authority (IRDA) was set up as an autonomous body under the IRDA Act, 1999. </li>
+              <li className='simple-text' > The IRDAI's mission is to protect the interests of policyholders, to regulate, promote and ensure orderly growth of the insurance industry and for matters connected therewith or incidental thereto. </li>
+            </ul>
+
+            <span className='sub-headings pt-4 pb-2'>Background</span>
+            <ul>
+              <li className='simple-text' > 1991: Government of India begins the economic reforms programme and financial sector reforms</li>
+              <li className='simple-text' > 1993: Committee on Reforms in the Insurance Sector, headed by Mr. R. N. Malhotra, (Retired Governor, Reserve Bank of India) set up to recommend reforms.</li>
+              <li className='simple-text' > 1994: The Malhotra Committee recommends certain reforms having studied the sector and hearing out the stakeholders</li>
+              <li className='simple-text' > Some recommended reforms
+                <ul>
+                  <li className='simple-text' > Private sector companies should be allowed to promote insurance companies</li>
+                  <li className='simple-text' > Foreign promoters should also be allowed</li>
+                  <li className='simple-text' > Government to vest its regulatory powers on an independent regulatory body answerable to Parliament</li>
+                </ul>
+              </li>
+            </ul>
+
+            <span className='sub-headings pt-4 pb-2'>IRDAI's Activities</span>
+            <ul>
+              <li className='simple-text' > Frames regulations for insurance industry in terms of Section 114A of the Insurance Act, 1938</li>
+              <li className='simple-text' > From the year 2000 has registered new insurance companies in accordance with regulations</li>
+              <li className='simple-text' > Monitors insurance sector activities for healthy development of the industry and protection of policyholders' interests</li>
+            </ul>
+            <span className='sub-headings pt-4 pb-2'> Functions and Duties of IRDAI </span>
+            <p className='simple-text'> Section 14 of the IRDA Act, 1999 lays down the duties, powers and functions of the IRDAI.</p>
+            <ul>
+              <li className='simple-text' > Registering and regulating insurance companies</li>
+              <li className='simple-text' > Ptotecting policyholders’ interests</li>
+              <li className='simple-text' > Licensing and establishing norms for insurance intermediaries</li>
+              <li className='simple-text' > Promoting professional organisations in insurance</li>
+              <li className='simple-text' > Regulating and overseeing premium rates and terms of non-life insurance covers</li>
+              <li className='simple-text' > Specifying financial reporting norms of insurance companies</li>
+              <li className='simple-text' > Regulating investment of policyholders’ funds by insurance companies</li>
+              <li className='simple-text' > Ensuring the maintenance of solvency margin by insurance companies</li>
+              <li className='simple-text' > Ensuring insurance coverage in rural areas and of vulnerable sections of society</li>
+            </ul>
+          </Col>
+        </Row>
+        < SocialComponent />
+      </Container>
+      <Footer />
     </>
   )
 }

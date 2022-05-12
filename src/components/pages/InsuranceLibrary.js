@@ -7,6 +7,7 @@ import Navs from '../SideTabs';
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import { FacebookIcon, FacebookShareButton } from "react-share";
+import ShareIcon from "../../ShareIcon"
 
 const InsuranceLibrary = () => {
   const [question, fetchQuestion] = useState([]);
@@ -69,7 +70,7 @@ const InsuranceLibrary = () => {
                 </Col>
                 <Col col={8} md={8} lg={9}>
 
-                  <div className='d-flex flex-wrap justify-content-between'><div><h5 className='mb-0'>{element.title} </h5> <small className='d-block'>04/12/19</small></div>
+                  <div className='d-flex flex-wrap justify-content-between'><div><h5 className='mb-0'>{element.title} <ShareIcon/> </h5> <small className='d-block'>04/12/19</small></div>
 
                     <Button ref={target} >
                       Click me to see

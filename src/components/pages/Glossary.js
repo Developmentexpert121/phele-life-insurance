@@ -11,6 +11,7 @@ const Glossary = () => {
 
   const [keywords, setKeywords] = useState([]);
 
+
   const getKeyword = () => {
     fetch('http://localhost:4000/glossary/keyword'
     )
@@ -42,7 +43,8 @@ const Glossary = () => {
     getKeyword()
   }, [])
 
-  const alphabets = [...Array(26).keys()].map(i => String.fromCharCode(i + 97).toUpperCase());
+  // const alphabets = [...Array(26).keys()].map(i => String.fromCharCode(i + 97).toUpperCase());
+  const alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const data = keywords.reduce((r, e) => {
 
@@ -61,6 +63,11 @@ const Glossary = () => {
 
   const result = Object.values(data);
 
+  let alphalinks = []
+  for (let i = 0; i < result.length; i++) {
+    alphalinks.push(result[i].alphabet)
+  }
+
   return (
     <>
       <Header />
@@ -74,7 +81,7 @@ const Glossary = () => {
           <Col xs={12} md={9} lg={9}>
             <div>
               <span className='main-text-heading'>Glossary</span>
-              <p>Can’t keep up with all the terminologies? Here’s a handy guide to all the words you might come across when learning about Life Insurance.</p>
+              <p>Cant keep up with all the terminologies? Here's a handy guide to all the words you might come across when learning about Life Insurance.</p>
               {/* <Button onClick={() => { console.log(result, "result 0"); }} > Console </Button> */}
 
             </div>
@@ -97,23 +104,23 @@ const Glossary = () => {
             <Row className='mb-3' >
               {
                 alphabets.map((alphabet, i) =>
-                <Col>
-                  <a key={i} onClick={(e) => { console.log("clicked ", e.target.innerHTML); }} href={`#${alphabet}`} >
-                    {alphabet}
-                  </a>
+                  <Col key={i} >
+                    <a onClick={(e) => { console.log("clicked ", e.target.innerHTML); }} style={alphalinks.includes(alphabet)?{textDecoration: "none"} : {pointerEvents: "none",textDecoration: "none",color:'#9493a8'}} href={ alphalinks.includes(alphabet) ?`#${alphabet}` : "/" } >
+                      {alphabet}
+                    </a>
                   </Col>
                 )
               }
             </Row>
 
-            <div style={{ height: "600px",overflow:"scroll",width:"100%" }}>
-              
+            <div style={{ height: "600px", overflow: "scroll", width: "100%" }}>        {/*    Scrollable div    */}
+
               <Col xs={12} md={12} lg={12}>
                 {result.sort((a, b) => (a.alphabet > b.alphabet) ? 1 : -1).map((element, index) =>
                   <div key={index} className="p-2">
                     <h5 id={element.alphabet} >{element.alphabet}</h5>
                     {
-                      element.record.map((e, i) =>
+                      element.record.map((e, i) =>                                                        //   Map on Record
                         <Row key={i} className='library-main-box shadow px-2 py-2 align-items-center'>
                           <Col key={i} col={12} md={12} lg={12}>
                             <div className='d-flex flex-wrap justify-content-between'><div>

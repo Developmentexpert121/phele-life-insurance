@@ -3,6 +3,7 @@ import AdminHeader from '../layout/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
+import Alert from ".././Alert";
 
 export default function InsuranceCompany() {
 
@@ -16,6 +17,16 @@ export default function InsuranceCompany() {
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
+    const [alertMsg, setAlertMsg] = useState(null);
+    const [alertType, setAlertType] = useState('');
+
+    const alertFn = (message, type) => {
+        setAlertMsg(message);
+        setAlertType(type)
+        setTimeout(() => {
+            setAlertMsg(null)
+        }, 2000);
+    }
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -31,43 +42,64 @@ export default function InsuranceCompany() {
     }
     const submit = (e) => {
         e.preventDefault();
-        const formData = new FormData();
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || !companyData.mobile.match(/^[0-9]+$/) || companyData.url.split(/[ ]+/).join("").length < 4) {
+            console.log('cant submit');
+            alertFn("Your data is Not Saved", "danger")
+        } else {
+            const formData = new FormData();
 
-        formData.append('picture', companyData.picture);
-        formData.append('companyName', companyData.companyName);
-        formData.append('mobile', companyData.mobile);
-        formData.append('url', companyData.url);
+            formData.append('picture', companyData.picture);
+            formData.append('companyName', companyData.companyName);
+            formData.append('mobile', companyData.mobile);
+            formData.append('url', companyData.url);
 
-        axios.post('//localhost:4000/companies/companies-list', formData)
-            .then((e) => {
-                console.log("Sucess", e);
+            axios.post('//localhost:4000/companies/companies-list', formData)
+                .then((e) => {
+                    console.log("Sucess", e);
+                })
+                .catch((e) => {
+                    console.log('Error is', e);
+                })
+            setCompanyData({
+                picture: '',
+                companyName: '',
+                mobile: '',
+                url: ''
             })
-            .catch((e) => {
-                console.log('Error is', e);
-            })
-
+            alertFn("Your data is Saved", 'info');
+        }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        const {picture,companyName,mobile,url} = companyData
-        console.log("company data", companyData,editingId);
-        axios.post('http://localhost:4000/companies/updatecompany/' + editingId,{
-            picture,
-            companyName,
-            mobile,
-            url
-        })
-        .then((response) => {
-            console.log("res is",response.config.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || companyData.url.split(/[ ]+/).join("").length < 4) {
+            console.log('cant submit');
+            alertFn("Not Updated", 'danger');
+        } else {
+            const { picture, companyName, mobile, url } = companyData
+            console.log("company data", companyData, editingId);
+            axios.post('http://localhost:4000/companies/updatecompany/' + editingId, {
+                picture,
+                companyName,
+                mobile,
+                url
+            })
+                .then((response) => {
+                    console.log("res is", response.config.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
-        setEditing(false);
-        console.log("Edit el");
-
+            setEditing(false);
+            setCompanyData({
+                picture: '',
+                companyName: '',
+                mobile: '',
+                url: ''
+            })
+            alertFn("Your data is Updated", 'info');
+        }
     }
     const GetQuetion = () => {
         fetch('http://localhost:4000/companies/companies-list'
@@ -92,6 +124,7 @@ export default function InsuranceCompany() {
             .catch((error) => {
                 console.log(error)
             })
+        alertFn("Deleted", 'info');
     }
     const editCompany = (id) => {
         setEditing(true)
@@ -109,13 +142,15 @@ export default function InsuranceCompany() {
             .catch((error) => {
                 console.log(error)
             });
-            setEditingId(id);    
-            
+        setEditingId(id);
+        alertFn("Edit Now", 'info');
+
     }
 
     return (
         <>
             < AdminHeader />
+            <Alert alertMsg={alertMsg} alertType={alertType} />
             <div className='content-here'>
                 <Container>
                     <Row>

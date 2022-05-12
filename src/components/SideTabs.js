@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {FaShieldAlt,FaAtlas, FaBook}  from 'react-icons/fa';
 const Navs = (props) => {
   
+  
   const iconStyle = {
     fontSize : '28px',
     fontWeight : '700',

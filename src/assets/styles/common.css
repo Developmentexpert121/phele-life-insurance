@@ -108,6 +108,33 @@
 .card:hover {
     border-bottom: 9px solid #f7b907 !important;
 }
+.accordian:hover {
+    border-left: 4px solid #f7b907 !important;
+}
+.textOnHover:hover {
+    color: #f7b907;
+}
+/* New-----startt */
+.Nav-heading:active {
+    background: #e9b006;
+    color: #fff;
+}
+.Nav-heading {
+    padding: 24px 3px;
+}
+.box-shadow {
+    box-shadow: 3px 4px 6px 1px #ccc;
+}
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1075px !important;
+}
+.activeClass {
+    background-color: #E9B006;     
+    color: white;
+}
+
+/* new Endd */
+
 .slider-main .slick-current {
     transform: scale(1.4);
 }
@@ -129,6 +156,9 @@
     max-width: 600px !important;
     margin: auto;
 }
+.text-blue {
+    color: #0b408a;
+}
 .simple-text{
     line-height: 32px;
     font-size: 16px;
@@ -136,6 +166,15 @@
     clear: both;
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.href-text{
+    line-height: 32px;
+    font-size: 16px;
+    color: #084c70;
+    clear: both;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
 }
 .text-heading{
     font-weight: bold;
@@ -167,8 +206,13 @@
 }
 
 
-.side-tab-box:active {
+.side-tab-box :active{
     background-color: #f7b907;
+    
+}
+.activeDiv :active{
+    background-color: #f7b907;
+    
 }
 .sidenav-box{
     border-right: 1px solid gainsboro;

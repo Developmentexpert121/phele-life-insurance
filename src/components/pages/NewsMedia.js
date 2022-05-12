@@ -1,7 +1,7 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-import {FaShieldAlt}  from 'react-icons/fa';
-import Banner1 from './../../assets/banner1.jpg';
+// import {FaShieldAlt}  from 'react-icons/fa';
+// import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
@@ -9,6 +9,20 @@ import Header from './../common/Header';
 import NewsComponent from '../NewsComponent';
 
 const NewsMedia = () => {
+  const [question, fetchQuestion] = useState([])
+  const getQuestions = () => {
+    fetch('http://localhost:4000/news/news'
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        fetchQuestion(res)
+      })
+
+  }
+  useEffect(() => {
+    getQuestions()
+    // console.log('effect 1', question);
+  }, [question])
   const NavLists = [
     {
       'heading':'About IRDAI', 
@@ -31,26 +45,7 @@ const NewsMedia = () => {
       'url': '/news-media'
     }
   ]
-  const News = [
-    {
-      "title" : 'Will ‘Sabse Pehle Life Insurance’ make a mark?',
-      'date' : '14/10/19',
-      'source' :'Hindustan Times',
-      'description' :'You contribute just as much as a man to the running of a household and this cannot be ignored. This being said, it is women who seem to be undecided about taking up a life insurance policy.'
-    },
-    {
-      "title" : 'Will ‘Sabse Pehle Life Insurance’ make a mark?',
-      'date' : '14/10/19',
-      'source' :'Hindustan Times',
-      'description' :'You contribute just as much as a man to the running of a household and this cannot be ignored. This being said, it is women who seem to be undecided about taking up a life insurance policy.'
-    },
-    {
-      "title" : 'Will ‘Sabse Pehle Life Insurance’ make a mark?',
-      'date' : '14/10/19',
-      'source' :'Hindustan Times',
-      'description' :'You contribute just as much as a man to the running of a household and this cannot be ignored. This being said, it is women who seem to be undecided about taking up a life insurance policy.'
-    }
-  ]
+ 
   const bannerStyle = {
     width: '100%',
     border: 1   
@@ -69,8 +64,11 @@ const NewsMedia = () => {
           <div className='mb-4'>
             <span className='main-text-heading'>News & Media</span>
           </div>
-          {News.map((d) =>
-            <NewsComponent title={d.title} date = {d.date} source = {d.source} description={d.description} />
+          {question.map((d) =>
+          <>
+            
+            <NewsComponent title={d.headline} date = {d.date} source = {d.source} description={d.detail} />
+            </>
           )}
          
         </Col>

@@ -1,57 +1,76 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { Container, Row, Col } from 'react-bootstrap';
 import Header from './../common/Header';
-    const Form = () => {
-        const [question, setQuestion] = useState("")
+import { VscAdd, VscChromeMinimize } from "react-icons/vsc"
+const Form = () => {
+    const itemList = [
+        {
+            "ItemName": "A",
+            "Quantity": 5,
+            'id': 1
+        },
+        {
+            'ItemName': "B",
+            "Quantity": 5,
+            "id": 2
+        },
+        {
+            "ItemName": "C",
+            "Quantity": 5,
+            'id': 3
+        },
+    ]
+    const [items, setItems] = useState(itemList)
+    const [newList, setNewlist] = useState({
+        1: {
+            "ItemName": "A",
+            "Quantity": 0
+        },
+        2: {
+            "ItemName": "B",
+            "Quantity": 0
+        },
+        3: {
+            "ItemName": "C",
+            "Quantity": 0
+        }
+    }
+    )
 
-            const aa = (e) =>{
-                const {name, value} = e.target;
-                setQuestion((prevquestion) =>({
-                    ...prevquestion,
-                    [name] : value,
-                }))
-            }
+    const addItem = (i) => {
+        console.log("item index ", setNewlist.i.Quantity);
+        
+        
+
+    }
+    const subItem = (i) => {
+        console.log("item index ", i);
+    }
 
 
-
-        const [answer, setAnswer] = useState("")
-        const submit = (e) => {
-            e.preventDefault()
-            fetch(`http://localhost:4000/faqs/question`, {
-              method: "POST",
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ question, answer}),
-            })
-          }
-
-          
-
-    return(
+    return (
         <>
-        <Header />
-        <form onSubmit={submit}>
-             <input   
-            type="text" 
-            name="question" 
-            placeholder="Question"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            />
-            <br/>
-            <br/>
+            <Header />
+            <Container>
+                <Row>
+                    <Col>Item Name</Col>
+                    <Col> Quantity </Col>
+                </Row>
+                {items.map((item, index) =>
 
-            <input 
-            type="text" 
-            name="answer" 
-            placeholder="Answer" 
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            />
-            <br/>
-            <br/>
-            <br/>
+                    <Row key={index}>
+                        <Col>
+                            <div>
+                                <h6> <VscAdd onClick={() => addItem(item.id)} /> {item.ItemName} < VscChromeMinimize onClick={() => subItem(item.id)} /></h6 >
+                            </div>
+                        </Col>
+                        <Col>{item.Quantity}</Col>
+                    </Row>
 
-            <button >Submit Now</button>
-            </form>
+
+
+                )}
+            </Container>
         </>
     );
 }

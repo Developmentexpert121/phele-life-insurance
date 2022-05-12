@@ -1,18 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import AdminHeader from '../layout/Header'
-import { Container, Row, Col } from 'react-bootstrap'
-import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import '../assets/DashboardStyle.css'
-import axios from "axios"
+import React, { useState, useEffect } from 'react';
+import AdminHeader from '../layout/Header';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import '../assets/DashboardStyle.css';
+import axios from "axios";
+import Alert from ".././Alert";
 
 const AdminNewsMedia = () => {
     const [formData, setFormData] = useState({
         headline: '',
-        detail: ''
+        detail: '',
+        source: ''
     })
     const [thearray, setTheArray] = useState([]);
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState("");
+    const [alertMsg, setAlertMsg] = useState(null);
+    const [alertType, setAlertType] = useState('');
+
+    const alertFn = (message, type) => {
+        setAlertMsg(message);
+        setAlertType(type)
+        setTimeout(() => {
+            setAlertMsg(null)
+        }, 2000);
+    }
 
     const InputHandler = (e) => {
         const { name, value } = e.target
@@ -25,30 +37,52 @@ const AdminNewsMedia = () => {
 
     const submit = (e) => {
         e.preventDefault()
-        var data = { headline: formData.headline, detail: formData.detail }
-        fetch(`http://localhost:4000/news/news`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        })
-        console.log("data is",data)
+        if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
+            console.log('cant submit');
+            alertFn("Your data is Not Saved", "danger")
+        } else {
+            var data = { headline: formData.headline, detail: formData.detail, source: formData.source }
+            fetch(`http://localhost:4000/news/news`, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+            console.log(formData);
+            setFormData({
+                headline: '',
+                detail: '',
+                source: ''
+            })
+            alertFn("Your data is Saved", 'info');
+        }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        axios.post('http://localhost:4000/news/updatenews/' + editingId, {
-            headline: formData.headline,
-            detail: formData.detail
-        })
-            .then((response) => {
-                console.log(response);
+        if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
+            console.log('cant submit');
+            alertFn("Not Updated", 'danger');
+        } else {
+            axios.post('http://localhost:4000/news/updatenews/' + editingId, {
+                headline: formData.headline,
+                detail: formData.detail,
+                source: formData.source
             })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
-        setEditing(false);
-        console.log("Edit el");
+            setEditing(false);
+            setFormData({
+                headline: '',
+                detail: '',
+                source: ''
+            })
+            alertFn("Your data is Updated", 'info');
+        }
 
     }
     const GetQuetion = () => {
@@ -73,7 +107,8 @@ const AdminNewsMedia = () => {
                 // console.log('edit news', res.data.question)
                 setFormData({
                     headline: res.data.headline,
-                    detail: res.data.detail
+                    detail: res.data.detail,
+                    source: res.data.source,
                 })
                 // console.log("formData  is 2", formData);
             })
@@ -81,6 +116,7 @@ const AdminNewsMedia = () => {
                 console.log(error)
             })
         setEditingId(id);
+        alertFn("Edit Now", 'info');
     }
 
     const deletenews = (id) => {
@@ -91,26 +127,26 @@ const AdminNewsMedia = () => {
             .catch((error) => {
                 console.log(error)
             })
+        alertFn("Deleted", 'info');
     }
-
-
 
     return (
         <>
             <AdminHeader />
+            <Alert alertMsg={alertMsg} alertType={alertType} />
             <div className='content-here'>
                 <Container>
-                    <Row>
+                    <Row >
                         <Col>
                             <h3>Add News & Media</h3>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row  >
                         <Col>
                             <form onSubmit={submit} className='form-style'>
-                                <Row>
+                                <Row >
                                     <div xs={12} md={6} lg={6}>
-                                        <label>name</label>
+                                        <label>News</label>
                                         <input
                                             type="text"
                                             name="headline"
@@ -132,6 +168,17 @@ const AdminNewsMedia = () => {
                                         </textarea>
                                     </div>
 
+                                    <div xs={12} md={6} lg={6}>
+                                        <label>Source</label>
+                                        <input
+                                            type="text"
+                                            name="source"
+                                            className="form-control"
+                                            onChange={InputHandler}
+                                            value={formData.source}
+                                        />
+                                    </div>
+
                                 </Row>
 
                                 {/* <button className='btn btn-primary'>Submit</button> */}
@@ -145,33 +192,17 @@ const AdminNewsMedia = () => {
                         </Col>
                     </Row>
                     <Row>
-                        {/* <table>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {thearray.map((item, index) => (
-                                    <tr>
-                                        <td>{item.question}</td>
-                                        <td>< FaEdit /></td>
-                                        <td><FaTrashAlt /></td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table> */}
-                        <Col xs={4} md={4} lg={4}>Title</Col>
-                        <Col xs={6} md={6} lg={6}>Description</Col>
+                        <Col xs={3} md={3} lg={3}>Title</Col>
+                        <Col xs={5} md={5} lg={5}>Description</Col>
+                        <Col xs={2} md={2} lg={2}>Source</Col>
                         <Col>Edit</Col>
                         <Col>Delete</Col>
                     </Row>
                     {thearray.map((item, index) =>
                         <Row key={index} className='library-main-box p-1 align-items-center'>
-                            <Col xs={4} md={4} lg={4}>{item.headline}</Col>
-                            <Col xs={6} md={6} lg={6}>{item.detail}</Col>
+                            <Col xs={3} md={3} lg={3}>{item.headline}</Col>
+                            <Col xs={5} md={5} lg={5}>{item.detail}</Col>
+                            <Col xs={2} md={2} lg={2}>{item.source}</Col>
                             <Col onClick={() => { editNews(item._id); }}>< FaEdit /></Col>
                             <Col onClick={() => { deletenews(item._id); }} >< FaTrashAlt /></Col>
                         </Row>

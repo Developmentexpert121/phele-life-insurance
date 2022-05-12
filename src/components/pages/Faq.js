@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import SocialComponent from '../common/Socials';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaShieldAlt } from 'react-icons/fa';
-import Banner1 from './../../assets/banner1.jpg';
+// import { FaShieldAlt } from 'react-icons/fa';
+// import Banner1 from './../../assets/banner1.jpg';
 import Navs from '../SideTabs';
 import FaqToggle from './../FaqToggle';
 import Footer from './../common/Footer';
