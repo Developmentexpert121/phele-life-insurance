@@ -5,6 +5,8 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
 import Alert from ".././Alert";
 
+const url = process.env.REACT_APP_URL
+
 const AdminLibrary = () => {
 
     const [libraryData, setLibraryData] = useState({
@@ -76,7 +78,7 @@ const AdminLibrary = () => {
             alertFn("Not Updated", 'danger');
         } else {
             const { slug, title, description, picture } = libraryData
-            axios.post('http://localhost:4000/library/updatelibrary/' + editingId, {
+            axios.post(url+'/library/updatelibrary/' + editingId, {
                 slug,
                 title,
                 description,
@@ -101,7 +103,7 @@ const AdminLibrary = () => {
     }
 
     const GetQuetion = () => {
-        fetch('http://localhost:4000/library/library'
+        fetch(url+'/library/library'
         )
             .then((res) => res.json())
             .then((res) => {
@@ -115,7 +117,7 @@ const AdminLibrary = () => {
 
     const deleteLibrary = (id) => {
         console.log('inside delete', id);
-        axios.get('http://localhost:4000/library/deletelibrary/' + id)
+        axios.get(url+'/library/deletelibrary/' + id)
             .then(() => {
                 console.log('Deleted')
             })
@@ -126,7 +128,7 @@ const AdminLibrary = () => {
     }
     const editLibrary = (id) => {
         setEditing(true)
-        axios.get('http://localhost:4000/library/editlibrary/' + id)
+        axios.get(url+'/library/editlibrary/' + id)
             .then((res) => {
                 console.log('edit faq', res.data.question)
                 setLibraryData({

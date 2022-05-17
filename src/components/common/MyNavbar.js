@@ -21,13 +21,13 @@ const MyNavbar = () => {
 
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" className="bg-light justify-content-end ps-3">
+          <Navbar.Collapse id="basic-navbar-nav" style={{marginRight:"140px"}} className="bg-light justify-content-end z-index-2 ps-3">
 
             <Form className="h-100 ">
               <FormControl type="search" placeholder="Search" className="me-2" style={{backgroundColor :'#dbe3ee', borderRadius:"40px",width:"50%" }} aria-label="Search" />
 
               <Nav className="nav" style={{fontWeight: "bold"}} activeKey="/home">
-                <NavDropdown title="Why Life Insurance" id="basic-nav-dropdown">
+                <NavDropdown title="Why Life Insurance" id="basic-nav-dropdown"  >
                   <NavDropdown.Item href="/what-is-life-lnsurance">Why Life Insurance</NavDropdown.Item>
                   <NavDropdown.Item href="/who-needs-life-insurance">Who is it for?</NavDropdown.Item>
                   <NavDropdown.Item href="/faq">Commanly Asked Question</NavDropdown.Item>

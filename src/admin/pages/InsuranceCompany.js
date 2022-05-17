@@ -53,7 +53,7 @@ export default function InsuranceCompany() {
             formData.append('mobile', companyData.mobile);
             formData.append('url', companyData.url);
 
-            axios.post('//localhost:4000/companies/companies-list', formData)
+            axios.post('http://localhost:4000/companies/companies-list', formData)
                 .then((e) => {
                     console.log("Sucess", e);
                 })

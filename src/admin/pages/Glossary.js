@@ -5,6 +5,8 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from 'axios';
 import Alert from ".././Alert";
 
+const url = process.env.REACT_APP_URL
+
 
 const Glossary = () => {
     const [formData, setFormData] = useState({
@@ -64,7 +66,7 @@ const Glossary = () => {
             alertFn("Not Updated", 'danger');
         } else {
             let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
-            axios.post('http://localhost:4000/glossary/updateglossary/' + editingId, data)
+            axios.post(url+'/glossary/updateglossary/' + editingId, data)
                 .then((response) => {
                     console.log(response);
                 })
@@ -81,7 +83,7 @@ const Glossary = () => {
         }
     }
     // const GetKeyword = () => {
-    //     fetch('http://localhost:4000/glossary/keyword'
+    //     fetch(url+'/glossary/keyword'
     //     )
     //         .then((res) => res.json())
     //         .then((res) => {
@@ -95,7 +97,7 @@ const Glossary = () => {
     useEffect(() => {
         let isMounted = true;               // note mutable flag
 
-        fetch('http://localhost:4000/glossary/keyword'
+        fetch(url+'/glossary/keyword'
         )
             .then((res) => res.json())
             .then((res) => {
@@ -106,7 +108,7 @@ const Glossary = () => {
 
     const deleteKeyword = (id) => {
         console.log('inside delete', id);
-        axios.get('http://localhost:4000/glossary/deleteglossary/' + id)
+        axios.get(url+'/glossary/deleteglossary/' + id)
             .then(() => {
                 console.log('Deleted')
             })
@@ -119,7 +121,7 @@ const Glossary = () => {
     const editKeyword = async (id) => {
         setEditing(true)
         // console.log('inside edit', id);
-        let editingData = await axios.get('http://localhost:4000/glossary/editglossary/' + id)
+        let editingData = await axios.get(url+'/glossary/editglossary/' + id)
         // console.log("editingData is ", editingData.data);
         setFormData({
             keyword: editingData.data.keyword,

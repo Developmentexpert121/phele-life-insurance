@@ -15,15 +15,27 @@ import SocialComponent from "../common/Socials";
 import HomeTable from './HomeTable'
 import HomeTableFaq from "./HomeTableFaq";
 
+
 const Home = () => {
-  const settings = {
-    className: "center",
+  // const settings = {
+  //   className: "center",
+  //   centerMode: true,
+  //   infinite: true,
+  //   centerPadding: "60px",
+  //   slidesToShow: 3,
+  //   autoplay: true,
+  //   autoplaySpeed: 2000
+  // };
+  var settings = {
     centerMode: true,
+    className: "centerClass",
+    dots: true,
     infinite: true,
-    centerPadding: "60px",
     slidesToShow: 3,
+    slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000
+    autoplaySpeed: 2000,
+    pauseOnHover: true
   };
   return (
     <div>
@@ -81,48 +93,67 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid>
-        <Row className="topic-main-box">
+
+      <Row className="topic-main-box">
+        <Container>
           <Carousel className="carousel-div">
-            <Carousel.Item>
 
-              <img
-                className="d-block  slider-image "
-                src={Banner1}
-                alt="First slide"
-              />
+            <Carousel.Item>
+              <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+                <img
+                  className="d-block  slider-image "
+                  src={Banner1}
+                  alt="First slide"
+                />
+              </Col>
               <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+
+                  <h3>First slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </Col>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block  slider-image"
-                src={Banner2}
-                alt="Second slide"
-              />
-
+              <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+                <img
+                  className="d-block  slider-image"
+                  src={Banner2}
+                  alt="Second slide"
+                />
+              </Col>
               <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+                  <h3>Second slide label</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </Col>
+
+
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block  slider-image"
-                src={Banner3}
-                alt="Third slide"
-              />
+              <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+
+                <img
+                  className="d-block  slider-image"
+                  src={Banner3}
+                  alt="Third slide"
+                />
+              </Col>
 
               <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+
+                  <h3>Third slide label</h3>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </Col>
+
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
-        </Row>
-      </Container>
+        </Container>
+      </Row>
+
       <Container>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
@@ -140,26 +171,28 @@ const Home = () => {
         <Row>
           <Col>
             <div className='slider-main'>
-              <h2>Center Mode</h2>
+
               <Slider {...settings}>
                 <div>
                   <img src={Banner1} alt="First" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} alt="second" className="bottom-slider-image" />
+                  <img src={Banner2} alt="second" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} alt="third" className="bottom-slider-image" />
+                  <img src={Banner3} alt="third" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} alt="" className="bottom-slider-image" />
+                  <img src={Banner1} alt="First" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} alt="" className="bottom-slider-image" />
+                  <img src={Banner2} alt="second" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner1} alt="" className="bottom-slider-image" />
+                  <img src={Banner3} alt="third" className="bottom-slider-image" />
                 </div>
+               
+
               </Slider>
             </div>
           </Col>

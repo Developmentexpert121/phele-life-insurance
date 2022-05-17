@@ -165,6 +165,8 @@
 
 /* new Endd */
 
+
+
 .slider-main .slick-current {
     transform: scale(1.4);
 }
@@ -173,18 +175,18 @@
     overflow: visible;
 }
 
-.slider-main .slick-list * {
-    transition: all 0.3s ease;
-}
+/* .slider-main .slick-list * {
+    transition: all 1.3s ease;
+} */
 
 .slider-main .slick-list {
     overflow: visible;
 }
 
-.slider-main .slick-track {
+/* .slider-main .slick-track {
     padding-top: 100px;
     padding-bottom: 100px;
-}
+} */
 
 .slider-image {
     width: 100% !important;
@@ -441,7 +443,8 @@ body {
 .sidenav-box {
     position: sticky;
     top: 20px;
-    z-index: 1050;
+    /* z-index: 1050; */
+    z-index: 2;
     height: 100%;
 }
 
@@ -473,3 +476,82 @@ body {
         padding-right: 40px !important;
     }
 }
+
+/* Date 17/5/22  start */
+.navbar-light .navbar-nav .nav-link {
+    color: #0b408a !important;
+}
+
+.carousel-caption {
+    position: unset !important;
+    color: #000 !important;
+}
+
+.active.carousel-item {
+    display: flex !important;
+    flex: auto !important;
+    align-items: center;
+    background: #fff;
+}
+
+.homeTrending {
+    color: #000 !important;
+}
+
+.carousel-caption .homeTrending {
+    flex: auto !important;
+    width: 100%;
+    text-align: start;
+    padding-left: 11px;
+}
+
+.slider-image {
+    width: 100% !important;
+    height: auto;
+
+}
+
+span.carousel-control-prev-icon,
+span.carousel-control-next-icon {
+    background-color: #078bd1;
+    height: 65px;
+    width: 65px;
+    border-radius: 48px;
+}
+
+.carousel-control-next {
+    right: -40px !important;
+    opacity: unset !important;
+}
+
+.carousel-control-prev {
+    left: -40px !important;
+    opacity: unset !important;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 16px !important;
+    height: 16px !important;
+    background-color: #078bd1 !important;
+    border-radius: 44px !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+    display: flex !important;
+    background-color: #fff;
+    align-items: center !important;
+}
+
+.slick-slider.center.slick-initialized {
+    overflow: hidden !important;
+}
+.z-index-2 {
+    z-index: 5;
+    background: white;
+}
+
+/* Date 17/5/22  eND */
