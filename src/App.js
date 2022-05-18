@@ -2,9 +2,10 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 // import Header from './components/common/Header';
 import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Test,Testa,Form,
-  Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies} from './components/pages/index';
+  Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies,DynamicLibrary} from './components/pages/index';
 
 import {Dashboard,AdminFaq, AdminLibrary,InsuranceCompany, AdminGlossary, AdminNewsMedia} from './admin/AdminComponents';
+
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/how-claim-works" element={<HowClaimWorks />} />
         <Route path="/insurance-library" element={<InsuranceLibrary />} />
+        <Route path="/insurance-library/dynamiclibrary" element={<DynamicLibrary />} />
         <Route path="/news-media" element={<NewsMedia />} />
         <Route path="/who-needs-life-insurance" element={<WhoNeedsLifeInsurance />} />
         <Route path="/insurance-companies" element={<InsuranceCompanies />} />

@@ -70,14 +70,11 @@ const InsuranceLibrary = () => {
                 </Col>
                 <Col col={8} md={8} lg={9}>
 
-                  <div className='d-flex flex-wrap justify-content-between'><div><h5 className='mb-0'>{element.title} <ShareIcon/> </h5> <small className='d-block'>04/12/19</small></div>
-
-                    <Button ref={target} >
-                      Click me to see
-                    </Button>
-                  </div>
+                  {/* <div className='d-flex flex-wrap justify-content-between'><div><h5 className='mb-0'>{element.title} <ShareIcon/> </h5> <small className='d-block'>04/12/19</small></div>
+                    <Button ref={target} > Click me to see </Button>
+                  </div> */}
                   <p className='mb-0 mt-3'>
-                    {element.description }  <a href="" className='text-underline text-dark read-more-btn' ><strong>Read More</strong></a>
+                    {element.description }  <a href="insurance-library/dynamiclibrary" className='text-underline text-dark read-more-btn' ><strong>Read More</strong></a>
                   </p>
                 </Col>
               </Row>

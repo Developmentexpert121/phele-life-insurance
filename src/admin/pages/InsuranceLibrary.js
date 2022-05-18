@@ -73,7 +73,7 @@ const AdminLibrary = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (libraryData.slug.split(/[ ]+/).join(" ").length < 10 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join(" ").length < 10) {
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 4 || libraryData.title.split(/[ ]+/).join(" ").length < 4 ) {
             console.log('cant submit');
             alertFn("Not Updated", 'danger');
         } else {
@@ -126,6 +126,7 @@ const AdminLibrary = () => {
             })
         alertFn("Deleted", 'info');
     }
+    
     const editLibrary = (id) => {
         setEditing(true)
         axios.get(url+'/library/editlibrary/' + id)
