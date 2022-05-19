@@ -40,13 +40,13 @@
     height: 500px;
     --bs-gutter-x: 0rem !important;
     /* border: 1px solid green; */
-    background: rgb(28, 19, 184);
-    background: linear-gradient(180deg, rgba(28, 19, 184, 1) 0%, rgba(28, 19, 184, 1) 51%, rgba(255, 255, 255, 1) 51%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 0.44021358543417366) 100%);
+    /* background: #0a408a; */
+    background: linear-gradient(180deg, #0a408a 0%, #0a408a 51%, rgba(255, 255, 255, 1) 51%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 0.44021358543417366) 100%);
 }
 
 .carousel-div {
     height: 500px;
-    padding: 50px !important;
+    padding: 110px 50px !important;
 }
 
 .slider-image {
@@ -549,9 +549,21 @@ span.carousel-control-next-icon {
 .slick-slider.center.slick-initialized {
     overflow: hidden !important;
 }
+
 .z-index-2 {
     z-index: 5;
     background: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .hide-col {
+        display: none;
+    }
+}
+@media only screen and (min-width: 600px) {
+    .show-col {
+        display: none;
+    }
 }
 
 /* Date 17/5/22  eND */

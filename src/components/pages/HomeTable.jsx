@@ -28,24 +28,30 @@ export default function HomeTable() {
         <>
             <Container className="box-shadow">
 
-                
+
                 <Row>
                     {/* <Col xs={2} md={2} lg={2} ></Col> */}
 
                     <Col xs={3} md={3} lg={3} >
                         {keywords.map((keyword, i) =>
-                            <div key={i} value={keyword.keyword} className={`ps-2 ${i !== link ? 'text-blue textOnHover':"" } ${i === link ? "activeClass" : ""} `} onClick={() => { SetTextOnClick(keyword.definition); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center', }}>
-                                <h6 className='Nav-heading' >{keyword.keyword} <RiArrowRightSLine /></h6>
-                            </div>
+                            <>
+                                <div key={i} value={keyword.keyword} className={`ps-2 ${i !== link ? 'text-blue textOnHover' : ""} ${i === link ? "activeClass" : ""} `} onClick={() => { SetTextOnClick(keyword.definition); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center', }}>
+                                    <h6 className='Nav-heading' >{keyword.keyword} <RiArrowRightSLine /></h6>
+                                </div>
+                                <div className='show-col' >
+                                    Description for keyword
+
+                                </div>
+                            </>
                         )}
 
                     </Col>
-                    <Col xs={5} md={5} lg={5} style={{ height: '270px', width: "730px", backgroundColor: "#fff", padding: '36px 40px' }}>
+                    <Col className='hide-col' xs={5} md={5} lg={5} style={{ height: '270px', width: "730px", backgroundColor: "#fff", padding: '36px 40px' }}>
                         <p className='simple-text' > {textOnClick}</p>
                     </Col>
                     {/* <Col xs={2} md={2} lg={2}></Col> */}
                 </Row>
-                
+
             </Container>
         </>
     )

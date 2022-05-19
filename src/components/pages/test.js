@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { FacebookShareButton } from "react-share";
 
 const Test = () => {
-    const [question, setQuestion] = useState("")
+    // const [question, setQuestion] = useState("")
     const [thearray, setTheArray] = useState([]);
     const [inputData, setinputData] = useState({
         fname: '',
@@ -13,10 +14,10 @@ const Test = () => {
         const { name, value } = e.target;
         setinputData((prevquestion) => ({
             ...prevquestion,
-            [e.target.name]: e.target.value,
+            [name]: value,
         }))
     }
-    let data =[]
+    let data = []
     data = thearray
     console.log(data)
 
@@ -24,16 +25,18 @@ const Test = () => {
         setTheArray(asd => [...asd, inputData]);
     }
     // console.log(thearray);
-   data.sort((a, b) => (a.lname > b.lname) ? 1 : -1)
-   console.log(data)
+    data.sort((a, b) => (a.lname > b.lname) ? 1 : -1)
+    console.log(data)
     // console.log(thearray);
 
     return (
         <>
-            <div className="users">
-          
-        </div>
-          
+            <div className="users">  Hello
+                <FacebookShareButton children=" share life ins" url = "myins.com" />
+                
+
+            </div>
+
 
             <input
                 type="text"
@@ -54,7 +57,7 @@ const Test = () => {
             />
             <br />
             <br />
-             <input
+            <input
                 type="text"
                 name="mobile"
                 placeholder="mobile"
@@ -83,7 +86,7 @@ const Test = () => {
                         <td>{user.lname}</td>
                         <td>{user.mobile}</td>
                     </tr>
-          ))}
+                ))}
             </table>
 
 

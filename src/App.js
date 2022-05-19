@@ -20,8 +20,8 @@ function App() {
         <Route path="/getting-started" element={<GettingStarted />} />
         <Route path="/glossary" element={<Glossary />} />
         <Route path="/how-claim-works" element={<HowClaimWorks />} />
-        <Route path="/insurance-library" element={<InsuranceLibrary />} />
-        <Route path="/insurance-library/dynamiclibrary" element={<DynamicLibrary />} />
+        <Route exact path="/insurance-library" element={<InsuranceLibrary />} />
+        <Route path="/insurance-library/:id" element={<DynamicLibrary />} />
         <Route path="/news-media" element={<NewsMedia />} />
         <Route path="/who-needs-life-insurance" element={<WhoNeedsLifeInsurance />} />
         <Route path="/insurance-companies" element={<InsuranceCompanies />} />
