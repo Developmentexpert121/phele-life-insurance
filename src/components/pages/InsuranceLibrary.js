@@ -71,13 +71,13 @@ const InsuranceLibrary = () => {
                 </Col>
                 <Col col={8} md={8} lg={9}>
 
-                  <div className='d-flex flex-wrap justify-content-between'><div><h5 className='mb-0'>{element.title} <ShareIcon title={element.title}/> </h5> <small className='d-block'>04/12/19</small></div>
+                  <div className='d-flex flex-wrap justify-content-between text-blue'><div><h5 className='mb-0'>{element.title} <ShareIcon title={element.title}/> </h5> <small className='d-block'>04/12/19</small></div>
                     {/* <Button ref={target} > Click me to see </Button> */}
                   </div>
 
                   <div className='mb-0 mt-3'>
                     <div dangerouslySetInnerHTML={{ __html: element.description }} /> 
-                    <a href={'insurance-library/' + element.slug} className='text-underline text-dark read-more-btn' ><strong>Read More</strong></a>
+                    <a href={'insurance-library/' + element.slug} className='text-underline' ><strong>Read More</strong></a>
                   </div>
                 </Col>
               </Row>

@@ -11,7 +11,7 @@ export default function ShareIcon(props) {
 
     return (
         <>
-            <Button variant="light" ref={target} onClick={() => setShow(!show)}>
+            <Button style={{color:"#0d6efd"}} variant="light" ref={target} onClick={() => setShow(!show)}>
                 <FiShare2 />
             </Button>
 

@@ -2,11 +2,6 @@ import React from "react";
 import { Container, Row, Col, Carousel, CarouselItem, Button, Card } from "react-bootstrap";
 import YoutubeEmbed from "../YoutubeEmbed";
 import "./../../assets/styles/common.css";
-import Banner1 from './../../assets/banner1.jpg';
-import Banner2 from './../../assets/banner2.jpg';
-import Banner3 from './../../assets/banner3.jpg';
-import Banner4 from './../../assets/banner4.jpg';
-import Banner5 from './../../assets/banner5.jpg';
 import Share from './../../assets/share.jpg';
 import Slider from "react-slick";
 import Footer from './../common/Footer';
@@ -14,7 +9,14 @@ import Header from './../common/Header';
 import SocialComponent from "../common/Socials";
 import HomeTable from './HomeTable'
 import HomeTableFaq from "./HomeTableFaq";
-
+import Banner1 from './../../assets/banner1.jpg';
+import Banner2 from './../../assets/banner2.jpg';
+import Banner3 from './../../assets/banner3.jpg';
+import Banner4 from './../../assets/banner4.jpg';
+import Banner5 from './../../assets/banner5.jpg';
+import HomeSlider1 from "../../assets/homeSlider1.jpg"
+import HomeSlider2 from "./../../assets/homeSlider2.jpg"
+import HomeSlider3 from "./../../assets/homeSlider3.jpg"
 
 const Home = () => {
   // const settings = {
@@ -33,7 +35,6 @@ const Home = () => {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true
   };
@@ -50,7 +51,7 @@ const Home = () => {
           </Col>
         </Row>
         <Row className="insurance-sub-box">
-          <Col>
+          <Col xs={12} md={6}>
             <Card style={{ width: "24rem" }}>
               <Card.Img variant="top" src={Banner1} />
               <Card.Body>
@@ -68,7 +69,7 @@ const Home = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col>
+          <Col xs={12} md={6}>
             <Card style={{ width: "24rem" }}>
               <Card.Img variant="top" src={Banner2} />
               <Card.Body>
@@ -174,24 +175,14 @@ const Home = () => {
 
               <Slider {...settings}>
                 <div>
-                  <img src={Banner1} alt="First" className="bottom-slider-image" />
+                  <img src={HomeSlider1} alt="First" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner2} alt="second" className="bottom-slider-image" />
+                  <img src={HomeSlider2} alt="second" className="bottom-slider-image" />
                 </div>
                 <div>
-                  <img src={Banner3} alt="third" className="bottom-slider-image" />
+                  <img src={HomeSlider3} alt="third" className="bottom-slider-image" />
                 </div>
-                <div>
-                  <img src={Banner1} alt="First" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={Banner2} alt="second" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={Banner3} alt="third" className="bottom-slider-image" />
-                </div>
-               
 
               </Slider>
             </div>

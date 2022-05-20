@@ -131,7 +131,7 @@
 }
 
 .textOnHover:hover {
-    color: #f7b907;
+    color: #f7b907
 }
 
 /* New-----startt */
@@ -250,10 +250,10 @@
 }
 
 
-.side-tab-box :active {
+/* .side-tab-box :active {
     background-color: #f7b907;
 
-}
+} */
 
 .activeDiv :active {
     background-color: #f7b907;
@@ -314,7 +314,7 @@ body .librarybox {
 
 .faq-question-box {
     /* border:1px solid green; */
-    padding-left: 50px;
+    /* padding-left: 50px; */
     font-weight: bold;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
@@ -324,7 +324,7 @@ body .librarybox {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.faq-ful-box .faq-sub-box .faq-question-box {
+.faq-sub-box .faq-question-box {
     padding: 12px;
     background: #f5f5f5;
 }
@@ -335,31 +335,31 @@ body .librarybox {
     display: block !important;
 }
 
-.faq-answer-box,
+/* .faq-answer-box,
 .faq-answer-box * {
     transition: all 2s ease;
-}
+} */
 
-.faq-answer-box {
+/* .faq-answer-box {
     padding-left: 20px;
     padding-right: 20px;
 
-}
+} */
 
 .faq-answer-box.show {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
     background: #f5f5f5;
     opacity: 1;
     height: 100%;
-    transition: padding .35s ease-in-out;
+    /* transition: padding .35s ease-in-out; */
 }
 
-.faq-ful-box .faq-sub-box .faq-question-box[aria-expanded="true"],
+/* .faq-ful-box .faq-sub-box .faq-question-box[aria-expanded="true"],
 .faq-ful-box .faq-sub-box .faq-question-box:hover {
     background: #d7ebf5;
     color: #0054a6;
-}
+} */
 
 .library-main-box {
     margin-bottom: 30px;
@@ -440,6 +440,7 @@ body {
     min-height: 100vh;
 }
 
+
 .sidenav-box {
     position: sticky;
     top: 20px;
@@ -494,9 +495,9 @@ body {
     background: #fff;
 }
 
-.homeTrending {
+/* .homeTrending {
     color: #000 !important;
-}
+} */
 
 .carousel-caption .homeTrending {
     flex: auto !important;
@@ -555,15 +556,26 @@ span.carousel-control-next-icon {
     background: white;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 992px) {
     .hide-col {
         display: none;
     }
 }
-@media only screen and (min-width: 600px) {
+
+@media only screen and (min-width: 992px) {
     .show-col {
         display: none;
     }
+
+    .accordion-button:not(.collapsed)::after {
+        transform: rotate(-90deg) !important
+    }
+}
+
+.home-title-page {
+    color: #284287;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 /* Date 17/5/22  eND */
