@@ -167,27 +167,30 @@
 
 
 
-.slider-main .slick-current {
+/* .slider-main .slick-current {
     transform: scale(1.4);
-}
+} */
 
-.slider-main .slick-list {
+/* .slider-main .slick-list {
     overflow: visible;
-}
+} */
 
 /* .slider-main .slick-list * {
     transition: all 1.3s ease;
 } */
 
-.slider-main .slick-list {
+/* .slider-main .slick-list {
     overflow: visible;
-}
+} */
 
 /* .slider-main .slick-track {
     padding-top: 100px;
     padding-bottom: 100px;
 } */
 
+/* .slick-slider.center.slick-initialized {
+    overflow: hidden !important;
+} */
 .slider-image {
     width: 100% !important;
     max-width: 600px !important;
@@ -547,9 +550,6 @@ span.carousel-control-next-icon {
     align-items: center !important;
 }
 
-.slick-slider.center.slick-initialized {
-    overflow: hidden !important;
-}
 
 .z-index-2 {
     z-index: 5;
@@ -577,5 +577,65 @@ span.carousel-control-next-icon {
     font-weight: bold;
     font-size: 25px;
 }
+
+/* accordian in faqs */
+.accordion-button:focus {
+    box-shadow :  0 0 0 0.25rem rgba(215, 219, 224, 0.02) !important;
+}
+.accordianOnHover:hover{
+    border-left: 4px solid #f7b907;
+}
+.accordion-button{
+    font-size: 1.2rem !important;
+}
+/* -------FAQS--------- */
+/* .App {
+    text-align: center;
+    width: 50%;
+    margin: 10rem auto;
+    
+  } */
+  
+  /* .slide img{
+  width:20rem;
+  margin: 0 auto;
+  }
+  
+  .slide{
+    transform: scale(0.2);
+    transition: transform 300ms;
+    opacity: 0.5;
+  }
+  
+  .activeSlide{
+    transform: scale(1.5);
+    opacity: 1;
+  } */
+/*   
+  .arrow{
+    background-color: #fff;
+    position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  }
+  
+  .arrow svg{
+    transition: color 300ms;
+  }
+  
+  .arrow svg:hover {
+    color: #68edff;
+  } */
+/*   
+  .next {
+    right: 0%;
+    top: 50%;
+  }
+  
+  .prev {
+    left: 0%;
+    top: 50%;
+  } */
+
 
 /* Date 17/5/22  eND */

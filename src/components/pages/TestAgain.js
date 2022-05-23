@@ -19,6 +19,7 @@ const Testa = () =>{
                 placeholder = "Enter Name"
                 
             />
+            
             <input
                 type="text" 
                 name ="email"

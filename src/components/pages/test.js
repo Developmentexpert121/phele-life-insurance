@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FacebookShareButton } from "react-share";
+import Carousel from "./Carousal"
 
 const Test = () => {
     // const [question, setQuestion] = useState("")
@@ -28,14 +29,17 @@ const Test = () => {
     data.sort((a, b) => (a.lname > b.lname) ? 1 : -1)
     console.log(data)
     // console.log(thearray);
+    var items = [1, 2, 3, 4, 5]
 
     return (
         <>
             <div className="users">  Hello
-                <FacebookShareButton children=" share life ins" url = "myins.com" />
-                
+                <FacebookShareButton children=" share life ins" url="myins.com" />
+
 
             </div>
+
+            <Carousel/>
 
 
             <input

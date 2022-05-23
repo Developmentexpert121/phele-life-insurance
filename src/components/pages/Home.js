@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Carousel, CarouselItem, Button, Card } from "react-bootstrap";
 import YoutubeEmbed from "../YoutubeEmbed";
 import "./../../assets/styles/common.css";
-import Share from './../../assets/share.jpg';
+// import Share from './../../assets/share.jpg';
 import Slider from "react-slick";
 import Footer from './../common/Footer';
 import Header from './../common/Header';
@@ -14,9 +14,10 @@ import Banner2 from './../../assets/banner2.jpg';
 import Banner3 from './../../assets/banner3.jpg';
 import Banner4 from './../../assets/banner4.jpg';
 import Banner5 from './../../assets/banner5.jpg';
-import HomeSlider1 from "../../assets/homeSlider1.jpg"
-import HomeSlider2 from "./../../assets/homeSlider2.jpg"
-import HomeSlider3 from "./../../assets/homeSlider3.jpg"
+import HomeSlider1 from "../../assets/homeSlider1.jpg";
+import HomeSlider2 from "./../../assets/homeSlider2.jpg";
+import HomeSlider3 from "./../../assets/homeSlider3.jpg";
+import ShareButton from "../../ShareIcon";
 
 const Home = () => {
   // const settings = {
@@ -30,7 +31,7 @@ const Home = () => {
   // };
   var settings = {
     centerMode: true,
-    className: "centerClass",
+    // className: "centerClass",
     dots: true,
     infinite: true,
     slidesToShow: 3,
@@ -59,7 +60,7 @@ const Home = () => {
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>Why Life Insurance is Sabse Pehle? </Col>
                     <Col>
-                      <img alt="" src={Share} />
+                      <ShareButton title = "Why Life Insurance is Sabse Pehle?" />
                     </Col>
                   </Row>
                 </Card.Title>
@@ -77,7 +78,7 @@ const Home = () => {
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>How do I get started?</Col>
                     <Col>
-                      <img alt="" src={Share} />
+                      <ShareButton title = "How do I get started?"/>
                     </Col>
                   </Row>
                 </Card.Title>
@@ -205,7 +206,7 @@ const Home = () => {
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
               <Card.Img variant="top" src={Banner3} />
-              <Card.Body>
+              <Card.Body style={{minHeight:"200px"}}>
                 <Card.Title>I am starting out</Card.Title>
                 <Card.Text>
                   Be a smart investor by taking advantage of your age and earning potential.
@@ -217,7 +218,7 @@ const Home = () => {
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
               <Card.Img variant="top" src={Banner4} />
-              <Card.Body>
+              <Card.Body style={{minHeight:"200px"}}>
                 <Card.Title>I have growing responsibilities</Card.Title>
                 <Card.Text>
                   Invest towards your future goals.
@@ -229,7 +230,7 @@ const Home = () => {
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
               <Card.Img variant="top" src={Banner5} />
-              <Card.Body>
+              <Card.Body style={{minHeight:"200px"}} >
                 <Card.Title>
                   I am nearing retirement</Card.Title>
                 <Card.Text>

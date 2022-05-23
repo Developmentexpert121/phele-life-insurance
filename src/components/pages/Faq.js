@@ -63,8 +63,8 @@ const Faq = () => {
           <Col xs={12} md={9} lg={9}>
             <Accordion>
               {question.map((s, index) =>
-                <Accordion.Item key={index} eventKey={index}>
-                  <Accordion.Header>{s.question}</Accordion.Header>
+                <Accordion.Item className='accordianOnHover' key={index} eventKey={index}>
+                  <Accordion.Header >{s.question}</Accordion.Header>
                   <Accordion.Body>
                     {s.answer}
                   </Accordion.Body>
