@@ -1,44 +1,26 @@
 import React from "react";
 import { Container, Row, Col, Carousel, CarouselItem, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed";
 import "./../../assets/styles/common.css";
-// import Share from './../../assets/share.jpg';
 import Slider from "react-slick";
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import SocialComponent from "../common/Socials";
 import HomeTable from './HomeTable'
 import HomeTableFaq from "./HomeTableFaq";
+import ShareButton from "../../ShareIcon";
+import MySlider from "./Carousal"
+
 import Banner1 from './../../assets/banner1.jpg';
 import Banner2 from './../../assets/banner2.jpg';
 import Banner3 from './../../assets/banner3.jpg';
 import Banner4 from './../../assets/banner4.jpg';
 import Banner5 from './../../assets/banner5.jpg';
-import HomeSlider1 from "../../assets/homeSlider1.jpg";
-import HomeSlider2 from "./../../assets/homeSlider2.jpg";
-import HomeSlider3 from "./../../assets/homeSlider3.jpg";
-import ShareButton from "../../ShareIcon";
+
+
 
 const Home = () => {
-  // const settings = {
-  //   className: "center",
-  //   centerMode: true,
-  //   infinite: true,
-  //   centerPadding: "60px",
-  //   slidesToShow: 3,
-  //   autoplay: true,
-  //   autoplaySpeed: 2000
-  // };
-  var settings = {
-    centerMode: true,
-    // className: "centerClass",
-    dots: true,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplaySpeed: 2000,
-    pauseOnHover: true
-  };
   return (
     <div>
       <Header />
@@ -46,9 +28,7 @@ const Home = () => {
       <Container className="pt-5 pb-1" fluid="md">
         <Row>
           <Col xs={12} md={12} lg={12} className="yooo">
-
             <h2>Apni Life Ko Sabse Pehle Do Life Insurance Ka Bharosa</h2>
-
           </Col>
         </Row>
         <Row className="insurance-sub-box">
@@ -56,7 +36,7 @@ const Home = () => {
             <Card style={{ width: "24rem" }}>
               <Card.Img variant="top" src={Banner1} />
               <Card.Body>
-                <Card.Title>
+                <Card.Title className="text-blue" >
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>Why Life Insurance is Sabse Pehle? </Col>
                     <Col>
@@ -74,7 +54,7 @@ const Home = () => {
             <Card style={{ width: "24rem" }}>
               <Card.Img variant="top" src={Banner2} />
               <Card.Body>
-                <Card.Title>
+                <Card.Title className="text-blue">
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>How do I get started?</Col>
                     <Col>
@@ -172,25 +152,11 @@ const Home = () => {
         </Row>
         <Row>
           <Col>
-            <div className='slider-main'>
-
-              <Slider {...settings}>
-                <div>
-                  <img src={HomeSlider1} alt="First" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={HomeSlider2} alt="second" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={HomeSlider3} alt="third" className="bottom-slider-image" />
-                </div>
-
-              </Slider>
-            </div>
+            <MySlider/>
           </Col>
         </Row>
         <Row className='py-lg-4'>
-          <Col xs={12} md={12} lg={12} className="homeTrending">
+          <Col xs={12} md={12} lg={12} style={{margin:"50px"}} className="homeTrending">
             <span>Commonly Asked Questions</span>
           </Col>
         </Row>
@@ -206,37 +172,41 @@ const Home = () => {
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
               <Card.Img variant="top" src={Banner3} />
-              <Card.Body style={{minHeight:"200px"}}>
-                <Card.Title>I am starting out</Card.Title>
-                <Card.Text>
+              <Card.Body>
+                <Card.Title className="text-blue">I am starting out</Card.Title>
+                <Card.Text style={{minHeight:"50px"}}>
                   Be a smart investor by taking advantage of your age and earning potential.
                 </Card.Text>
-                <Button variant="primary">Get Started</Button>
+                {/* <Button variant="light">Get Started</Button> */}
+                <Link to="/who-needs-life-insurance"> Get Started</Link>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
               <Card.Img variant="top" src={Banner4} />
-              <Card.Body style={{minHeight:"200px"}}>
-                <Card.Title>I have growing responsibilities</Card.Title>
-                <Card.Text>
+              <Card.Body>
+                <Card.Title className="text-blue" >I have growing responsibilities</Card.Title>
+                <Card.Text  style={{minHeight:"50px"}}>
                   Invest towards your future goals.
                 </Card.Text>
-                <Button variant="primary">Get Started</Button>
+                {/* <Button variant="light">Get Started</Button> */}
+                <Link to="/who-needs-life-insurance"> Get Started</Link>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
               <Card.Img variant="top" src={Banner5} />
-              <Card.Body style={{minHeight:"200px"}} >
-                <Card.Title>
+              <Card.Body  >
+                <Card.Title className="text-blue">
                   I am nearing retirement</Card.Title>
-                <Card.Text>
+                <Card.Text style={{minHeight:"50px"}}>
                   Prepare for a carefree retired life.
                 </Card.Text>
-                <Button variant="primary">Get Started</Button>
+                {/* <Button variant="light">Get Started</Button> */}
+                <Link to="/who-needs-life-insurance"> Get Started</Link>
+
               </Card.Body>
             </Card>
           </Col>

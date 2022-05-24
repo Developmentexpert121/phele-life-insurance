@@ -41,7 +41,7 @@ const WhatIsLifeInsurance = () => {
          </Col>
         <Col xs={12} md={9} lg={9}>
           <div>
-            <span className='main-text-heading'>What is Life Insurance?</span>
+            <span className='main-text-heading heading-margin'>What is Life Insurance?</span>
           </div>
           <div className='what-insurance-photo pt-3'>
           <img src={Banner1} style={bannerStyle} />

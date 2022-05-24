@@ -521,6 +521,7 @@ span.carousel-control-next-icon {
     height: 65px;
     width: 65px;
     border-radius: 48px;
+    margin: 5rem 0rem 0rem 0rem;
 }
 
 .carousel-control-next {
@@ -588,54 +589,22 @@ span.carousel-control-next-icon {
 .accordion-button{
     font-size: 1.2rem !important;
 }
-/* -------FAQS--------- */
-/* .App {
-    text-align: center;
-    width: 50%;
-    margin: 10rem auto;
-    
-  } */
-  
-  /* .slide img{
-  width:20rem;
-  margin: 0 auto;
-  }
-  
-  .slide{
-    transform: scale(0.2);
-    transition: transform 300ms;
-    opacity: 0.5;
-  }
-  
-  .activeSlide{
-    transform: scale(1.5);
-    opacity: 1;
-  } */
-/*   
-  .arrow{
-    background-color: #fff;
-    position: absolute;
-  cursor: pointer;
-  z-index: 10;
-  }
-  
-  .arrow svg{
-    transition: color 300ms;
-  }
-  
-  .arrow svg:hover {
-    color: #68edff;
-  } */
-/*   
-  .next {
-    right: 0%;
-    top: 50%;
-  }
-  
-  .prev {
-    left: 0%;
-    top: 50%;
-  } */
 
+/* navbar on hover */
+.dropdown-item:hover{
+    font-weight: 700
+
+}
+.heading-margin{
+    margin: 3rem auto 1rem auto !important;
+}
+
+/* -------FAQS--------- */
+
+/* slider2 buttons */
+.css-1qzevvg{
+    display: none !important;
+}
+/* ------- */
 
 /* Date 17/5/22  eND */

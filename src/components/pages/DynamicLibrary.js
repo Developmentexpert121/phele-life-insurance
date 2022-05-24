@@ -56,7 +56,7 @@ export default function DynamicLibrary() {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>{keywords.title} </span>
+              <span className='main-text-heading heading-margin'>{keywords.title} </span>
               <div>
                 <div
                   dangerouslySetInnerHTML={{ __html: keywords.description }}

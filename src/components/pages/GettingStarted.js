@@ -38,7 +38,7 @@ const GettingStarted = () => {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>Getting Started with Life Insurance</span>
+              <span className='main-text-heading heading-margin'>Getting Started with Life Insurance</span>
             </div>
             <p className='simple-text'>
               By now you probably know that you need Life Insurance before anything else. This brings us to the next step – buying Life Insurance.

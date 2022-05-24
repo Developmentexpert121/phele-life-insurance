@@ -31,7 +31,6 @@ const AdminLibrary = () => {
             setAlertMsg(null)
         }, 2000);
     }
-
     const InputHandler = (e) => {
         const { name, value } = e.target;
         setLibraryData((prevdata) => ({

@@ -62,7 +62,7 @@ const InsuranceLibrary = () => {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>Insurance Library</span>
+              <span className='main-text-heading heading-margin'>Insurance Library</span>
             </div>
             {question.map((element, index) =>
               <Row key={index} className='library-main-box shadow px-2 py-3 align-items-center'>

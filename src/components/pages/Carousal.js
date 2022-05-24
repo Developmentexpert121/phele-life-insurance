@@ -1,61 +1,79 @@
-import React from 'react'
-// import { Carousel } from '3d-react-carousal';
-import { useState } from "react";
-import Slider from "react-slick";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import HomeSlider1 from "../../assets/homeSlider1.jpg";
-import HomeSlider2 from "./../../assets/homeSlider2.jpg";
-import HomeSlider3 from "./../../assets/homeSlider3.jpg";
+import React, { Component } from "react";
+import Carousel from "react-spring-3d-carousel";
+import { config } from "react-spring";
+import img1 from '../.././assets/home1.jpg'
+import img2 from '../.././assets/home2.jpg'
+import img3 from '../.././assets/home3.jpg'
 
-const images = [HomeSlider1,HomeSlider2,HomeSlider3,HomeSlider1,HomeSlider2, HomeSlider3];
-
-function Carousal() {
-
-    const NextArrow = ({ onClick }) => {
-        return (
-            <div className="arrow next" onClick={onClick}>
-                <FaArrowRight />
-            </div>
-        )
+export default class App extends Component {
+  slides = [
+    {
+      key: 1,
+      content: (<img src={img2} alt="1" ></img>)
+    },
+    {
+      key: 2,
+      content: (<img src={img2} alt="2"/>)
+    },
+    {
+      key: 3,
+      content: (<img src={img3} alt="3"/>)
+    },
+    {
+      key: 4,
+      content: (<img src={img1} alt="4"/>)
+    },
+    {
+      key: 5,
+      content: (<img src={img2} alt="5"/>)
+    },
+    {
+      key: 6,
+      content: (<img src={img3} alt="6"/>)
     }
+  ].map((slide, index) => {
+    return { ...slide, onClick: () => this.setState({ goToSlide: index }) };
+  });
 
-    const PrevArrow = ({ onClick }) => {
-        return (
-            <div className="arrow prev" onClick={onClick}>
-                <FaArrowLeft />
-            </div>
-        )
-    }
+  onChangeInput = (e) => {
+    this.setState({
+      [e.target.name]: parseInt(e.target.value, 10) || 0
+    });
+  };
 
-    const [imgIndex, setImgIndex] = useState(0)
+  state = {
+    goToSlide: 0,
+    offsetRadius: 2,
+    showNavigation: true,
+    config: config.gentle,
+    autoplay: true,
+    autoplaySpeed: 2000
+  };
 
+  render() {
     const settings = {
-        infinite: true,
-        lazyLoad: true,
-        speed: 300,
-        slidesToShow: 3,
-        centerMode: true,
-        centerPadding: 0,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        beforeChange: (current, next) => setImgIndex(next),
+      dots: true,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1
     };
 
-
     return (
-        <div className="App">
-            <h1>React 3D Slider</h1>
-            <Slider {...settings}>
-                {images.map((img, idx) => (
-
-                    <div className={idx === imgIndex ? "slide activeSlide" : "slide"}>
-
-                        <img src={img} alt={idx} />
-                    </div>
-                ))}
-            </Slider>
-        </div>
+      <div style={{ width: "100%", height: "17rem", margin: "0 4.5rem" }}>
+        <Carousel
+          slides={this.slides}
+          goToSlide={this.state.goToSlide}
+          offsetRadius={this.state.offsetRadius}
+          showNavigation={this.state.showNavigation}
+          animationConfig={this.state.config}
+          autoPlay
+          interval={this.state.autoplaySpeed}
+          infiniteLoop={true}
+          dynamicHeight={true}
+          ref={(slider) => (this.slider = slider)}
+          {...settings}
+        ></Carousel>
+      </div>
     );
+  }
 }
-
-export default Carousal;

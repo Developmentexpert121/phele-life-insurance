@@ -37,7 +37,7 @@ const HowClaimWorks = () => {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>How Life Insurance Claims Work</span>
+              <span className='main-text-heading heading-margin'>How Life Insurance Claims Work</span>
             </div>
             <span className='sub-headings pt-3 pb-2'>What is an Insurance claim?</span>
             <p className='simple-text pt-2'>

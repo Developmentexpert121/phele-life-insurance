@@ -80,7 +80,7 @@ const Glossary = () => {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>Glossary</span>
+              <span className='main-text-heading heading-margin'>Glossary</span>
               <p>Cant keep up with all the terminologies? Here's a handy guide to all the words you might come across when learning about Life Insurance.</p>
               {/* <Button onClick={() => { console.log(result, "result 0"); }} > Console </Button> */}
 

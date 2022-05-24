@@ -31,8 +31,8 @@ export default function HomeTable() {
                             {faqs.map((faq, i) =>
                                 <>
                                     <Accordion.Item key={i} eventKey={i}>
-                                        <Accordion.Header className={`ps-2 ${i !== link ? 'text-blue textOnHover' : ""} ${i === link ? "activeClass" : ""} `} >
-                                            <span key={i} value={faq.question} onClick={() => { SetTextOnClick(faq.answer); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center' }}>
+                                        <Accordion.Header onClick={() => { SetTextOnClick(faq.answer); handleClick(i); }} className={`ps-2 ${i !== link ? 'text-blue textOnHover' : ""} ${i === link ? "activeClass" : ""} `} >
+                                            <span key={i} value={faq.question} style={{ height: '65px', width: "300px", justifyContent: 'center' }}>
                                                 <h6>{faq.question} </h6>
                                             </span>
                                         </Accordion.Header>

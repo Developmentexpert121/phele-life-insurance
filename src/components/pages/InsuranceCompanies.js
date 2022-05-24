@@ -63,13 +63,13 @@ const InsuranceCompany = () => {
           </Col>
           <Col>
             <Row xs={12} md={9} lg={9} >
-              <span className='main-text-heading mb-4'>List of Life Insurance Companies</span>
+              <span className='main-text-heading mb-4 heading-margin'>List of Life Insurance Companies</span>
             </Row>
             <Row xs={12} md={9} lg={9}>
 
               {companies.map((d, i) =>
-                <Col xs={12} md={6} lg={4} key={i} >
-                  <CompaniesLibrary name={d.companyName} number={d.mobile} url={d.url} image={d.picture} />
+                <Col xs={12} md={6} lg={6} key={i} >
+                  <CompaniesLibrary  name={d.companyName} number={d.mobile} url={d.url} image={d.picture} />
                 </Col>
               )}
             </Row>

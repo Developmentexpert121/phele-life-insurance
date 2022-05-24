@@ -31,8 +31,8 @@ export default function HomeTable() {
                             {keywords.map((keyword, i) =>
                                 <>
                                     <Accordion.Item key={i} eventKey={i}>
-                                        <Accordion.Header className={`ps-2 ${i !== link ? 'text-blue textOnHover' : ""} ${i === link ? "activeClass" : ""} `}>
-                                            <span key={i} value={keyword.keyword}  onClick={() => { SetTextOnClick(keyword.definition); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center', }}>
+                                        <Accordion.Header onClick={() => { SetTextOnClick(keyword.definition); handleClick(i); }} className={`ps-2 ${i !== link ? 'text-blue textOnHover' : ""} ${i === link ? "activeClass" : ""} `}>
+                                            <span key={i} value={keyword.keyword} style={{ height: '65px', width: "300px", justifyContent: 'center', }}>
                                                 <h6 className='Nav-heading' >{keyword.keyword} </h6>
                                             </span>
                                         </Accordion.Header>

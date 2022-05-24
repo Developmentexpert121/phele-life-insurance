@@ -45,7 +45,7 @@ const LifeInsuranceCouncil = () => {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>About Life Insurance Council</span>
+              <span className='main-text-heading heading-margin'>About Life Insurance Council</span>
             </div>
             <span className='sub-headings pt-3 pb-2'>Who We Are </span>
             <p className='simple-text pt-2'>
