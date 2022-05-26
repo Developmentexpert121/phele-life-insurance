@@ -4,13 +4,17 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
 import Alert from ".././Alert";
+import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
+
+const url = process.env.REACT_APP_URL
 
 const AdminLibrary = () => {
 
     const [libraryData, setLibraryData] = useState({
         slug: '',
         title: '',
-        description: '',
+        // description: '',
         picture: ''
     })
     const [thearray, setTheArray] = useState([]);
@@ -18,6 +22,7 @@ const AdminLibrary = () => {
     const [editingId, setEditingId] = useState("");
     const [alertMsg, setAlertMsg] = useState(null);
     const [alertType, setAlertType] = useState('');
+    const [Contents, setContents] = useState("")
 
     const alertFn = (message, type) => {
         setAlertMsg(message);
@@ -26,7 +31,6 @@ const AdminLibrary = () => {
             setAlertMsg(null)
         }, 2000);
     }
-
     const InputHandler = (e) => {
         const { name, value } = e.target;
         setLibraryData((prevdata) => ({
@@ -41,8 +45,9 @@ const AdminLibrary = () => {
 
     const submit = (e) => {
         e.preventDefault();
-        if (libraryData.slug.split(/[ ]+/).join(" ").length < 10 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join(" ").length < 10) {
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 4 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || Contents.split(/[ ]+/).join("").length<3 ) {
             console.log('cant submit');
+            // split(/[ ]+/).join(" ")
             alertFn("Your data is Not Saved", "danger")
         } else {
             const formData = new FormData();
@@ -50,7 +55,7 @@ const AdminLibrary = () => {
             formData.append('picture', libraryData.picture);
             formData.append('slug', libraryData.slug);
             formData.append('title', libraryData.title);
-            formData.append('description', libraryData.description);
+            formData.append('description', Contents );
 
             axios.post('//localhost:4000/library/library', formData)
                 .then((e) => {
@@ -62,25 +67,26 @@ const AdminLibrary = () => {
             setLibraryData({
                 slug: '',
                 title: '',
-                description: '',
+                // description: '',
                 picture: ''
             })
+            setContents("")
             alertFn("Your data is Saved", 'info');
         }
     }
 
     const updatefn = () => {
         console.log("update fn");
-        if (libraryData.slug.split(/[ ]+/).join(" ").length < 10 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join(" ").length < 10) {
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 4 || libraryData.title.split(/[ ]+/).join(" ").length < 4) {
             console.log('cant submit');
             alertFn("Not Updated", 'danger');
         } else {
-            const { slug, title, description, picture } = libraryData
-            axios.post('http://localhost:4000/library/updatelibrary/' + editingId, {
+            const { slug, title, picture } = libraryData
+            axios.post(url + '/library/updatelibrary/' + editingId, {
                 slug,
                 title,
-                description,
-                picture
+                picture,
+                description:Contents
             })
                 .then((response) => {
                     console.log(response);
@@ -93,15 +99,15 @@ const AdminLibrary = () => {
             setLibraryData({
                 slug: '',
                 title: '',
-                description: '',
                 picture: ''
             })
+            setContents("")
             alertFn("Your data is Updated", 'info');
         }
     }
 
     const GetQuetion = () => {
-        fetch('http://localhost:4000/library/library'
+        fetch(url + '/library/library'
         )
             .then((res) => res.json())
             .then((res) => {
@@ -115,7 +121,7 @@ const AdminLibrary = () => {
 
     const deleteLibrary = (id) => {
         console.log('inside delete', id);
-        axios.get('http://localhost:4000/library/deletelibrary/' + id)
+        axios.get(url + '/library/deletelibrary/' + id)
             .then(() => {
                 console.log('Deleted')
             })
@@ -124,9 +130,10 @@ const AdminLibrary = () => {
             })
         alertFn("Deleted", 'info');
     }
+
     const editLibrary = (id) => {
         setEditing(true)
-        axios.get('http://localhost:4000/library/editlibrary/' + id)
+        axios.get(url + '/library/editlibrary/' + id)
             .then((res) => {
                 console.log('edit faq', res.data.question)
                 setLibraryData({
@@ -143,6 +150,12 @@ const AdminLibrary = () => {
         setEditingId(id);
         alertFn("Edit Now", 'info');
     }
+    const newInputHandler=(e)=>{
+        console.log('running',e);
+        setContents(e)
+    }
+
+    const htmlStr="<p>Hello html<p>"
 
     return (
         <>
@@ -185,19 +198,6 @@ const AdminLibrary = () => {
                                             />
                                         </div>
                                     </Col>
-                                    <Col xs={12} md={12} lg={12}>
-                                        <div>
-                                            <label>Description</label>
-                                            <textarea
-                                                name='description'
-                                                rows={3}
-                                                className="form-control"
-                                                placeholder='Enter Description'
-                                                onChange={InputHandler}
-                                                value={libraryData.description}
-                                            />
-                                        </div>
-                                    </Col>
                                     <Col xs={12} md={6} lg={6}>
                                         <label>Company Logo</label>
                                         <input
@@ -214,6 +214,21 @@ const AdminLibrary = () => {
                                             </div>
                                         )} */}
                                     </Col>
+                                    <Col xs={12} md={12} lg={12}>
+                                        <div>
+                                            <label>Description</label>
+                                            {/* <textarea
+                                                name='description'
+                                                rows={3}
+                                                className="form-control"
+                                                placeholder='Enter Description'
+                                                onChange={InputHandler}
+                                                value={libraryData.description}
+                                            /> */}
+                                            <SunEditor name='description' height="100px" placeholder='Enter Description' onChange={newInputHandler} setContents={libraryData.description}  />
+                                        </div>
+                                    </Col>
+                                    
                                 </Row>
                                 <Col>
                                     {/* <button className='btn btn-primary m-2' >Submit</button> */}
@@ -241,7 +256,7 @@ const AdminLibrary = () => {
                         <Row key={index} className='library-main-box p-1 align-items-center'>
                             <Col xs={2} md={2} lg={2}>{item.slug}</Col>
                             <Col xs={2} md={2} lg={2}>{item.title}</Col>
-                            <Col xs={4} md={4} lg={4}>{item.description}</Col>
+                            <Col xs={4} md={4} lg={4}  onClick={()=>{console.log("hi",<div dangerouslySetInnerHTML={{ __html: item.description } } />); }} >   <div dangerouslySetInnerHTML={{ __html: item.description } } /> </Col>
                             <Col xs={2} md={2} lg={2}>{item.picture}</Col>
                             <Col xs={1} md={1} lg={1} onClick={() => { editLibrary(item._id); }} >< FaEdit /></Col>
                             <Col xs={1} md={1} lg={1} onClick={() => { deleteLibrary(item._id); }} >< FaTrashAlt /></Col>

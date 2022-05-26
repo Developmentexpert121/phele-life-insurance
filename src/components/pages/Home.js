@@ -1,30 +1,26 @@
 import React from "react";
 import { Container, Row, Col, Carousel, CarouselItem, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed";
 import "./../../assets/styles/common.css";
-import Banner1 from './../../assets/banner1.jpg';
-import Banner2 from './../../assets/banner2.jpg';
-import Banner3 from './../../assets/banner3.jpg';
-import Banner4 from './../../assets/banner4.jpg';
-import Banner5 from './../../assets/banner5.jpg';
-import Share from './../../assets/share.jpg';
 import Slider from "react-slick";
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import SocialComponent from "../common/Socials";
 import HomeTable from './HomeTable'
 import HomeTableFaq from "./HomeTableFaq";
+import ShareButton from "../../ShareIcon";
+import MySlider from "./Carousal"
+
+import Banner1 from './../../assets/banner1.jpg';
+import Banner2 from './../../assets/banner2.jpg';
+import Banner3 from './../../assets/banner3.jpg';
+import Banner4 from './../../assets/banner4.jpg';
+import Banner5 from './../../assets/banner5.jpg';
+
+
 
 const Home = () => {
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
-    autoplay: true,
-    autoplaySpeed: 2000
-  };
   return (
     <div>
       <Header />
@@ -32,21 +28,19 @@ const Home = () => {
       <Container className="pt-5 pb-1" fluid="md">
         <Row>
           <Col xs={12} md={12} lg={12} className="yooo">
-
             <h2>Apni Life Ko Sabse Pehle Do Life Insurance Ka Bharosa</h2>
-
           </Col>
         </Row>
         <Row className="insurance-sub-box">
-          <Col>
+          <Col xs={12} md={6}>
             <Card style={{ width: "24rem" }}>
               <Card.Img variant="top" src={Banner1} />
               <Card.Body>
-                <Card.Title>
+                <Card.Title className="text-blue" >
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>Why Life Insurance is Sabse Pehle? </Col>
                     <Col>
-                      <img alt="" src={Share} />
+                      <ShareButton title = "Why Life Insurance is Sabse Pehle?" />
                     </Col>
                   </Row>
                 </Card.Title>
@@ -56,15 +50,15 @@ const Home = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col>
+          <Col xs={12} md={6}>
             <Card style={{ width: "24rem" }}>
               <Card.Img variant="top" src={Banner2} />
               <Card.Body>
-                <Card.Title>
+                <Card.Title className="text-blue">
                   <Row>
                     <Col xs={12} md={8} lg={8} xl={8}>How do I get started?</Col>
                     <Col>
-                      <img alt="" src={Share} />
+                      <ShareButton title = "How do I get started?"/>
                     </Col>
                   </Row>
                 </Card.Title>
@@ -81,48 +75,67 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid>
-        <Row className="topic-main-box">
+
+      <Row className="topic-main-box">
+        <Container>
           <Carousel className="carousel-div">
-            <Carousel.Item>
 
-              <img
-                className="d-block  slider-image "
-                src={Banner1}
-                alt="First slide"
-              />
+            <Carousel.Item>
+              <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+                <img
+                  className="d-block  slider-image "
+                  src={Banner1}
+                  alt="First slide"
+                />
+              </Col>
               <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+
+                  <h3>First slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </Col>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block  slider-image"
-                src={Banner2}
-                alt="Second slide"
-              />
-
+              <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+                <img
+                  className="d-block  slider-image"
+                  src={Banner2}
+                  alt="Second slide"
+                />
+              </Col>
               <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+                  <h3>Second slide label</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </Col>
+
+
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
-                className="d-block  slider-image"
-                src={Banner3}
-                alt="Third slide"
-              />
+              <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+
+                <img
+                  className="d-block  slider-image"
+                  src={Banner3}
+                  alt="Third slide"
+                />
+              </Col>
 
               <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
+
+                  <h3>Third slide label</h3>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </Col>
+
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
-        </Row>
-      </Container>
+        </Container>
+      </Row>
+
       <Container>
         <Row className='py-lg-4'>
           <Col xs={12} md={12} lg={12} className="homeTrending">
@@ -139,33 +152,11 @@ const Home = () => {
         </Row>
         <Row>
           <Col>
-            <div className='slider-main'>
-              <h2>Center Mode</h2>
-              <Slider {...settings}>
-                <div>
-                  <img src={Banner1} alt="First" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={Banner1} alt="second" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={Banner1} alt="third" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={Banner1} alt="" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={Banner1} alt="" className="bottom-slider-image" />
-                </div>
-                <div>
-                  <img src={Banner1} alt="" className="bottom-slider-image" />
-                </div>
-              </Slider>
-            </div>
+            <MySlider/>
           </Col>
         </Row>
         <Row className='py-lg-4'>
-          <Col xs={12} md={12} lg={12} className="homeTrending">
+          <Col xs={12} md={12} lg={12} style={{margin:"50px"}} className="homeTrending">
             <span>Commonly Asked Questions</span>
           </Col>
         </Row>
@@ -182,11 +173,12 @@ const Home = () => {
             <Card >
               <Card.Img variant="top" src={Banner3} />
               <Card.Body>
-                <Card.Title>I am starting out</Card.Title>
-                <Card.Text>
+                <Card.Title className="text-blue">I am starting out</Card.Title>
+                <Card.Text style={{minHeight:"50px"}}>
                   Be a smart investor by taking advantage of your age and earning potential.
                 </Card.Text>
-                <Button variant="primary">Get Started</Button>
+                {/* <Button variant="light">Get Started</Button> */}
+                <Link to="/who-needs-life-insurance"> Get Started</Link>
               </Card.Body>
             </Card>
           </Col>
@@ -194,24 +186,27 @@ const Home = () => {
             <Card >
               <Card.Img variant="top" src={Banner4} />
               <Card.Body>
-                <Card.Title>I have growing responsibilities</Card.Title>
-                <Card.Text>
+                <Card.Title className="text-blue" >I have growing responsibilities</Card.Title>
+                <Card.Text  style={{minHeight:"50px"}}>
                   Invest towards your future goals.
                 </Card.Text>
-                <Button variant="primary">Get Started</Button>
+                {/* <Button variant="light">Get Started</Button> */}
+                <Link to="/who-needs-life-insurance"> Get Started</Link>
               </Card.Body>
             </Card>
           </Col>
           <Col xs={12} md={4} lg={4} className="insurance-solution-div">
             <Card >
               <Card.Img variant="top" src={Banner5} />
-              <Card.Body>
-                <Card.Title>
+              <Card.Body  >
+                <Card.Title className="text-blue">
                   I am nearing retirement</Card.Title>
-                <Card.Text>
+                <Card.Text style={{minHeight:"50px"}}>
                   Prepare for a carefree retired life.
                 </Card.Text>
-                <Button variant="primary">Get Started</Button>
+                {/* <Button variant="light">Get Started</Button> */}
+                <Link to="/who-needs-life-insurance"> Get Started</Link>
+
               </Card.Body>
             </Card>
           </Col>

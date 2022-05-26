@@ -41,7 +41,7 @@ const WhoNeedsLifeInsurance = () => {
          </Col>
         <Col xs={12} md={9} lg={9}>
           <div>
-            <span className='main-text-heading'>Who Needs Life Insurance?</span>
+            <span className='main-text-heading heading-margin'>Who Needs Life Insurance?</span>
           </div>
           
           <p className='simple-text'>

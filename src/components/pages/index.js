@@ -14,6 +14,7 @@ import Home from './Home';
 import Form from './Form';
 import Test from './test';
 import Testa from './TestAgain';
+import DynamicLibrary from "./DynamicLibrary"
 
 
 export {
@@ -32,5 +33,6 @@ export {
     InsuranceCompanies,
     Form,
     Test,
-    Testa
+    Testa,
+    DynamicLibrary
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from "react-bootstrap";
-import { RiArrowRightSLine } from "react-icons/ri";
+import { Accordion } from 'react-bootstrap';
 
 export default function HomeTable() {
 
@@ -10,7 +10,6 @@ export default function HomeTable() {
 
     const handleClick = id => {
         activeLink(id)
-
     };
 
     useEffect(() => {
@@ -27,20 +26,32 @@ export default function HomeTable() {
         <>
             <Container className="box-shadow">
                 <Row>
-                    {/* <Col xs={2} md={2} lg={2} ></Col> */}
+                    <Col xs={12} md={10} lg={3} >
+                        <Accordion>
+                            {faqs.map((faq, i) =>
+                                <>
+                                    <Accordion.Item key={i} eventKey={i}>
+                                        <Accordion.Header onClick={() => { SetTextOnClick(faq.answer); handleClick(i); }} className={`ps-2 ${i !== link ? 'text-blue textOnHover' : ""} ${i === link ? "activeClass" : ""} `} >
+                                            <span key={i} value={faq.question} style={{ height: '65px', width: "300px", justifyContent: 'center' }}>
+                                                <h6>{faq.question} </h6>
+                                            </span>
+                                        </Accordion.Header>
+                                        <Accordion.Body className='show-col'>
+                                            <span  >
+                                                <p className='simple-text' > {faq.answer}</p>
+                                            </span>
+                                        </Accordion.Body>
 
-                    <Col xs={3} md={3} lg={3} >
-                        {faqs.map((faq, i) =>
-                            <div key={i} value={faq.question} className={`ps-2 ${i !== link ? 'text-blue textOnHover':"" } ${i === link ? "activeClass" : ""} `} onClick={() => {SetTextOnClick(faq.answer); handleClick(i); }} style={{ height: '65px', width: "300px", justifyContent: 'center'}}>
-                                <h6>{faq.question} <RiArrowRightSLine /></h6>
-                            </div>
-                        )}
+                                    </Accordion.Item>
+                                </>
+
+                            )}
+                        </Accordion>
 
                     </Col>
-                    <Col xs={5} md={5} lg={5} style={{ height: '270px', width: "730px", backgroundColor: "#fff", padding: '36px 40px' }}>
+                    <Col className='hide-col' xs={12} md={12} lg={5} style={{ height: '270px', width: "730px", backgroundColor: "#fff", padding: '36px 40px' }}>
                         <p className='simple-text' > {textOnClick}</p>
                     </Col>
-                    {/* <Col xs={2} md={2} lg={2}></Col> */}
                 </Row>
             </Container>
         </>

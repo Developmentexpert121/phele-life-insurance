@@ -5,6 +5,9 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
 import Alert from ".././Alert";
 
+const url = process.env.REACT_APP_URL
+
+
 const AdminFaq = () => {
     const [formData, setFormData] = useState({
         question: '',
@@ -40,7 +43,7 @@ const AdminFaq = () => {
             alertFn("Your data is Not Saved", "danger")
         } else {
             var data = { question: formData.question, answer: formData.answer }
-            fetch(`http://localhost:4000/faqs/question`, {
+            fetch(url+`/faqs/question`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
@@ -59,7 +62,7 @@ const AdminFaq = () => {
         if (formData.question.split(/[ ]+/).join(" ").length < 4 || formData.answer.split(/[ ]+/).join(" ").length < 4) {
             alertFn("Not Updated", 'danger');
         } else {
-            axios.post('http://localhost:4000/faqs/updatefaqs/' + editingId, {
+            axios.post(url+'/faqs/updatefaqs/' + editingId, {
                 question: formData.question,
                 answer: formData.answer
             })
@@ -80,7 +83,7 @@ const AdminFaq = () => {
     }
 
     const GetQuetion = () => {
-        fetch('http://localhost:4000/faqs/question'
+        fetch(url+'/faqs/question'
         )
             .then((res) => res.json())
             .then((res) => {
@@ -94,7 +97,7 @@ const AdminFaq = () => {
 
     const editFaq = (id) => {
         setEditing(true)
-        axios.get('http://localhost:4000/faqs/editfaqs/' + id)
+        axios.get(url+'/faqs/editfaqs/' + id)
             .then((res) => {
                 // console.log('edit faq', res.data.question)
                 setFormData({
@@ -111,7 +114,7 @@ const AdminFaq = () => {
     }
 
     const deleteFaq = (id) => {
-        axios.get('http://localhost:4000/faqs/deletefaqs/' + id)
+        axios.get(url+'/faqs/deletefaqs/' + id)
             .then(() => {
                 console.log('Deleted')
             })

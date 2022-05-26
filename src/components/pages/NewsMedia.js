@@ -62,7 +62,7 @@ const NewsMedia = () => {
          </Col>
         <Col xs={12} md={9} lg={9}>
           <div className='mb-4'>
-            <span className='main-text-heading'>News & Media</span>
+            <span className='main-text-heading heading-margin'>News & Media</span>
           </div>
           {question.map((d) =>
           <>

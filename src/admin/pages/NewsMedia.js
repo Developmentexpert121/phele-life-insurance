@@ -6,6 +6,8 @@ import '../assets/DashboardStyle.css';
 import axios from "axios";
 import Alert from ".././Alert";
 
+const url = process.env.REACT_APP_URL
+
 const AdminNewsMedia = () => {
     const [formData, setFormData] = useState({
         headline: '',
@@ -63,7 +65,7 @@ const AdminNewsMedia = () => {
             console.log('cant submit');
             alertFn("Not Updated", 'danger');
         } else {
-            axios.post('http://localhost:4000/news/updatenews/' + editingId, {
+            axios.post(url+'/news/updatenews/' + editingId, {
                 headline: formData.headline,
                 detail: formData.detail,
                 source: formData.source
@@ -86,7 +88,7 @@ const AdminNewsMedia = () => {
 
     }
     const GetQuetion = () => {
-        fetch('http://localhost:4000/news/news'
+        fetch(url+'/news/news'
         )
             .then((res) => res.json())
             .then((res) => {
@@ -102,7 +104,7 @@ const AdminNewsMedia = () => {
 
     const editNews = (id) => {
         setEditing(true)
-        axios.get('http://localhost:4000/news/editnews/' + id)
+        axios.get(url+'/news/editnews/' + id)
             .then((res) => {
                 // console.log('edit news', res.data.question)
                 setFormData({
@@ -120,7 +122,7 @@ const AdminNewsMedia = () => {
     }
 
     const deletenews = (id) => {
-        axios.get('http://localhost:4000/news/deletenews/' + id)
+        axios.get(url+'/news/deletenews/' + id)
             .then(() => {
                 console.log('Deleted')
             })

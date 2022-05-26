@@ -46,7 +46,7 @@ const About = () => {
           </Col>
           <Col xs={12} md={9} lg={9}>
             <div>
-              <span className='main-text-heading'>About IRDAI</span>
+              <span className='main-text-heading heading-margin'>About IRDAI</span>
             </div>
             <p className='simple-text pt-2'>
               Insurance Regulatory and Development Authority (IRDAI) regulates the Indian insurance industry to protect the interests of the policyholders and work for the orderly growth of the industry.
