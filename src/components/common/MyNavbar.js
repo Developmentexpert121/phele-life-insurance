@@ -1,7 +1,7 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 
-import { Container, Navbar, Nav, FormControl, Form, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 import logo from './../../assets/logo.png';
 import './../../assets/styles/common.css';
 
@@ -27,21 +27,21 @@ const MyNavbar = () => {
               <FormControl type="search" placeholder="Search" className="me-2" style={{ backgroundColor: '#dbe3ee', borderRadius: "40px", width: "50%" }} aria-label="Search" />
 
               <Nav className="nav" style={{ fontWeight: "bold" }} activeKey="/home">
-                <NavDropdown title="Why Life Insurance" id="basic-nav-dropdown"  >
+                <NavDropdown className="Nav-title-on-hover" title="Why Life Insurance" id="basic-nav-dropdown"  >
                   <NavDropdown.Item href="/what-is-life-lnsurance">Why Life Insurance</NavDropdown.Item>
                   <NavDropdown.Item href="/who-needs-life-insurance">Who is it for?</NavDropdown.Item>
                   <NavDropdown.Item href="/faq">Commanly Asked Question</NavDropdown.Item>
-                  <NavDropdown.Item href="/form">Form</NavDropdown.Item>
+                  {/* <NavDropdown.Item href="/form">Form</NavDropdown.Item> */}
                 </NavDropdown>
-                <NavDropdown title="How it works" id="basic-nav-dropdown">
+                <NavDropdown className="Nav-title-on-hover" title="How it works" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/getting-started">Getting Started</NavDropdown.Item>
                   <NavDropdown.Item href="/how-claim-works">How claim works?</NavDropdown.Item>
                 </NavDropdown>
-                <NavDropdown title="Knowledge Center" id="basic-nav-dropdown">
+                <NavDropdown className="Nav-title-on-hover" title="Knowledge Center" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/insurance-library">Insurance library</NavDropdown.Item>
                   <NavDropdown.Item href="/glossary">Glossary</NavDropdown.Item>
                 </NavDropdown>
-                <NavDropdown title="About Us" id="basic-nav-dropdown">
+                <NavDropdown className="Nav-title-on-hover" title="About Us" id="basic-nav-dropdown">
                   <NavDropdown.Item href="/about">About IDAI</NavDropdown.Item>
                   <NavDropdown.Item href="/about-life-insurance-council">About Life Insurance Counsil</NavDropdown.Item>
                   <NavDropdown.Item href="/insurance-companies">Life Insurance Companies</NavDropdown.Item>

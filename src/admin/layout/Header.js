@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import '../assets/DashboardStyle.css'
 
 const AdminHeader = () => {
-    const [sidebar , setSidebar] = useState(true)
+    const [sidebar , setSidebar] = useState(false)
     const showSidebar = () => {
         setSidebar(!sidebar)
     }
