@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-// import Header from './components/common/Header';
-import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,Test,Testa,Form,
+
+import { About,WhatIsLifeInsurance,LifeInsuranceCouncil,Faq,GettingStarted,
   Glossary,HowClaimWorks,InsuranceLibrary,NewsMedia,WhoNeedsLifeInsurance,Home, InsuranceCompanies,DynamicLibrary} from './components/pages/index';
 
 import {Dashboard,AdminFaq, AdminLibrary,InsuranceCompany, AdminGlossary, AdminNewsMedia} from './admin/AdminComponents';
@@ -25,10 +25,7 @@ function App() {
         <Route path="/news-media" element={<NewsMedia />} />
         <Route path="/who-needs-life-insurance" element={<WhoNeedsLifeInsurance />} />
         <Route path="/insurance-companies" element={<InsuranceCompanies />} />
-        <Route path="/form" element={<Form />} />
-        <Route path="/admin/home" element={<Form />} />
-        <Route path="/test" element={<Test />} />
-        <Route path = "/testa" element={<Testa />} />
+     
         <Route path = "/dashboard" element={<Dashboard />} />
         <Route path='/admin/faq' element={ <AdminFaq />} />
         <Route path='/admin/library' element={ <AdminLibrary />} />

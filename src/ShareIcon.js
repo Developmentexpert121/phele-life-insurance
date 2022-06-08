@@ -11,11 +11,11 @@ export default function ShareIcon(props) {
 
     return (
         <>
-            <Button style={{color:"#0d6efd"}} variant="light" ref={target} onClick={() => setShow(!show)}>
+            <Button style={{color:"#0d6efd",padding:"0" }} variant="light" ref={target} onClick={() => setShow(!show)}>
                 <FiShare2 />
             </Button>
 
-            <Overlay target={target.current} show={show} placement="right">
+            <Overlay target={target.current} show={show} placement="bottom">
                 {({ placement, arrowProps, show: _show, popper, ...props }) => (
                     <div
                         {...props}

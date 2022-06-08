@@ -91,8 +91,8 @@ const Home = () => {
               <Carousel.Caption>
                 <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
 
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  <h3>New to Life Insurance? Karo sabse pehle!</h3>
+                  <p style={{fontSize:"1.2rem",color:'black' }}>Decided on buying Life Insurance? Life Insurance is the only financial instrument that keeps your life goals protected...</p>
                 </Col>
               </Carousel.Caption>
             </Carousel.Item>
@@ -106,8 +106,8 @@ const Home = () => {
               </Col>
               <Carousel.Caption>
                 <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
-                  <h3>Second slide label</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <h3>Factors to keep in mind before choosing Life Insurance</h3>
+                  <p style={{fontSize:"1.2rem",color:'black' }}>Life Insurance is for everyone. It gives you peace of mind knowing that your family will be financially...</p>
                 </Col>
 
 
@@ -126,8 +126,8 @@ const Home = () => {
               <Carousel.Caption>
                 <Col xs={6} md={6} lg={6} className="homeTrending mb-0 ">
 
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  <h3>Is there a Life Insurance policy specifically for women?</h3>
+                  <p style={{fontSize:"1.2rem",color:'black' }}>Women run as a natural pillar in the family, taking multiple roles of a mother, a daughter, or a wife...</p>
                 </Col>
 
               </Carousel.Caption>
