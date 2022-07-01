@@ -1,7 +1,5 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaShieldAlt } from 'react-icons/fa';
-import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
@@ -21,10 +19,7 @@ const HowClaimWorks = () => {
       'url': '/how-claim-works'
     }
   ]
-  const bannerStyle = {
-    width: '100%',
-    border: 1
-  }
+ 
   return (
     <>
       <Header />
@@ -83,30 +78,30 @@ const HowClaimWorks = () => {
             <p className='simple-text pt-2'> The above claim procedure can be followed for riders as well.</p>
             <p className='simple-text pt-2'>For more understanding on claims as per your policy, here are links to the claims page of all 24 Life Insurance companies:</p>
 
-            <div> <a className='href-text m-2' href='http://www.aegonlife.com/customer-service/claims/claims-process' target="_blank">Aegon Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.avivaindia.com/en/CustomerService/ClaimsProcedure.aspx' target="_blank"> Aviva Life Insurance Company India Private Limited</a></div>
-            <div> <a className='href-text m-2' href='https://www.bajajallianz.com/Corp/claims/life-claim-assistance-claim-process.jsp' target="_blank">Bajaj Allianz Life Insurance Company Limited </a> </div>
-            <div> <a className='href-text m-2' href='https://www.bharti-axalife.com/claims/know-your-claims' target="_blank"> Bharti AXA Life Insurance Private Limited  </a> </div>
-            <div> <a className='href-text m-2' href='http://insurance.birlasunlife.com/Pages/Individual/Forms-Downloads/OnlineClaim.aspx' target="_blank"> Birla Sun Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.canarahsbclife.com/lifeinsurance/portal/canh/home/claims/claims-process' target="_blank"> Canara HSBC Oriental Bank of Commerce Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='https://www.dhflpramerica.com/Claims/Claim' target="_blank"> DHFL Pramerica Life Insurance Company Limited </a> </div>
-            <div> <a className='href-text m-2' href='https://www.edelweisstokio.in/faq/claims' target="_blank"> Edelweiss Tokio Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.exidelife.in/customer-service/claims/claims-process' target="_blank"> Exide life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='https://life.futuregenerali.in/claims/claims-procedure' target="_blank"> Future Generali India Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.hdfclife.com/CustomerServices/Claims/Claims.aspx' target="_blank"> HDFC Life Insurance Company Limited   </a> </div>
-            <div> <a className='href-text m-2' href='http://www.iciciprulife.com/public/Life-Claims/Claim-Introduction.htm' target="_blank"> ICICI Prudential Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.idbifederal.com/Claims/Pages/default.aspx' target="_blank"> IDBI Federal Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.indiafirstlife.com/web/customer-care/know-about-claim' target="_blank"> IndiaFirst Life Insurance Company Limited </a> </div>
-            <div> <a className='href-text m-2' href='http://insurance.kotak.com/policy_holder/life-insurance-claims.php?' target="_blank"> Kotak Mahindra Old Mutual Life Insurance Limited  </a> </div>
-            <div> <a className='href-text m-2' href='http://www.licindia.com/download_forms.htm' target="_blank"> Life Insurance Corporation of India.</a> </div>
-            <div> <a className='href-text m-2' href='http://www.maxlifeinsurance.com/claims/understanding_claims.aspx' target="_blank"> Max Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.pnbmetlife.co.in/MetLifeKCenter_FAQ_Claim.aspx' target="_blank"> PNB MetLife India Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.reliancelife.com/insurance-claims-documents.aspx' target="_blank"> Reliance Nippon Life Insurance Company Limited </a> </div>
-            <div> <a className='href-text m-2' href='http://www.saharalife.com' target="_blank"> Sahara India Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.sbilife.co.in/sbilife/content/17_1026' target="_blank"> SBI Life Insurance Company Limited   </a> </div>
-            <div> <a className='href-text m-2' href='http://www.shriramlife.com/dms/plan-brochures/traditional/Claims-Process-for-Website-SLIC.pdf' target="_blank"> Shriram Life Insurance Company Limited </a> </div>
-            <div> <a className='href-text m-2' href='http://www.sudlife.in' target="_blank"> Star Union Dai-ichi Life Insurance Company Limited</a> </div>
-            <div> <a className='href-text m-2' href='http://www.tataaia.com/claims/claims.html' target="_blank"> Tata AIA Life Insurance Company Limited  </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.aegonlife.com/customer-service/claims/claims-process' target="_blank">Aegon Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.avivaindia.com/en/CustomerService/ClaimsProcedure.aspx' target="_blank"> Aviva Life Insurance Company India Private Limited</a></div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='https://www.bajajallianz.com/Corp/claims/life-claim-assistance-claim-process.jsp' target="_blank">Bajaj Allianz Life Insurance Company Limited </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='https://www.bharti-axalife.com/claims/know-your-claims' target="_blank"> Bharti AXA Life Insurance Private Limited  </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://insurance.birlasunlife.com/Pages/Individual/Forms-Downloads/OnlineClaim.aspx' target="_blank"> Birla Sun Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.canarahsbclife.com/lifeinsurance/portal/canh/home/claims/claims-process' target="_blank"> Canara HSBC Oriental Bank of Commerce Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='https://www.dhflpramerica.com/Claims/Claim' target="_blank"> DHFL Pramerica Life Insurance Company Limited </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='https://www.edelweisstokio.in/faq/claims' target="_blank"> Edelweiss Tokio Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.exidelife.in/customer-service/claims/claims-process' target="_blank"> Exide life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='https://life.futuregenerali.in/claims/claims-procedure' target="_blank"> Future Generali India Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.hdfclife.com/CustomerServices/Claims/Claims.aspx' target="_blank"> HDFC Life Insurance Company Limited   </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.iciciprulife.com/public/Life-Claims/Claim-Introduction.htm' target="_blank"> ICICI Prudential Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.idbifederal.com/Claims/Pages/default.aspx' target="_blank"> IDBI Federal Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.indiafirstlife.com/web/customer-care/know-about-claim' target="_blank"> IndiaFirst Life Insurance Company Limited </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://insurance.kotak.com/policy_holder/life-insurance-claims.php?' target="_blank"> Kotak Mahindra Old Mutual Life Insurance Limited  </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.licindia.com/download_forms.htm' target="_blank"> Life Insurance Corporation of India.</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.maxlifeinsurance.com/claims/understanding_claims.aspx' target="_blank"> Max Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.pnbmetlife.co.in/MetLifeKCenter_FAQ_Claim.aspx' target="_blank"> PNB MetLife India Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.reliancelife.com/insurance-claims-documents.aspx' target="_blank"> Reliance Nippon Life Insurance Company Limited </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.saharalife.com' target="_blank"> Sahara India Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.sbilife.co.in/sbilife/content/17_1026' target="_blank"> SBI Life Insurance Company Limited   </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.shriramlife.com/dms/plan-brochures/traditional/Claims-Process-for-Website-SLIC.pdf' target="_blank"> Shriram Life Insurance Company Limited </a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.sudlife.in' target="_blank"> Star Union Dai-ichi Life Insurance Company Limited</a> </div>
+            <div> <a className='href-text m-2' rel="noreferrer" href='http://www.tataaia.com/claims/claims.html' target="_blank"> Tata AIA Life Insurance Company Limited  </a> </div>
 
           </Col>
         </Row>

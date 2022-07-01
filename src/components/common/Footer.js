@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="Footer-main">
       <Row className="Footer-row">
         <Col xs={12} md={2} lg={2}>
-        <img src={FooterLogo} />
+        <img src={FooterLogo} alt="" />
         </Col>
         <Col xs={12} md={10} lg={10} className="reserved-rights">
           <span className='text-reserved'>© 2020 Life Insurance Council. All Rights Reserved.</span>

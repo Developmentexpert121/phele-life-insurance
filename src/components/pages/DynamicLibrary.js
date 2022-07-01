@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
@@ -14,7 +14,7 @@ export default function DynamicLibrary() {
 
 
   const getKeyword = () => {
-    fetch('http://localhost:4000/library'+url
+    fetch(url+'/library'+url
     )
       .then((res) => res.json())
       .then((res) => {
@@ -34,11 +34,6 @@ export default function DynamicLibrary() {
       'url': '/glossary'
     }
   ]
-
-  const bannerStyle = {
-    width: '100%',
-    border: 1
-  }
 
   useEffect(() => {
     getKeyword()

@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import SocialComponent from '../common/Socials';
 import { Container, Row, Col, Accordion } from 'react-bootstrap';
-// import { FaShieldAlt } from 'react-icons/fa';
-// import Banner1 from './../../assets/banner1.jpg';
 import Navs from '../SideTabs';
-import FaqToggle from './../FaqToggle';
 import Footer from './../common/Footer';
 import Header from './../common/Header';
+const url = process.env.REACT_APP_URL
+
 const Faq = () => {
 
   const [question, fetchQuestion] = useState([])
 
   const getQuestions = () => {
-    fetch('http://localhost:4000/faqs/question'
+    fetch(url+'/faqs/question'
     )
       .then((res) => res.json())
       .then((res) => {
         fetchQuestion(res)
       })
-
   }
-
 
   useEffect(() => {
     getQuestions()
     console.log('effect 1', question);
-  }, [])
+  }, [question])
 
   const NavLists = [
     {
@@ -45,10 +42,7 @@ const Faq = () => {
     }
   ]
   // let data = [{ "question": "What is Your name?", "answer": "Hi! My name is Puneet Dudi" }, { "question": "How old are you?", "answer": "I'm 24 years old" }];
-  const bannerStyle = {
-    width: '100%',
-    border: 1
-  }
+ 
   return (
     <>
       <Header />

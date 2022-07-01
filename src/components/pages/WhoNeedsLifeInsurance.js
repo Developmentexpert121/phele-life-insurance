@@ -1,7 +1,6 @@
 import React from 'react'
 import SocialComponent from '../common/Socials';
 import {Container, Row, Col} from 'react-bootstrap';
-import {FaShieldAlt}  from 'react-icons/fa';
 import Banner1 from './../../assets/banner3.jpg';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
@@ -52,7 +51,7 @@ const WhoNeedsLifeInsurance = () => {
           </p>
           <span className='text-heading pt-3'>I am starting out</span>
           <div className='what-insurance-photo pt-3'>
-          <img src={Banner1} style={bannerStyle} />
+          <img alt='' src={Banner1} style={bannerStyle} />
           </div>
         
           <span className='sub-headings pt-4 pb-2'>Working Professional</span>

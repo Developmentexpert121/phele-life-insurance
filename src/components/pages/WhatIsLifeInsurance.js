@@ -1,6 +1,5 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-import {FaShieldAlt}  from 'react-icons/fa';
 import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
@@ -44,7 +43,7 @@ const WhatIsLifeInsurance = () => {
             <span className='main-text-heading heading-margin'>What is Life Insurance?</span>
           </div>
           <div className='what-insurance-photo pt-3'>
-          <img src={Banner1} style={bannerStyle} />
+          <img src={Banner1} alt="" style={bannerStyle} />
           </div>
           <p className='simple-text pt-3'>
           In the simplest way possible, Life Insurance is a product that provides your family with money when you are not around to financially provide for them. It is important to consider buying Life Insurance so that you are better prepared to face life's uncertainties.

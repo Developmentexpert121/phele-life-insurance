@@ -7,7 +7,6 @@ import Alert from ".././Alert";
 
 const url = process.env.REACT_APP_URL
 
-
 const AdminFaq = () => {
     const [formData, setFormData] = useState({
         question: '',

@@ -5,8 +5,8 @@ import Navs from '../SideTabs';
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import CompaniesLibrary from './../CompaniesLibraryComponent';
-// import { FaShieldAlt } from 'react-icons/fa';
-// import Banner1 from './../../assets/banner1.jpg';
+
+const url = process.env.REACT_APP_URL
 
 const InsuranceCompany = () => {
   const NavLists = [
@@ -35,7 +35,7 @@ const InsuranceCompany = () => {
   const [companies, setCompanies] = useState([]);
 
   const getCompanies = () => {
-    fetch('http://localhost:4000/companies/companies-list'
+    fetch(url+'/companies/companies-list'
     )
       .then((res) => res.json())
       .then((res) => {
@@ -44,13 +44,8 @@ const InsuranceCompany = () => {
   }
   useEffect(() => {
     getCompanies()
-    // console.log('effect 1', companies);
   }, [companies])
 
-  const bannerStyle = {
-    width: '100%',
-    border: 1
-  }
   return (
     <>
       <Header />

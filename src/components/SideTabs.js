@@ -1,7 +1,7 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import {FaShieldAlt,FaAtlas, FaBook}  from 'react-icons/fa';
+import {FaBook}  from 'react-icons/fa';
 const Navs = (props) => {
   
   
