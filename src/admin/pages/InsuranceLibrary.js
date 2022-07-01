@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
 import Alert from ".././Alert";
-import SunEditor from 'suneditor-react';
-import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
+// import SunEditor from 'suneditor-react';
+// import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 
 const url = process.env.REACT_APP_URL
 
@@ -223,7 +223,7 @@ const AdminLibrary = () => {
                                                 onChange={InputHandler}
                                                 value={libraryData.description}
                                             /> */}
-                                            <SunEditor name='description' height="100px" placeholder='Enter Description' onChange={newInputHandler} setContents={libraryData.description}  />
+                                            {/* <SunEditor name='description' height="100px" placeholder='Enter Description' onChange={newInputHandler} setContents={libraryData.description}  /> */}
                                         </div>
                                     </Col>
                                     

@@ -25,8 +25,7 @@
     "react-share-social": "^0.1.48",
     "react-slick": "^0.28.1",
     "react-spring": "^9.4.5",
-    "react-spring-3d-carousel": "^1.2.1",
-    "suneditor-react": "^3.4.0"
+    "react-spring-3d-carousel": "^1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
