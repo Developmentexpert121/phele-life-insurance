@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap';
-// import { FaShieldAlt, FaAtlas, FaBook } from 'react-icons/fa';
-// import Banner1 from './../../assets/banner1.jpg';
+import { Container, Row, Col} from 'react-bootstrap';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
 import Header from './../common/Header';
+const url = process.env.REACT_APP_URL
 
 const Glossary = () => {
 
@@ -13,7 +12,7 @@ const Glossary = () => {
 
 
   const getKeyword = () => {
-    fetch('http://localhost:4000/glossary/keyword'
+    fetch(url+'/glossary/keyword'
     )
       .then((res) => res.json())
       .then((res) => {
@@ -34,16 +33,10 @@ const Glossary = () => {
     }
   ]
 
-  const bannerStyle = {
-    width: '100%',
-    border: 1
-  }
-
   useEffect(() => {
     getKeyword()
   }, [])
 
-  // const alphabets = [...Array(26).keys()].map(i => String.fromCharCode(i + 97).toUpperCase());
   const alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const data = keywords.reduce((r, e) => {

@@ -29,7 +29,6 @@ const Test = () => {
     data.sort((a, b) => (a.lname > b.lname) ? 1 : -1)
     console.log(data)
     // console.log(thearray);
-    var items = [1, 2, 3, 4, 5]
 
     return (
         <>

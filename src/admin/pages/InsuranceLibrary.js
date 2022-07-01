@@ -57,7 +57,7 @@ const AdminLibrary = () => {
             formData.append('title', libraryData.title);
             formData.append('description', Contents );
 
-            axios.post('//localhost:4000/library/library', formData)
+            axios.post(url+'/library/library', formData)
                 .then((e) => {
                     console.log("Sucess", e);
                 })
@@ -154,8 +154,6 @@ const AdminLibrary = () => {
         console.log('running',e);
         setContents(e)
     }
-
-    const htmlStr="<p>Hello html<p>"
 
     return (
         <>

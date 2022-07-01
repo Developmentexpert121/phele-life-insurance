@@ -1,34 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import ShareIcon from "../../ShareIcon"
-// import { FaShareAlt } from 'react-icons/fa';
-// import Banner1 from './../../assets/banner1.jpg';
-
-
+const url = process.env.REACT_APP_URL
 
 const InsuranceLibrary = () => {
   const [question, fetchQuestion] = useState([]);
-  // const [show, setShow] = useState(false);
-  // const target = useRef(null);
-
-
+  
   const getQuestions = () => {
-    fetch('http://localhost:4000/library/library'
+    fetch(url+'/library/library'
     )
       .then((res) => res.json())
       .then((res) => {
         fetchQuestion(res)
       })
-    console.log('Lib is ', question);
+    // console.log('Lib is ', question);
   }
 
   useEffect(() => {
     getQuestions()
-    console.log('effect 1', question);
+    // console.log('effect 1', question);
   }, [question])
 
 
@@ -45,10 +39,6 @@ const InsuranceLibrary = () => {
     }
   ]
 
-  // const bannerStyle = {
-  //   width: '100%',
-  //   border: 1
-  // }
   return (
     <>
       <Header />

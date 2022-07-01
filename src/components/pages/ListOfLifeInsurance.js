@@ -1,7 +1,5 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap';
-import {FaShieldAlt}  from 'react-icons/fa';
-import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import Footer from './../common/Footer';
@@ -9,10 +7,7 @@ import Header from './../common/Header';
 
 export const ListOfLifeInsurance = () => {
   const NavLists = ['Getting Started','Who is it for']
-  const bannerStyle = {
-    width: '100%',
-    border: 1   
-  }
+ 
   return (
     <>
     <Header />

@@ -17,7 +17,7 @@ const CompaniesLibrary = (props) => {
                     </Card.Text>
                     <a style={{ textDecoration: 'none' }}
                         href={props.url.startsWith("https://") ? props.url : `https://${props.url}`}
-                        target='_blank' >
+                        rel="noreferrer" target='_blank' >
                         {props.url}
                     </a>
 

@@ -5,6 +5,8 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import axios from "axios";
 import Alert from ".././Alert";
 
+const url = process.env.REACT_APP_URL
+
 export default function InsuranceCompany() {
 
     const [companyData, setCompanyData] = useState({
@@ -53,7 +55,7 @@ export default function InsuranceCompany() {
             formData.append('mobile', companyData.mobile);
             formData.append('url', companyData.url);
 
-            axios.post('http://localhost:4000/companies/companies-list', formData)
+            axios.post(url+'/companies/companies-list', formData)
                 .then((e) => {
                     console.log("Sucess", e);
                 })
@@ -78,7 +80,7 @@ export default function InsuranceCompany() {
         } else {
             const { picture, companyName, mobile, url } = companyData
             console.log("company data", companyData, editingId);
-            axios.post('http://localhost:4000/companies/updatecompany/' + editingId, {
+            axios.post(url+'/companies/updatecompany/' + editingId, {
                 picture,
                 companyName,
                 mobile,
@@ -102,7 +104,7 @@ export default function InsuranceCompany() {
         }
     }
     const GetQuetion = () => {
-        fetch('http://localhost:4000/companies/companies-list'
+        fetch(url+'/companies/companies-list'
         )
             .then((res) => res.json())
             .then((res) => {
@@ -117,7 +119,7 @@ export default function InsuranceCompany() {
 
     const deleteCompany = (id) => {
         console.log('inside delete', id);
-        axios.get('http://localhost:4000/companies/deletecompany/' + id)
+        axios.get(url+'/companies/deletecompany/' + id)
             .then(() => {
                 console.log('Deleted')
             })
@@ -128,7 +130,7 @@ export default function InsuranceCompany() {
     }
     const editCompany = (id) => {
         setEditing(true)
-        axios.get('http://localhost:4000/companies/editcompany/' + id)
+        axios.get(url+'/companies/editcompany/' + id)
             .then((res) => {
                 console.log('edit Company', res.data)
                 setCompanyData({

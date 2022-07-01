@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Button, Overlay } from 'react-bootstrap';
 import { FiShare2 } from "react-icons/fi";
-import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp, FaReddit } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaWhatsapp, FaReddit } from "react-icons/fa";
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, RedditShareButton } from "react-share";
 
 export default function ShareIcon(props) {

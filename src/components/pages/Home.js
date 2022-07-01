@@ -1,9 +1,8 @@
 import React from "react";
-import { Container, Row, Col, Carousel, CarouselItem, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Carousel, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import YoutubeEmbed from "../YoutubeEmbed";
 import "./../../assets/styles/common.css";
-import Slider from "react-slick";
 import Footer from './../common/Footer';
 import Header from './../common/Header';
 import SocialComponent from "../common/Socials";

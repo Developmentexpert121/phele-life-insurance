@@ -1,15 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 const Testa = () =>{
-   const [formData, setFormData] = useState({
-       name :'',
-       email :'',
-       address : ''
-   })
-
-   const InputHandler = (e) => {
-    setFormData()
-   }
+ 
 
     return (
         <div>

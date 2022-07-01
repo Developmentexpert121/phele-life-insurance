@@ -1,11 +1,8 @@
 import React from "react";
-import { LinkContainer } from "react-router-bootstrap";
 
 import { Container, Navbar, Nav, Form, FormControl, NavDropdown } from "react-bootstrap";
 import logo from './../../assets/logo.png';
 import './../../assets/styles/common.css';
-
-
 
 const MyNavbar = () => {
   return (
@@ -13,13 +10,7 @@ const MyNavbar = () => {
       <Navbar className="py-lg-4 navbar-container d-flex justify-content-around" style={{ height: "8rem" }} bg="light" expand="lg" variant="light">
         <Container >
 
-          <Navbar.Brand to="/"> <img src={logo}></img> </Navbar.Brand>
-
-          {/* <LinkContainer to="/" className="d-flex flex-column ">
-            <Navbar.Brand to="/"> <img src={logo}></img> </Navbar.Brand>
-          </LinkContainer> */}
-
-
+          <Navbar.Brand to="/"> <img src={logo} alt="" ></img> </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="bg-light justify-content-end z-index-2 ps-3">
 

@@ -1,7 +1,5 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaShieldAlt } from 'react-icons/fa';
-import Banner1 from './../../assets/banner1.jpg';
 import SocialComponent from '../common/Socials';
 import Navs from '../SideTabs';
 import './../../assets/styles/common.css';
@@ -21,12 +19,8 @@ const GettingStarted = () => {
       'url': '/how-claim-works'
     }
   ]
-  const bannerStyle = {
-    width: '100%',
-    border: 1
-  }
+ 
   return (
-
     <>
       <Header />
       <Container>

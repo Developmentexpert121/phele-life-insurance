@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import { Accordion } from 'react-bootstrap';
+const url = process.env.REACT_APP_URL
 
 export default function HomeTable() {
 
@@ -13,7 +14,7 @@ export default function HomeTable() {
     };
 
     useEffect(() => {
-        fetch('http://localhost:4000/faqs/question'
+        fetch(url+'/faqs/question'
         )
             .then((res) => res.json())
             .then((res) => {
