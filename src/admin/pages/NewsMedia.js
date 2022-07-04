@@ -44,7 +44,7 @@ const AdminNewsMedia = () => {
             alertFn("Your data is Not Saved", "danger")
         } else {
             var data = { headline: formData.headline, detail: formData.detail, source: formData.source }
-            fetch(`http://localhost:4000/news/news`, {
+            fetch(url+`/news/news`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
