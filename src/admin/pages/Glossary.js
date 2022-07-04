@@ -46,7 +46,7 @@ const Glossary = () => {
 
         } else {
             let data = { keyword: formData.keyword.toUpperCase(), definition: formData.definition }
-            fetch(`http://localhost:4000/glossary/keyword`, {
+            fetch(url+`/glossary/keyword`, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),

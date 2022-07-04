@@ -14,7 +14,7 @@ const AdminLibrary = () => {
     const [libraryData, setLibraryData] = useState({
         slug: '',
         title: '',
-        // description: '',
+        description: '',
         picture: ''
     })
     const [thearray, setTheArray] = useState([]);
@@ -45,7 +45,7 @@ const AdminLibrary = () => {
 
     const submit = (e) => {
         e.preventDefault();
-        if (libraryData.slug.split(/[ ]+/).join(" ").length < 4 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || Contents.split(/[ ]+/).join("").length<3 ) {
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 4 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join("").length<3 ) {
             console.log('cant submit');
             // split(/[ ]+/).join(" ")
             alertFn("Your data is Not Saved", "danger")
@@ -55,7 +55,7 @@ const AdminLibrary = () => {
             formData.append('picture', libraryData.picture);
             formData.append('slug', libraryData.slug);
             formData.append('title', libraryData.title);
-            formData.append('description', Contents );
+            formData.append('description', libraryData.description );
 
             axios.post(url+'/library/library', formData)
                 .then((e) => {
@@ -67,7 +67,7 @@ const AdminLibrary = () => {
             setLibraryData({
                 slug: '',
                 title: '',
-                // description: '',
+                description: '',
                 picture: ''
             })
             setContents("")
@@ -81,12 +81,12 @@ const AdminLibrary = () => {
             console.log('cant submit');
             alertFn("Not Updated", 'danger');
         } else {
-            const { slug, title, picture } = libraryData
+            const { slug, title, picture, description } = libraryData
             axios.post(url + '/library/updatelibrary/' + editingId, {
                 slug,
                 title,
                 picture,
-                description:Contents
+                description
             })
                 .then((response) => {
                     console.log(response);
@@ -99,9 +99,10 @@ const AdminLibrary = () => {
             setLibraryData({
                 slug: '',
                 title: '',
-                picture: ''
+                picture: '',
+                description:""
             })
-            setContents("")
+            // setContents("")
             alertFn("Your data is Updated", 'info');
         }
     }
@@ -215,14 +216,14 @@ const AdminLibrary = () => {
                                     <Col xs={12} md={12} lg={12}>
                                         <div>
                                             <label>Description</label>
-                                            {/* <textarea
+                                            <textarea
                                                 name='description'
                                                 rows={3}
                                                 className="form-control"
                                                 placeholder='Enter Description'
                                                 onChange={InputHandler}
                                                 value={libraryData.description}
-                                            /> */}
+                                            />
                                             {/* <SunEditor name='description' height="100px" placeholder='Enter Description' onChange={newInputHandler} setContents={libraryData.description}  /> */}
                                         </div>
                                     </Col>
