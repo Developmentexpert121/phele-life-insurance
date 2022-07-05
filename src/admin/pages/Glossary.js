@@ -40,7 +40,7 @@ const Glossary = () => {
     }
     const submit = (e) => {
         e.preventDefault()
-        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 2 || formData.definition.split(/[ ]+/).join(" ").length < 2) {
             console.log("Cant submit in Glossary");
             alertFn("Your data is Not Saved", "danger")
 
@@ -61,7 +61,7 @@ const Glossary = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (formData.keyword.split(/[ ]+/).join(" ").length < 3 || formData.definition.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.keyword.split(/[ ]+/).join(" ").length < 2 || formData.definition.split(/[ ]+/).join(" ").length < 2) {
             console.log("Cant submit in Glossary");
             alertFn("Not Updated", 'danger');
         } else {

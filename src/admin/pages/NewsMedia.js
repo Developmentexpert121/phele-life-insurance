@@ -39,7 +39,7 @@ const AdminNewsMedia = () => {
 
     const submit = (e) => {
         e.preventDefault()
-        if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.headline.split(/[ ]+/).join(" ").length < 2 || formData.detail.split(/[ ]+/).join(" ").length < 2 || formData.source.split(/[ ]+/).join(" ").length < 2) {
             console.log('cant submit');
             alertFn("Your data is Not Saved", "danger")
         } else {
@@ -61,7 +61,7 @@ const AdminNewsMedia = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (formData.headline.split(/[ ]+/).join(" ").length < 4 || formData.detail.split(/[ ]+/).join(" ").length < 4 || formData.source.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.headline.split(/[ ]+/).join(" ").length < 2 || formData.detail.split(/[ ]+/).join(" ").length < 2 || formData.source.split(/[ ]+/).join(" ").length < 2) {
             console.log('cant submit');
             alertFn("Not Updated", 'danger');
         } else {
