@@ -45,7 +45,7 @@ const AdminLibrary = () => {
 
     const submit = (e) => {
         e.preventDefault();
-        if (libraryData.slug.split(/[ ]+/).join(" ").length < 4 || libraryData.title.split(/[ ]+/).join(" ").length < 10 || libraryData.description.split(/[ ]+/).join("").length<3 ) {
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 2 || libraryData.title.split(/[ ]+/).join(" ").length < 2 || libraryData.description.split(/[ ]+/).join("").length<2 ) {
             console.log('cant submit');
             // split(/[ ]+/).join(" ")
             alertFn("Your data is Not Saved", "danger")
@@ -77,7 +77,7 @@ const AdminLibrary = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (libraryData.slug.split(/[ ]+/).join(" ").length < 4 || libraryData.title.split(/[ ]+/).join(" ").length < 4) {
+        if (libraryData.slug.split(/[ ]+/).join(" ").length < 2 || libraryData.title.split(/[ ]+/).join(" ").length < 2) {
             console.log('cant submit');
             alertFn("Not Updated", 'danger');
         } else {

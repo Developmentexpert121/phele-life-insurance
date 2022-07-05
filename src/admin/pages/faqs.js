@@ -36,7 +36,7 @@ const AdminFaq = () => {
     }
     const submit = (e) => {
         e.preventDefault()
-        if (formData.question.split(/[ ]+/).join(" ").length < 4 || formData.answer.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.question.split(/[ ]+/).join(" ").length < 2 || formData.answer.split(/[ ]+/).join(" ").length < 2) {
             console.log('cant submit');
 
             alertFn("Your data is Not Saved", "danger")
@@ -58,7 +58,7 @@ const AdminFaq = () => {
 
     const updatefn = () => {
         console.log("update fn");
-        if (formData.question.split(/[ ]+/).join(" ").length < 4 || formData.answer.split(/[ ]+/).join(" ").length < 4) {
+        if (formData.question.split(/[ ]+/).join(" ").length < 2 || formData.answer.split(/[ ]+/).join(" ").length < 2) {
             alertFn("Not Updated", 'danger');
         } else {
             axios.post(url+'/faqs/updatefaqs/' + editingId, {

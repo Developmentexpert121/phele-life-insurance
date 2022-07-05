@@ -44,7 +44,7 @@ export default function InsuranceCompany() {
     }
     const submit = (e) => {
         e.preventDefault();
-        if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || !companyData.mobile.match(/^[0-9]+$/) || companyData.url.split(/[ ]+/).join("").length < 4) {
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 2 || companyData.mobile.split(/[ ]+/).join("").length < 2 || !companyData.mobile.match(/^[0-9]+$/) || companyData.url.split(/[ ]+/).join("").length < 2) {
             console.log('cant submit');
             alertFn("Your data is Not Saved", "danger")
         } else {
@@ -74,7 +74,7 @@ export default function InsuranceCompany() {
 
     const updatefn = () => {
         console.log("update fn");
-        if (companyData.companyName.split(/[ ]+/).join(" ").length < 4 || companyData.mobile.split(/[ ]+/).join("").length < 4 || companyData.url.split(/[ ]+/).join("").length < 4) {
+        if (companyData.companyName.split(/[ ]+/).join(" ").length < 2 || companyData.mobile.split(/[ ]+/).join("").length < 2 || companyData.url.split(/[ ]+/).join("").length < 2) {
             console.log('cant submit');
             alertFn("Not Updated", 'danger');
         } else {

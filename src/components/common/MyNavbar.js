@@ -10,7 +10,7 @@ const MyNavbar = () => {
       <Navbar className="py-lg-4 navbar-container d-flex justify-content-around" style={{ height: "8rem" }} bg="light" expand="lg" variant="light">
         <Container >
 
-          <Navbar.Brand to="/"> <img src={logo} alt="" ></img> </Navbar.Brand>
+          <Navbar.Brand href="/"> <img src={logo} alt="" ></img> </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="bg-light justify-content-end z-index-2 ps-3">
 
